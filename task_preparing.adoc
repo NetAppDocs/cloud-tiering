@@ -39,7 +39,7 @@ ONTAP 9.4 or later
 
 Networking requirement::
 The ONTAP cluster must have a connection to the object storage provider. A connection is not required between the cluster and the Cloud Tiering service.
-
++
 Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required by FabricPool. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.
 
 Supported volumes::
