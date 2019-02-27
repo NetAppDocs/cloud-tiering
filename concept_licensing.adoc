@@ -13,8 +13,8 @@ summary: Cloud Tiering uses a free 10 TB license for the Controlled Availability
 :imagesdir: ./media/
 
 [.lead]
-A free 10 TB license is automatically applied during the Controlled Availability release. Capacity-based licensing will be available after the Controlled Availability.
+The Controlled Availability release of Cloud Tiering includes a 30-day free trial. Cloud Tiering will offer capacity-based licensing after the Controlled Availability release.
 
-For the Controlled Availability release, Cloud Tiering applies a free 10 TB FabricPool license to each ONTAP cluster. This license enables you to tier up to 10 TB of inactive data from the cluster to low-cost object storage.
+Cloud Tiering will offer capacity-based licensing in a pay-as-you-go model and in a bring your own license (BYOL) model. The licensing is flexible--you can mix and match between pay-as-you-go and BYOL. More details will be available soon.
 
-After the Controlled Availability release, Cloud Tiering will offer capacity-based licensing in a pay-as-you-go model and in a bring your own license (BYOL) model. The licensing is flexible--you can mix and match between pay-as-you-go and BYOL.
+link:task_registering.html[Register for the Controlled Availability release]
