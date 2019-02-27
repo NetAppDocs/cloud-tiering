@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_overview.html
 keywords: cloud sync, overview, conceptual, how, data broker, service
-summary: Cloud Sync is a software-as-a-service (SaaS) platform that consists of a data broker and a cloud-based portal.
+summary: Cloud Tiering is a NetApp-managed service that can reduce your on-premises storage costs by automatically tiering inactive data to object storage in the cloud. This enables you to extend your data center to the public cloud without changing your application layer.
 ---
 
 = Cloud Tiering overview
@@ -13,4 +13,15 @@ summary: Cloud Sync is a software-as-a-service (SaaS) platform that consists of 
 :imagesdir: ./media/
 
 [.lead]
-Adding this in the next day or two. It will provide a high-level overview of what Cloud Tiering and FabricPool are.
+Cloud Tiering is a NetApp-managed service that can reduce your on-premises storage costs by automatically tiering inactive data to object storage in the cloud. This enables you to extend your data center to the public cloud without changing your application layer.
+
+The Cloud Tiering service leverages the capabilities of FabricPool. FabricPool is a NetApp Data Fabric technology that enables automated tiering of data to low-cost object storage. The primary purpose of FabricPool is to reduce storage footprints and associated costs. Active data remains on high-performance SSDs, while inactive data is tiered to low-cost object storage while preserving ONTAP data efficiencies.
+
+Cloud Tiering offers automation, monitoring, reports, and a common management interface:
+
+* Automation makes it easier to set up and manage data tiering from ONTAP clusters to the cloud
+* A tiering health status helps you identify and correct issues as they occur
+* Reports show the amount of active and inactive data on each cluster
+* A single pane of glass removes the need to independently manage FabricPool across several clusters
+
+For more details about the value that Cloud Tiering provides, check out https://cloud.netapp.com/cloud-tiering[the Cloud Tiering page on NetApp Cloud Central].
