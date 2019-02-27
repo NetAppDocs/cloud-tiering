@@ -25,3 +25,5 @@ Cloud Tiering offers automation, monitoring, reports, and a common management in
 * A single pane of glass removes the need to independently manage FabricPool across several clusters
 
 For more details about the value that Cloud Tiering provides, check out https://cloud.netapp.com/cloud-tiering[the Cloud Tiering page on NetApp Cloud Central].
+
+NOTE: While Cloud Tiering can significantly reduce storage footprints, it is not a backup solution.
