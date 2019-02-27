@@ -1,0 +1,16 @@
+---
+sidebar: sidebar
+permalink: concept_savings.html
+keywords: cloud sync, overview, conceptual, how, data broker, service
+summary: Cloud Sync is a software-as-a-service (SaaS) platform that consists of a data broker and a cloud-based portal.
+---
+
+= Savings opportunities
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Adding this in the next day or two. It will describe how savings opportunities are presented and calculated: estimates vs. actual.

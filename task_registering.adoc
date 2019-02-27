@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: task_registering.html
+keywords:
+summary: Cloud Tiering is currently available in a Controlled Availability release, which enables us to gather feedback from our customers. Production workloads are supported. You don't need to migrate your data when Cloud Tiering reaches General Availability.
+---
+
+= Registering for the Controlled Availability
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Tiering is currently available in a Controlled Availability release, which enables us to gather feedback from our customers. Production workloads are supported and you don't need to migrate your data when Cloud Tiering reaches General Availability.
+
+.Steps
+
+. Go to https://cloud.netapp.com[NetApp Cloud Central^] and sign up for an account or log in.
+
+. Click *My Services*.
+
+. Under Cloud Tiering, click *Register for Preview*.
+
+. Fill out and submit the form.
++
+A NetApp representative will contact you with details before you can proceed.

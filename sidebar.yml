@@ -1,0 +1,33 @@
+entries:
+  - title: Cloud Tiering docs
+    url: /index.html
+  - title: Concepts
+    entries:
+      - title: Cloud Tiering overview
+        url: /concept_overview.html
+      - title: How Cloud Tiering works
+        url: /concept_architecture.html
+      - title: Licensing
+        url: /concept_licensing.html
+      - title: Savings opportunities
+        url: /concept_savings.html
+  - title: Getting started
+    entries:
+      - title: Quick start
+        url: /task_quick_start.html
+      - title: Registering for Controlled Availability
+        url: /task_registering.html
+      - title: Preparing your environment
+        url: /task_preparing.html
+      - title: Tiering data from your first cluster
+        url: /task_tiering.html
+  - title: Managing data tiering
+    url: /task_managing_tiering.html
+  - title: API reference
+    url: https://tiering.cloud.netapp.com/graphql
+  - title: FAQ
+    url: /faq.html
+  - title: Related links
+    url: /reference_additional_info.html
+  - title: Legal notices
+    url: /reference_legal_notices.html

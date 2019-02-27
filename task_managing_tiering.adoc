@@ -1,0 +1,84 @@
+---
+sidebar: sidebar
+permalink: task_managing_tiering.html
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health
+summary: Now that you've discovered and tiered data from your first cluster, you can manage tiering by discovering additional clusters, tiering data from additional volumes, and more.
+---
+
+= Managing data tiering from your clusters
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Now that you've discovered and tiered data from your first ONTAP cluster, you can tier data from additional volumes, discover additional clusters, and more.
+
+== Discovering additional clusters
+
+Add additional ONTAP clusters at any time to start tiering inactive data from those clusters.
+
+.Steps
+
+. From the Cluster Dashboard, click the following icon:
++
+image:screenshot_discover_icon.gif[A screenshot that shows the icon for discovering additional clusters.]
+
+. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
+
+. Select an existing Service Connector that has a connection to the cluster, or create a new one and click *Continue*.
+
+.What's next?
+
+Click *Set up Tiering* to start tiering inactive data from the cluster.
+
+== Tiering data from additional volumes
+
+Set up data tiering for additional volumes at any time--for example, after creating a new volume.
+
+.Steps
+
+. From the Cluster Dashboard, click *Set up Tiering*.
+
+. Select the volumes that you would like to tier and click *Continue*.
++
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+
+. Click *Tier Cluster*.
++
+TIP: You don't need to configure the object storage because it was already configured when you initially set up tiering for the cluster. ONTAP will tier inactive data from these volumes to the same object store.
+
+== Reviewing data tiering info for a cluster
+
+You might want to see how much data is in the cloud tier and how much data is on disks. Or, you might want to see the amount of hot and cold data on the cluster's disks. Cloud Tiering provides this information for each cluster.
+
+.Steps
+
+. From the Cluster Dashboard, click *More info* for a cluster.
++
+image:screenshot_more_info.gif[A screenshot that shows the More info button, which is available on the Cluster Dashboard for each cluster.]
+
+. Review details about the cluster.
++
+Here's an example:
++
+image:screenshot_cluster_info.gif[A screenshot that shows the cluster report, which details total used capacity, cluster used capacity, cluster information, and object storage information.]
+
+== Fixing tiering health
+
+Failures can happen. When they do, Cloud Tiering displays a "Failed" health status on the Cluster Dashboard. The health reflects the status of the ONTAP system and the Service Connector.
+
+.Steps
+
+. Identify any clusters that have a tiering health of "Failed."
++
+image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering health status for a cluster.]
+
+. Correct the issue:
+
+.. Verify that the ONTAP cluster is operational and that it has an inbound and outbound connection to your object storage provider.
+
+.. Verify that the Service Connector is running and that it has outbound connections to the Cloud Tiering service and to the ONTAP clusters that it discovers.
++
+TIP: The EC2 instance name for the Service Connector is prefixed with "Service-connector."
