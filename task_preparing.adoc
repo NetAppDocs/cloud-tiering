@@ -42,10 +42,10 @@ The ONTAP cluster must have a connection to the object storage provider. A conne
 +
 Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required by FabricPool. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.
 
-Supported volumes::
+Supported volumes and aggregates::
 The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
 
-== Verifying support for your object storage provider
+== Preparing your object storage provider
 
 Cloud Tiering can tier your inactive data to an AWS S3 bucket (we're planning to add additional providers soon). The following S3 regions are supported:
 
