@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_savings.html
-keywords: cloud sync, overview, conceptual, how, data broker, service
+keywords: savings, opportunities, opportunity, space, estimate
 summary: Cloud Tiering shows you the estimated space that you can save on each cluster. After a period of time, it shows you a precise value.
 ---
 

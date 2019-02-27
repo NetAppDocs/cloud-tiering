@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: concept_licensing.html
-keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license
-summary: Cloud Tiering uses a free 10 TB license for the Controlled Availability release. Capacity-based licensing will be available after the Controlled Availability.
+keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license, free trial, trial, controlled availability
+summary: The Controlled Availability release of Cloud Tiering includes a 30-day free trial. Cloud Tiering will offer capacity-based licensing after the Controlled Availability release.
 ---
 
 = How Cloud Tiering licenses work

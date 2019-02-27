@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: concept_overview.html
-keywords: cloud sync, overview, conceptual, how, data broker, service
+keywords: cloud tiering, overview, conceptual, value, features, backup, report, monitoring, health
 summary: Cloud Tiering is a NetApp-managed service that can reduce your on-premises storage costs by automatically tiering inactive data to object storage in the cloud. This enables you to extend your data center to the public cloud without changing your application layer.
 ---
 

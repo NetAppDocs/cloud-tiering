@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_quick_start.html
-keywords:
+keywords: quick start, register, prepare, tier
 summary: Getting started with Cloud Tiering includes a few steps.
 ---
 

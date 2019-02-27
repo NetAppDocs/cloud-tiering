@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_managing_tiering.html
-keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health
-summary: Now that you've discovered and tiered data from your first cluster, you can manage tiering by discovering additional clusters, tiering data from additional volumes, and more.
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed
+summary: Now that you've discovered and tiered data from your first ONTAP cluster, you can tier data from additional volumes, discover additional clusters, and more.
 ---
 
 = Managing data tiering from your clusters

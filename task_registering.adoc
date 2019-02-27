@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_registering.html
-keywords:
-summary: Cloud Tiering is currently available in a Controlled Availability release, which enables us to gather feedback from our customers. Production workloads are supported. You don't need to migrate your data when Cloud Tiering reaches General Availability.
+keywords: register, sign up, trial, free trial, controlled availability, preview
+summary: Cloud Tiering is currently available in a Controlled Availability release, which enables us to gather feedback from our customers. Production workloads are supported and you don't need to migrate your data when Cloud Tiering reaches General Availability.
 ---
 
 = Registering for the Controlled Availability
@@ -14,6 +14,8 @@ summary: Cloud Tiering is currently available in a Controlled Availability relea
 
 [.lead]
 Cloud Tiering is currently available in a Controlled Availability release, which enables us to gather feedback from our customers. Production workloads are supported and you don't need to migrate your data when Cloud Tiering reaches General Availability.
+
+The Controlled Availability release of Cloud Tiering includes a 30-day free trial.
 
 .Steps
 

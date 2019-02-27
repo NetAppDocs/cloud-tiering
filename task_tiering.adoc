@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: task_tiering.html
-keywords:
-summary:
+keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, aws, network, security group, tier, volume, s3 bucket
+summary: After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
 ---
 
 = Tiering inactive data from your first cluster

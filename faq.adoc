@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: faq.html
 keywords: faq, questions, requirements, service connector, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent
-summary: Here are some answers to common questions.
+summary: This FAQ can help if you're just looking for a quick answer to a question.
 ---
 
 = Cloud Tiering technical FAQ
@@ -37,7 +37,7 @@ One bucket for the entire cluster.
 
 == What is the Service Connector?
 
-The Service Connector is NetApp software that communicates with ONTAP clusters to discover information about hot and cold data and to set up data tiering.
+The Service Connector is NetApp software that communicates with ONTAP clusters to discover information about active and inactive data, and to set up data tiering. For more details, see link:concept_architecture.html[How Cloud Tiering works].
 
 == Where can I run the Service Connector?
 
@@ -49,8 +49,8 @@ The EC2 instance name for the Service Connector is prefixed with "Service-connec
 
 == Which volume tiering policy does Cloud Tiering apply to each volume?
 
-When you select the volumes that you want to tier, Cloud Tiering applies the _Auto_ volume tiering policy to each volume. This policy tiers Snapshot copies and cold user data from the active file system to object storage.
+When you select the volumes that you want to tier, Cloud Tiering applies the _Auto_ volume tiering policy to each volume. This policy tiers Snapshot copies and cold user data from the active file system to object storage. For more details, see link:concept_architecture.html[How Cloud Tiering works].
 
 == Does Cloud Tiering enable inactive data reporting?
 
-Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setting enables us to identify the amount of inactive (cold) data that can be tiered to low-cost object storage.
+Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setting enables us to identify the amount of inactive data that can be tiered to low-cost object storage.

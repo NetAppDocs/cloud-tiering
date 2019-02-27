@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: concept_architecture.html
-keywords: cloud sync, architecture, diagram, components, data broker, service, cloud
-summary: Cloud Tiering is a NetApp-managed service that tiers inactive data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
+keywords: cloud tiering, architecture, diagram, components, bucket, object storage, object store, service connector, policy, volume policy, volume tiering policy, tiering policy, auto
+summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
 ---
 
 = How Cloud Tiering works

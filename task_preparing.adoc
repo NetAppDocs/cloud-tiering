@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_preparing.html
 keywords: requirements, networking, vpc, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, cloud provider, bucket, s3, account, permissions, regions, access key, secret key, service connector
-summary: Before you use Cloud Tiering, verify support for your ONTAP cluster and object storage provider, and set up a location for the Service Connector.
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.
 ---
 
 = Preparing your environment
