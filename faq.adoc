@@ -47,6 +47,14 @@ In AWS. Support for Microsoft Azure is coming soon.
 
 The EC2 instance name for the Service Connector is prefixed with "Service-connector."
 
+== What are the networking requirements?
+
+You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
+
+== What cloud provider permissions are required?
+
+Cloud Central needs link:task_preparing.html#preparing-aws-s3-for-data-tiering[permissions to deploy the Service Connector] and link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[permissions that it configures your ONTAP clusters to use].
+
 == Which volume tiering policy does Cloud Tiering apply to each volume?
 
 When you select the volumes that you want to tier, Cloud Tiering applies the _Auto_ volume tiering policy to each volume. This policy tiers Snapshot copies and cold user data from the active file system to object storage. For more details, see link:concept_architecture.html[How Cloud Tiering works].
