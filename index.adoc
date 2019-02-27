@@ -13,7 +13,7 @@ summary: Based on NetApp FabricPool technology, Cloud Tiering identifies infrequ
 :imagesdir: ./media/
 
 [.lead]
-Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-used data in your ONTAP cluster and automatically and seamlessly moves that data to lower-cost object storage in the cloud.
+Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-used data in your ONTAP clusters and automatically and seamlessly moves that data to low-cost object storage in the cloud.
 
 //== Discover what's new
 
