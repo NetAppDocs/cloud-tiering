@@ -5,7 +5,7 @@ keywords: cloud tiering, netapp, documentation, cold data, inactive data, perfor
 summary: Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-used data in your on-prem storage and automatically and seamlessly moves that data to lower-cost object storage in the cloud.
 ---
 
-= Cloud Tiering
+= Cloud Tiering documentation
 :hardbreaks:
 :nofooter:
 :icons: font
