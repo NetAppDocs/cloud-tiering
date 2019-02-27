@@ -49,7 +49,7 @@ The EC2 instance name for the Service Connector is prefixed with "Service-connec
 
 == Which volume tiering policy does Cloud Tiering apply to each volume?
 
-The _Auto_ volume tiering policy. This policy tiers Snapshot copies and cold user data from the active file system to object storage.
+When you select the volumes that you want to tier, Cloud Tiering applies the _Auto_ volume tiering policy to each volume. This policy tiers Snapshot copies and cold user data from the active file system to object storage.
 
 == Does Cloud Tiering enable inactive data reporting?
 
