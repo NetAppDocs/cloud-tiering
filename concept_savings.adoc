@@ -19,7 +19,7 @@ The initial savings opportunity that Cloud Tiering displays is an estimate based
 
 Cloud Tiering displays an estimate because a 31-day cooling period is needed to determine which data is considered inactive. After this 31-day cooling period, Cloud Tiering replaces the estimate with a precise value.
 
-Here's an example of an estimate:
+Here's an example of an estimate showing 10.5 TB of capacity savings:
 
 image:screenshot_savings_estimate.gif[A screenshot that shows a cluster with an estimated space savings of 10.5 TB.]
 

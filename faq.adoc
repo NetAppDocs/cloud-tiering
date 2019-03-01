@@ -53,7 +53,7 @@ You need a connection between your ONTAP cluster and the object storage provider
 
 == What cloud provider permissions are required?
 
-Cloud Central needs link:task_preparing.html#preparing-aws-s3-for-data-tiering[permissions to deploy the Service Connector] and link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[permissions that it configures your ONTAP clusters to use].
+Permissions are needed link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[to deploy the Service Connector in AWS] and link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
 
 == Which volume tiering policy does Cloud Tiering apply to each volume?
 

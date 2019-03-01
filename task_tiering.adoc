@@ -27,7 +27,7 @@ The Service Connector uses this account to send API operations to the ONTAP clus
 * The region, VPC, and subnet in which the Service Connector will reside.
 * An AWS account that has the required permissions and an access key.
 
-If you haven't met these requirements, see link:task_preparing.html[Preparing to use Cloud Tiering].
+If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
 
 .Steps
 
@@ -41,7 +41,7 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing to
 
 . Click *Add Service Connector* and follow the prompts:
 .. *Select Provider*: Click *Continue* to choose AWS as the target location for the Service Connector.
-.. *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions] to deploy the Service Connector.
+.. *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
 
 .. *Location*: Select the AWS region, VPC, and subnet for the Service Connector EC2 instance.
 +
@@ -62,10 +62,10 @@ image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP c
 You're now ready to start tiering inactive data to low-cost object storage.
 
 .What you'll need
-* An AWS access key for the account in which you want Cloud Tiering to create the S3 bucket
+* An AWS access key for the account in which you want the S3 bucket to reside
 * The right permissions for that account so the ONTAP cluster can tier data in and out of S3
 
-If you haven't met these requirements, see link:task_preparing.html[Preparing to use Cloud Tiering].
+If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
 
 .Steps
 

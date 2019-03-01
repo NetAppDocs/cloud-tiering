@@ -13,7 +13,7 @@ summary: Cloud Tiering is a NetApp-managed service that can reduce your on-premi
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering is a NetApp-managed service that can reduce your on-premises storage costs by automatically tiering inactive data to object storage in the cloud. This enables you to extend your data center to the public cloud without changing your application layer.
+Cloud Tiering is a NetApp-managed service that can reduce your on-premises storage costs by automatically tiering inactive data from ONTAP clusters to object storage in the cloud. This enables you to extend your data center to the public cloud without changing your application layer.
 
 The Cloud Tiering service leverages the capabilities of FabricPool. FabricPool is a NetApp Data Fabric technology that enables automated tiering of data to low-cost object storage. The primary purpose of FabricPool is to reduce storage footprints and associated costs. Active data remains on high-performance SSDs, while inactive data is tiered to low-cost object storage while preserving ONTAP data efficiencies.
 
@@ -24,6 +24,6 @@ Cloud Tiering offers automation, monitoring, reports, and a common management in
 * Reports show the amount of active and inactive data on each cluster
 * A single pane of glass removes the need to independently manage FabricPool across several clusters
 
-For more details about the value that Cloud Tiering provides, check out https://cloud.netapp.com/cloud-tiering[the Cloud Tiering page on NetApp Cloud Central].
+For more details about the value that Cloud Tiering provides, https://cloud.netapp.com/cloud-tiering[check out the Cloud Tiering page on NetApp Cloud Central].
 
 NOTE: While Cloud Tiering can significantly reduce storage footprints, it is not a backup solution.

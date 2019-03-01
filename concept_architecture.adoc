@@ -32,12 +32,12 @@ At a high level, Cloud Tiering works like this:
 Here are some additional details about these components:
 
 NetApp Service Connector::
-The Service Connector is software that communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster and to set up data tiering. Cloud Tiering prompts you to deploy the Service Connector in an AWS VPC when discovering your first ONTAP cluster. Connections to ONTAP only take place from the Service Connector. A single Service Connector can discover multiple ONTAP clusters.
+The Service Connector is software that communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster and to set up data tiering. Cloud Tiering prompts you to deploy the Service Connector in an AWS VPC when discovering your first ONTAP cluster. Connections to ONTAP take place from the Service Connector. A single Service Connector can discover multiple ONTAP clusters.
 
 Object storage::
 Each ONTAP cluster tiers inactive data to a single object store that Cloud Tiering creates for you. Cloud Tiering prompts you to choose a cloud storage provider when you set up tiering for each cluster.
 
 Auto volume tiering policy::
-The auto tiering policy moves cold user data blocks in both the Snapshot copies and the active file system to the cloud tier. If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
+The auto tiering policy moves cold user data blocks in both the Snapshot copies and the active file system to the cloud tier. If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
 +
 Cloud Tiering does not support any other volume tiering policies.

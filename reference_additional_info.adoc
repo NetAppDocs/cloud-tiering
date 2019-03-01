@@ -33,6 +33,6 @@ Ask questions, connect with peers, exchange ideas, find resources, and share bes
 +
 Find information about additional NetApp products and solutions for the cloud.
 
-* http://docs.netapp.com[NetApp Product Documentation]
+* http://docs.netapp.com[NetApp Product Documentation^]
 +
 Search NetApp product documentation for instructions, resources, and answers.
