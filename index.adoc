@@ -32,8 +32,8 @@ Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-use
 
 == Automate with APIs
 
-//* link:reference_apis.html[Get started with APIs]
-https://tiering.cloud.netapp.com/graphql[API reference^]
+* link:reference_apis.html[Get started with APIs]
+* https://tiering.cloud.netapp.com/graphql[API reference^]
 
 == Get help and connect with peers
 

@@ -23,8 +23,8 @@ entries:
         url: /task_tiering.html
   - title: Managing data tiering
     url: /task_managing_tiering.html
-  - title: API reference
-    url: https://tiering.cloud.netapp.com/graphql
+  - title: Cloud Tiering APIs
+    url: /reference_apis.html
   - title: FAQ
     url: /faq.html
   - title: Related links
