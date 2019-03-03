@@ -15,10 +15,6 @@ summary: You can get help and find more information through various resources, i
 [.lead]
 You can get help and find more information through various resources, including forums and chat services.
 
-//* https://cloudsync.netapp.com/docs/[Cloud Tiering APIs^]
-//+
-//View information about Cloud Tiering APIs.
-
 * https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[NetApp Community: Cloud Data Services^]
 +
 Ask questions, connect with peers, exchange ideas, find resources, and share best practices.
