@@ -1,6 +1,5 @@
 * Asia Pacific (Mumbai)
 * Asia Pacific (Singapore)
-* China (Beijing)
 * EU (Frankfurt)
 * EU (Ireland)
 * South America (São Paulo)
