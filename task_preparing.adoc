@@ -1,0 +1,114 @@
+---
+sidebar: sidebar
+permalink: task_preparing.html
+keywords: requirements, networking, vpc, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, cloud provider, bucket, s3, account, permissions, regions, access key, secret key, service connector
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.
+---
+
+= Preparing your environment
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage.]
+
+== Preparing your ONTAP cluster
+
+You need a supported NetApp AFF system running ONTAP 9.4 or later, with a network connection to your object storage provider.
+
+Supported ONTAP clusters::
+* AFF A800
+* AFF A700S
+* AFF A700
+* AFF A300
+* AFF A220
+* AFF A200
+* AFF8080
+* AFF8060
+* AFF8040
+
+Supported ONTAP version::
+ONTAP 9.4 or later
+
+Networking requirement::
+The ONTAP cluster must have a connection to the object storage provider. An inbound connection from the Service Connector is also required. A connection is not required between the cluster and the Cloud Tiering service.
++
+Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and AWS S3. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.
+
+Supported volumes and aggregates::
+The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
+
+== Preparing your object storage provider
+
+Cloud Tiering can tier your inactive data to an AWS S3 bucket (we're planning to add additional providers soon). The following S3 regions are supported:
+
+include::/_include/s3regions.adoc[]
+
+=== Preparing AWS S3 for data tiering
+
+The AWS account where the inactive data resides must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
+
+TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
+
+.Steps
+
+. Provide the following permissions to the IAM user:
++
+[source,json]
+"s3:ListAllMyBuckets"
+"s3:ListBucket"
+"s3:GetBucketLocation"
+"s3:GetObject"
+"s3:PutObject"
+"s3:DeleteObject"
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]
+
+. Create or locate an access key.
++
+Cloud Tiering passes the access key on to the ONTAP cluster. The credentials are not stored in the Cloud Tiering service.
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[AWS Documentation: Managing Access Keys for IAM Users^]
+
+== Preparing a location for the Service Connector
+
+The Service Connector is NetApp software that communicates with your ONTAP clusters. At this time, the Service Connector must run in AWS (additional locations are coming soon).
+
+When you get started, Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.
+
+=== Setting up an AWS account for the Service Connector
+
+The AWS account where you want to deploy the EC2 instance must have permissions and an access key.
+
+TIP: This account can be the same account that you use for the S3 bucket, or a different account. If it's the same account, just use one set of credentials that contain the full set of permissions required for the S3 bucket and the EC2 instance.
+
+.Steps
+
+. Provide https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the permissions in this policy^] to the IAM user.
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]
+
+. Create or locate an access key that you can provide to Cloud Tiering.
++
+These credentials are used by the Cloud Tiering service to launch the EC2 instance in AWS. Providing your keys is secure and private. NetApp does not save them.
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[AWS Documentation: Managing Access Keys for IAM Users^]
+
+=== Setting up AWS networking for the Service Connector
+
+The Service Connector needs a connection to your ONTAP clusters and to the Cloud Tiering service.
+
+.Step
+
+. Identify a VPC that provides an outbound internet connection.
++
+The Service Connector EC2 instance requires an outbound internet connection to the Cloud Tiering service, and a connection to your ONTAP clusters. Cloud Tiering enables you to deploy the EC2 instance with a public IP address and you can configure it to use your own proxy server.
++
+You don't need to create your own security group because Cloud Tiering can do that for you. The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.

@@ -1,0 +1,39 @@
+---
+sidebar: sidebar
+permalink: task_quick_start.html
+keywords: quick start, register, prepare, tier
+summary: Getting started with Cloud Tiering includes a few steps.
+---
+
+= Quick start for the Cloud Tiering service
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Getting started with Cloud Tiering includes a few steps.
+
+[discrete]
+==== image:number1.png[number 1] link:task_registering.html[Register for the Controlled Availability]
+
+[role="quick-margin-para"]
+Go to https://cloud.netapp.com[NetApp Cloud Central^], navigate to Cloud Tiering, and click *Register for Preview*.
+
+[discrete]
+==== image:number2.png[number 2] link:task_preparing.html[Prepare your environment]
+
+[role="quick-margin-para"]
+You need the following:
+
+[role="quick-margin-list"]
+* A NetApp AFF system running ONTAP 9.4 or later, with a network connection to AWS S3.
+* An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
+* An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC with an outbound internet connection.
+
+[discrete]
+==== image:number3.png[number3] link:task_tiering.html[Tier inactive data from your first cluster]
+
+[role="quick-margin-para"]
+Log in to https://cloud.netapp.com[NetApp Cloud Central^], select the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.

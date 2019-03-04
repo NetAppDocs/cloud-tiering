@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: index.html
+keywords: cloud tiering, netapp, documentation, cold data, inactive data, performance tier, capacity tier, cloud, object store, object storage, getting started
+summary: Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-used data in your ONTAP clusters and automatically and seamlessly moves that data to low-cost object storage in the cloud.
+---
+
+= Cloud Tiering documentation
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Based on NetApp FabricPool technology, Cloud Tiering identifies infrequently-used data in your ONTAP clusters and automatically and seamlessly moves that data to low-cost object storage in the cloud.
+
+//== Discover what's new
+
+//link:reference_new.html[What's new in Cloud Tiering]
+
+== Learn about Cloud Tiering
+
+* link:concept_overview.html[What it is]
+* link:concept_architecture.html[How it works]
+* link:concept_licensing.html[Licensing]
+
+== Get started
+
+* link:task_quick_start.html[Quick start for Cloud Tiering]
+* link:task_preparing.html[Review supported configurations and prerequisites]
+
+== Automate with APIs
+
+* link:reference_apis.html[Get started with APIs]
+* https://tiering.cloud.netapp.com/graphql[API reference^]
+
+== Get help and connect with peers
+
+https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[NetApp Community: Cloud Data Services^]
