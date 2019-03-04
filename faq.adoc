@@ -29,7 +29,7 @@ include::/_include/s3regions.adoc[]
 
 == Which S3 storage classes are supported?
 
-Cloud Tiering supports data tiering to the S3 Standard storage class. It does not support any other storage classes.
+Cloud Tiering supports data tiering to the S3 Standard storage class. Support for other storage classes is coming soon.
 
 == Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
 
