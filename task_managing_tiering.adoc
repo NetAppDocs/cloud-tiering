@@ -33,6 +33,8 @@ image:screenshot_discover_icon.gif[A screenshot that shows the icon for discover
 
 Click *Set up Tiering* to start tiering inactive data from the cluster.
 
+image:screenshot_setup_tiering.gif[A screenshot that shows the Set up Tiering button on the Cluster Dashboard.]
+
 == Tiering data from additional volumes
 
 Set up data tiering for additional volumes at any time--for example, after creating a new volume.
@@ -74,6 +76,8 @@ Failures can happen. When they do, Cloud Tiering displays a "Failed" health stat
 . Identify any clusters that have a tiering health of "Failed."
 +
 image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering health status for a cluster.]
+
+. Hover over the image:screenshot_info_icon.gif[A screenshot of the i icon that shows the failure reason] icon to see the failure reason.
 
 . Correct the issue:
 
