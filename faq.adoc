@@ -23,7 +23,7 @@ You need a NetApp AFF system running ONTAP 9.4 or later, with a network connecti
 
 AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
 
-== Which S3 regions are supported?
+== Which AWS regions are supported?
 
 include::/_include/s3regions.adoc[]
 

@@ -47,13 +47,13 @@ The total number of volumes that Cloud Tiering can tier might be less than the n
 
 == Preparing your object storage provider
 
-Cloud Tiering can tier your inactive data to an AWS S3 bucket (we're planning to add additional providers soon). The following S3 regions are supported:
-
-include::/_include/s3regions.adoc[]
+Cloud Tiering can tier your inactive data to an AWS S3 bucket (we're planning to add additional providers soon).
 
 === Preparing AWS S3 for data tiering
 
-The AWS account where the inactive data resides must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
+The AWS account where you tier the inactive data must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
+
+Most AWS regions are supported. link:faq.html#which-aws-regions-are-supported[Click here to see the list of supported regions].
 
 TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 
@@ -82,6 +82,8 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 The Service Connector is NetApp software that communicates with your ONTAP clusters. At this time, the Service Connector must run in AWS (additional locations are coming soon).
 
 When you get started, Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.
+
+Most AWS regions are supported. link:faq.html#which-aws-regions-are-supported[Click here to see the list of supported regions].
 
 === Setting up an AWS account for the Service Connector
 
