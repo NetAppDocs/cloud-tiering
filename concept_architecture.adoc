@@ -28,6 +28,8 @@ At a high level, Cloud Tiering works like this:
 . The Service Connector configures ONTAP to use that object storage provider
 . The Service Connector configures the _auto_ volume tiering policy on each volume that you selected
 . ONTAP starts tiering inactive data to the object store
++
+Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
 
 Here are some additional details about these components:
 
@@ -40,4 +42,4 @@ Each ONTAP cluster tiers inactive data to a single object store that Cloud Tieri
 Auto volume tiering policy::
 The auto tiering policy moves cold user data blocks in both the Snapshot copies and the active file system to the cloud tier. If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
 +
-Cloud Tiering does not support any other volume tiering policies.
+We plan to add support for additional volume tiering policies.
