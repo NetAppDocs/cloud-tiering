@@ -1,0 +1,34 @@
+---
+sidebar: sidebar
+permalink: reference_help.html
+keywords: community, forums, help, support, chat
+summary: Support for Cloud Tiering is covered only through the resources listed below. We do not offer phone or web ticketing at this time through mysupport.netapp.com.
+---
+
+= How to get help and find more information
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Support for Cloud Tiering is covered only through the resources listed below. We do not offer phone or web ticketing at this time through mysupport.netapp.com.
+
+* Chat services
++
+Chat with NetApp cloud experts to get product assistance. The chat icon is available in the lower right of the Cloud Tiering interface:
++
+image:screenshot_chat_icon.gif[This screenshot shows the chat icon which is available in the lower right of the interface.]
+
+* https://community.netapp.com/t5/Cloud-Data-Services/ct-p/CDS[NetApp Community: Cloud Data Services^]
++
+In this forum, you can use labels and filters to look at Cloud Tiering topics. If you’d like to ask a question, click *Register* in the upper-right corner to sign up.
+
+* http://cloud.netapp.com/[NetApp Cloud Central^]
++
+Find more information about Cloud Tiering, as well as additional NetApp products and solutions for the cloud.
+
+* http://docs.netapp.com[NetApp Product Documentation^]
++
+Search NetApp product documentation for instructions, resources, and answers.
