@@ -35,8 +35,8 @@ https://www.netapp.com/us/media/patents-page.pdf[^]
 
 https://www.netapp.com/us/legal/privacypolicy/index.aspx[^]
 
-//== Open source
+== Open source
 
-//Notice files provide information about third-party copyright and licenses used in NetApp software.
+Notice files provide information about third-party copyright and licenses used in NetApp software.
 
-//link:media/file.pdf[Notice for Cloud Tiering^]
+link:media/notice_cloud_tiering.pdf[Notice for Cloud Tiering^]
