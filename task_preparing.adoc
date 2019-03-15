@@ -109,8 +109,12 @@ The Service Connector needs a connection to your ONTAP clusters and to the Cloud
 
 .Step
 
-. Identify a VPC that provides an outbound internet connection.
+. Identify a VPC that enables the following connections:
+
+* An outbound internet connection to the Cloud Tiering service
+* A connection to S3
+* A connection to your ONTAP clusters
 +
-The Service Connector EC2 instance requires an outbound internet connection to the Cloud Tiering service, and a connection to your ONTAP clusters. Cloud Tiering enables you to deploy the EC2 instance with a public IP address and you can configure it to use your own proxy server.
+Cloud Tiering enables you to deploy the EC2 instance with a public IP address and you can configure it to use your own proxy server.
 +
 You don't need to create your own security group because Cloud Tiering can do that for you. The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
