@@ -28,7 +28,7 @@ Go to https://cloud.netapp.com[NetApp Cloud Central^], navigate to Cloud Tiering
 You need the following:
 
 [role="quick-margin-list"]
-* A NetApp AFF system running ONTAP 9.4 or later, with a network connection to AWS S3.
+* An AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and a network connection to AWS S3.
 * An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
 * An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC with an outbound internet connection.
 
