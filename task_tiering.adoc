@@ -80,6 +80,7 @@ image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in 
 . Enter the information needed for your object storage provider:
 * The access key ID and secret key for the account
 * The region for the S3 bucket
+* The S3 storage class that you want to use
 +
 TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 
