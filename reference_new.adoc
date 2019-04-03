@@ -40,7 +40,7 @@ For ONTAP 9.4 and later, you can now choose the type of cold data that you want 
 
 If you have an ONTAP 9.2 or 9.3 system, you can tier Snapshot copies only.
 
-http://localhost:4005/cloud-tiering/us-en/concept_architecture.html#cold-data[Learn more about the cold data that you can tier].
+link:concept_architecture.html#cold-data[Learn more about the cold data that you can tier].
 
 === Ability to choose an S3 storage class
 
