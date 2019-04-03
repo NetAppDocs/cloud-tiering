@@ -17,7 +17,7 @@ Cloud Tiering first shows you the _estimated_ space that you can save on each cl
 
 The initial savings opportunity that Cloud Tiering displays is an estimate based on industry standards. We estimate that 70% of the data on the cluster is cold data that you can move to lower-cost object storage.
 
-Cloud Tiering displays an estimate because a 31-day cooling period is needed to determine which data is considered inactive. After this 31-day cooling period, Cloud Tiering replaces the estimate with a precise value.
+Cloud Tiering displays an estimate because a 31-day cooling period is needed to determine which data is considered inactive. For ONTAP 9.4 and later, Cloud Tiering replaces the estimate with a precise value after this 31-day cooling period.
 
 Here's an example of an estimate showing 10.5 TB of capacity savings:
 
