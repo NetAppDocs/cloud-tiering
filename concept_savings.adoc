@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_savings.html
 keywords: savings, opportunities, opportunity, space, estimate
-summary: Cloud Tiering first shows you the estimated space that you can save on each cluster. 31 days after you discover the cluster, it shows you a precise value.
+summary: Cloud Tiering first shows you the estimated space that you can save on each cluster. 31 days after you discover the cluster, it shows you a precise value, if you're running ONTAP 9.4 or later.
 ---
 
 = Savings opportunities
@@ -13,7 +13,7 @@ summary: Cloud Tiering first shows you the estimated space that you can save on 
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering first shows you the _estimated_ space that you can save on each cluster. 31 days after you discover the cluster, it shows you a precise value.
+Cloud Tiering first shows you the _estimated_ space that you can save on each cluster. 31 days after you discover the cluster, it shows you a precise value, if you're running ONTAP 9.4 or later.
 
 The initial savings opportunity that Cloud Tiering displays is an estimate based on industry standards. We estimate that 70% of the data on the cluster is cold data that you can move to lower-cost object storage.
 
