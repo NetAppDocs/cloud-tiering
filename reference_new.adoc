@@ -15,7 +15,7 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
-== 4 Apr 2019
+== 7 Apr 2019
 
 This update includes the following new features and enhancements.
 
@@ -36,15 +36,17 @@ Cloud Tiering now supports ONTAP 9.2 and 9.3. This is in addition to supporting 
 
 For ONTAP 9.4 and later, you can now choose the type of cold data that you want to tier. You can tier _all cold data_ or just _Snapshot copies_.
 
-<add a screenshot>
-
 If you have an ONTAP 9.2 or 9.3 system, you can tier Snapshot copies only.
 
-link:concept_architecture.html#cold-data[Learn more about the cold data that you can tier].
+The option is available after you click *Set up Tiering*.
+
+* link:concept_architecture.html#cold-data[Learn more about the cold data that you can tier]
+* link:task_tiering.html[Learn how to tier data from your first cluster]
+* link:task_managing_tiering.html#tiering-data-from-additional-volumes[Learn how to tier data from additional volumes]
 
 === Ability to choose an S3 storage class
 
-When you set up data tiering on a cluster, you can now choose to tier cold data to the S3 _Standard_ storage class or to the _Standard-Infrequent Access_ storage class. https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
+When you set up data tiering on a cluster for the first time, you can now choose to tier cold data to the S3 _Standard_ storage class or to the _Standard-Infrequent Access_ storage class. https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
 
 image:screenshot_storage_class.gif[A screenshot that shows the Storage Class drop-down option that is available when you set up data tiering on a cluster.]
 
