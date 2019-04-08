@@ -49,7 +49,7 @@ The EC2 instance name for the Service Connector is prefixed with "Service-connec
 
 == What are the networking requirements?
 
-You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
+You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters, to the object store, and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
 
 == What cloud provider permissions are required?
 

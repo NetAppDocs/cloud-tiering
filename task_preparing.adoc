@@ -104,7 +104,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 
 === Setting up AWS networking for the Service Connector
 
-The Service Connector needs a connection to your ONTAP clusters and to the Cloud Tiering service.
+The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and to the Cloud Tiering service.
 
 .Steps
 
