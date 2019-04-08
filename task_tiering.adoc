@@ -71,6 +71,8 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 
 . Click *Set up Tiering*.
 
+. If you have a system running ONTAP 9.4 or later, keep the default option to tier all cold data, or to tier Snapshot copies only.
+
 . Select the volumes that you would like to tier and click *Continue*.
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
