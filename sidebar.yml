@@ -1,6 +1,8 @@
 entries:
   - title: Cloud Tiering docs
     url: /index.html
+  - title: What's new
+    url: /reference_new.html
   - title: Concepts
     entries:
       - title: Cloud Tiering overview

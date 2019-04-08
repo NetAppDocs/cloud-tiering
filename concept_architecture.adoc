@@ -13,33 +13,44 @@ summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technolo
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
+Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
+
+== Overview
 
 The following image shows the relationship between each component:
 
-image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage.]
+image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides in the ONTAP cluster, while inactive data resides in object storage.]
 
 At a high level, Cloud Tiering works like this:
 
-. You deploy a NetApp Service Connector in an AWS VPC
-. The Service Connector communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster
-. You choose the volumes that you want to tier to object storage
-. You choose the object storage provider that you want to use
-. The Service Connector configures ONTAP to use that object storage provider
-. The Service Connector configures the _auto_ volume tiering policy on each volume that you selected
-. ONTAP starts tiering inactive data to the object store
-+
-Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
+. You deploy a NetApp Service Connector in an AWS VPC.
+. The Service Connector communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster.
+. You choose the volumes and the cold data that you want to tier to object storage.
+. You choose the object storage provider that you want to use.
+. The Service Connector configures ONTAP to use that object storage provider.
+. The Service Connector configures data tiering on each volume that you selected.
+. ONTAP starts tiering inactive data to the object store, as soon as the data has reached the thresholds to be considered inactive (see <<Cold data>>).
 
-Here are some additional details about these components:
+== NetApp Service Connector
 
-NetApp Service Connector::
 The Service Connector is software that communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster and to set up data tiering. Cloud Tiering prompts you to deploy the Service Connector in an AWS VPC when discovering your first ONTAP cluster. Connections to ONTAP take place from the Service Connector. A single Service Connector can discover multiple ONTAP clusters.
 
-Object storage::
+== Object storage
+
 Each ONTAP cluster tiers inactive data to a single object store that Cloud Tiering creates for you. Cloud Tiering prompts you to choose a cloud storage provider when you set up tiering for each cluster.
 
-Auto volume tiering policy::
-The auto tiering policy moves cold user data blocks in both the Snapshot copies and the active file system to the cloud tier. If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
+== Cold data
+
+When you select the volumes that you want to tier, you can also choose the type of cold data that you want to tier from the volumes. You can tier _all cold data_ or just _Snapshot copies_.
+
+All cold data:: ONTAP tiers all cold blocks in the volume to object storage. The cold data includes not just Snapshot copies but also cold user data from the active file system.
 +
-We plan to add support for additional volume tiering policies.
+If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
++
+Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
++
+TIP: If you are familiar with FabricPool, this is the _Auto_ volume tiering policy.
+
+Snapshot copies:: ONTAP tiers cold Snapshot blocks in the volume that are not shared with the active file system to object storage. If read, cold data blocks on the cloud tier become hot and are moved to the performance tier.
++
+Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 2 days.

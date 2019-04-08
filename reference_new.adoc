@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: reference_new.html
+keywords: what's new, features, new, release notes, bugs, limitations, known issues, enhancements
+summary: NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
+---
+
+= What's new in Cloud Tiering
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
+
+== 7 Apr 2019
+
+This update includes the following new features and enhancements.
+
+* <<Support for FAS systems with all-SSD aggregates>>
+* <<Support for additional versions of ONTAP>>
+* <<Ability to choose the type of cold data that you want to tier>>
+* <<Ability to choose an S3 storage class>>
+
+=== Support for FAS systems with all-SSD aggregates
+
+In addition to AFF systems, Cloud Tiering now supports FAS systems that have one or more all-SSD aggregates.
+
+=== Support for additional versions of ONTAP
+
+Cloud Tiering now supports ONTAP 9.2 and 9.3. This is in addition to supporting ONTAP 9.4 and later.
+
+=== Ability to choose the type of cold data that you want to tier
+
+For ONTAP 9.4 and later, you can now choose the type of cold data that you want to tier. You can tier _all cold data_ or just _Snapshot copies_.
+
+If you have an ONTAP 9.2 or 9.3 system, you can tier Snapshot copies only.
+
+The option is available after you click *Set up Tiering*.
+
+* link:concept_architecture.html#cold-data[Learn more about the cold data that you can tier]
+* link:task_tiering.html[Learn how to tier data from your first cluster]
+* link:task_managing_tiering.html#tiering-data-from-additional-volumes[Learn how to tier data from additional volumes]
+
+=== Ability to choose an S3 storage class
+
+When you set up data tiering on a cluster for the first time, you can now choose to tier cold data to the S3 _Standard_ storage class or to the _Standard-Infrequent Access_ storage class. https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
+
+image:screenshot_storage_class.gif[A screenshot that shows the Storage Class drop-down option that is available when you set up data tiering on a cluster.]
+
+link:task_tiering.html[Learn how to set up data tiering on a cluster].

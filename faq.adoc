@@ -17,7 +17,7 @@ This FAQ can help if you're just looking for a quick answer to a question.
 
 == What are the requirements for my ONTAP cluster?
 
-You need a NetApp AFF system running ONTAP 9.4 or later, with a network connection to your object storage provider. For details, see link:task_preparing.html#preparing-your-ontap-cluster[Preparing your ONTAP cluster].
+You need an AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and a network connection to AWS S3. For details, see link:task_preparing.html#preparing-your-ontap-cluster[Preparing your ONTAP cluster].
 
 == Which object storage providers are supported?
 
@@ -29,7 +29,7 @@ include::/_include/s3regions.adoc[]
 
 == Which S3 storage classes are supported?
 
-Cloud Tiering supports data tiering to the S3 Standard storage class. Support for other storage classes is coming soon.
+Cloud Tiering supports data tiering to two S3 storage classes: Standard and Standard-Infrequent Access.
 
 == Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
 
@@ -49,15 +49,11 @@ The EC2 instance name for the Service Connector is prefixed with "Service-connec
 
 == What are the networking requirements?
 
-You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
+You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters, to the object store, and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
 
 == What cloud provider permissions are required?
 
 Permissions are needed link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[to deploy the Service Connector in AWS] and link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
-
-== Which volume tiering policy does Cloud Tiering apply to each volume?
-
-When you select the volumes that you want to tier, Cloud Tiering applies the _Auto_ volume tiering policy to each volume. This policy tiers Snapshot copies and cold user data from the active file system to object storage. For more details, see link:concept_architecture.html[How Cloud Tiering works].
 
 == Does Cloud Tiering enable inactive data reporting?
 

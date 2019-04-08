@@ -19,7 +19,7 @@ The Cloud Tiering capabilities that are available through the web UI are also av
 
 To get started, obtain a user token and then add the token to the Authorization header when making API calls.
 
-Steps
+.Steps
 
 . Go to https://services.cloud.netapp.com/developer-hub[Cloud Central's API Documentation page^].
 
