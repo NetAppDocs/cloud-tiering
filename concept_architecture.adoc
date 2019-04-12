@@ -39,6 +39,13 @@ The Service Connector is software that communicates with ONTAP clusters to disco
 
 Each ONTAP cluster tiers inactive data to a single object store that Cloud Tiering creates for you. Cloud Tiering prompts you to choose a cloud storage provider when you set up tiering for each cluster.
 
+=== S3 storage classes
+
+When you set up data tiering on a cluster, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
+
+* https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
+* link:task_tiering.html[Learn how to set up data tiering on a cluster].
+
 == Cold data
 
 When you select the volumes that you want to tier, you can also choose the type of cold data that you want to tier from the volumes. You can tier _all cold data_ or just _Snapshot copies_.
