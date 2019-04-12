@@ -27,13 +27,17 @@ AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Go
 
 include::/_include/s3regions.adoc[]
 
+== Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
+
+One bucket for the entire cluster.
+
 == Which S3 storage classes are supported?
 
 Cloud Tiering supports data tiering to two S3 storage classes: Standard and Standard-Infrequent Access.
 
-== Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
+== Can I apply policies to my object store to move data around independent of tiering?
 
-One bucket for the entire cluster.
+No, Cloud Tiering does not support object lifecycle management rules that move or delete data from object stores.
 
 == What is the Service Connector?
 
