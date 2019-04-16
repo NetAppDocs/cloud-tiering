@@ -30,7 +30,11 @@ You need the following:
 [role="quick-margin-list"]
 * An AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and a network connection to AWS S3.
 * An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
-* An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC that has an outbound internet connection and an outbound connection to the ONTAP cluster in your data center.
+* An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC.
++
+The VPC needs an outbound internet connection and an outbound connection to the ONTAP cluster in your data center.
++
+This account can be the same account that you use for the S3 bucket, or a different account.
 
 [discrete]
 ==== image:number3.png[number3] link:task_tiering.html[Tier inactive data from your first cluster]
