@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: reference_storage_providers.html
 keywords: object storage provider, provider, cloud provider, aws, amazon, s3, microsoft azure, azure, gcp, google, storagegrid
-summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
+summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
 ---
 
 = Supported object storage providers
@@ -13,7 +13,7 @@ summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Supp
 :imagesdir: ./media/
 
 [.lead]
-At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
+At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
 
 == AWS S3
 
