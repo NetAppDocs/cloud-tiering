@@ -21,7 +21,7 @@ You need an AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later
 
 == Which object storage providers are supported?
 
-AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
+AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
 
 == Which AWS regions are supported?
 
