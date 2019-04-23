@@ -1,0 +1,32 @@
+---
+sidebar: sidebar
+permalink: reference_storage_providers.html
+keywords: object storage provider, provider, cloud provider, aws, amazon, s3, microsoft azure, azure, gcp, google, storagegrid
+summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
+---
+
+= Supported object storage providers
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID Webscale.
+
+== AWS S3
+
+Cloud Tiering supports two S3 storage classes and most regions.
+
+=== Supported S3 storage classes
+
+When you set up data tiering on a cluster, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
+
+https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
+
+=== Supported AWS regions
+
+Cloud Tiering supports the following AWS regions:
+
+include::/_include/s3regions.adoc[]

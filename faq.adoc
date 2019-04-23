@@ -25,15 +25,15 @@ AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Go
 
 == Which AWS regions are supported?
 
-include::/_include/s3regions.adoc[]
+Most regions are supported. See link:reference_storage_providers.html#supported-aws-regions[Supported AWS regions] for the full list.
+
+== Which S3 storage classes are supported?
+
+Cloud Tiering supports data tiering to two S3 storage classes: Standard and Standard-Infrequent Access. See link:reference_storage_providers.html#supported-s3-storage-classes[Supported S3 storage classes] for more details.
 
 == Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
 
 One bucket for the entire cluster.
-
-== Which S3 storage classes are supported?
-
-Cloud Tiering supports data tiering to two S3 storage classes: Standard and Standard-Infrequent Access.
 
 == Can I apply policies to my object store to move data around independent of tiering?
 
