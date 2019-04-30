@@ -23,6 +23,6 @@ https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^
 
 == Supported AWS regions
 
-Cloud Tiering supports the following AWS regions:
+Cloud Tiering supports the following AWS regions.
 
 include::/_include/s3regions.adoc[]

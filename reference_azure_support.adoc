@@ -21,7 +21,7 @@ When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot
 
 == Supported Azure regions
 
-Cloud Tiering supports the following Azure regions:
+Cloud Tiering supports the following Azure regions.
 
 === Africa
 
@@ -57,9 +57,6 @@ Cloud Tiering supports the following Azure regions:
 * East US 2
 * North Central US
 * South Central US
-* US Gov Arizona
-* US Gov Texas
-* US Gov Virginia
 * West US
 * West US 2
 * West Central US
