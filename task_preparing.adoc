@@ -5,7 +5,7 @@ keywords: requirements, networking, vpc, subnet, proxy, public ip, outbound, inb
 summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.
 ---
 
-= Preparing your environment
+= Preparing to tier inactive data to AWS S3
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -14,8 +14,6 @@ summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, pr
 
 [.lead]
 Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.
-
-At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
 
 The following image shows each component and the connections that you need to prepare between them:
 
@@ -42,19 +40,29 @@ Supported ONTAP platforms::
 Supported ONTAP version::
 ONTAP 9.2 or later
 
-Networking requirement::
-The ONTAP cluster must have a connection to the object storage provider. An inbound connection from the Service Connector is also required. A connection is not required between the cluster and the Cloud Tiering service.
+Cluster networking requirements::
+* An inbound and outbound connection to AWS S3 is required.
 +
 Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and AWS S3. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.
+
+* An inbound connection is required from the NetApp Service Connector, which resides in an AWS VPC.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security.
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. It's likely that you have only the "Default" IPspace, but you'll need to choose the right custom IPspace if you created one.
 
 Supported volumes and aggregates::
 The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
 
 == Preparing AWS S3 for data tiering
 
-Cloud Tiering can tier your inactive data to an AWS S3 bucket. The AWS account where you tier the inactive data must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
+The AWS account to which you tier inactive data must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
 
-Most AWS regions are supported. link:faq.html#which-aws-regions-are-supported[Click here to see the list of supported regions].
+Most AWS regions are supported. link:reference_aws_support.html[Click here to see the list of supported regions].
 
 TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 
@@ -80,15 +88,13 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 
 == Preparing a location for the Service Connector
 
-The Service Connector is NetApp software that communicates with your ONTAP clusters. At this time, the Service Connector must run in AWS (additional locations are coming soon).
-
-When you get started, Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.
+The Service Connector is NetApp software that communicates with your ONTAP clusters. Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.
 
 Most AWS regions are supported. link:faq.html#which-aws-regions-are-supported[Click here to see the list of supported regions].
 
 === Setting up an AWS account for the Service Connector
 
-The AWS account where you want to deploy the EC2 instance must have permissions and an access key.
+The AWS account where you deploy the EC2 instance must have permissions and an access key.
 
 TIP: This account can be the same account that you use for the S3 bucket, or a different account. If it's the same account, just use one set of credentials that contain the full set of permissions required for the S3 bucket and the EC2 instance.
 

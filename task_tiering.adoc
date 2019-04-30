@@ -5,7 +5,7 @@ keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service
 summary: After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
 ---
 
-= Tiering inactive data from your first cluster
+= Tiering inactive data from your first cluster to AWS S3
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: After you prepare your environment, just log in to Cloud Tiering and st
 :imagesdir: ./media/
 
 [.lead]
-After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+After you prepare your AWS environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
 
 == Discovering your first cluster
 
@@ -21,10 +21,10 @@ Your first step is to deploy a NetApp Service Connector, which discovers informa
 
 .What you'll need
 * The cluster management IP address of your cluster.
-* The user name and password of an account that has administrator-level privileges.
+* The user name and password of an ONTAP account that has administrator-level privileges.
 +
 The Service Connector uses this account to send API operations to the ONTAP cluster.
-* The region, VPC, and subnet in which the Service Connector will reside.
+* The AWS region, VPC, and subnet in which the Service Connector will reside.
 * An AWS account that has the required permissions and an access key.
 
 If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
@@ -57,7 +57,7 @@ The security group that Cloud Tiering creates has no inbound connectivity and op
 +
 image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in AWS.]
 
-== Tiering inactive data to object storage
+== Tiering inactive data to AWS S3
 
 You're now ready to start tiering inactive data to low-cost object storage.
 
@@ -76,6 +76,12 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 . Select the volumes that you would like to tier and click *Continue*.
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+
+. Select the IPspace that ONTAP should use to connect to object storage.
++
+Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
++
+If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
 
 . Click *Continue* to choose AWS as your object storage provider.
 
