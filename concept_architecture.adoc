@@ -15,7 +15,7 @@ summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technolo
 [.lead]
 Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
 
-NOTE: At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
+NOTE: At this time, Cloud Tiering can tier your inactive data to AWS S3 or Azure Blob storage. Support for additional object storage providers will be added later.
 
 == Overview
 
@@ -25,7 +25,7 @@ image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tieri
 
 At a high level, Cloud Tiering works like this:
 
-. You deploy a NetApp Service Connector in an AWS VPC.
+. You deploy a NetApp Service Connector in an AWS VPC or Azure VNet.
 . The Service Connector communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster.
 . You choose the volumes and the cold data that you want to tier to object storage.
 . You choose the object storage provider that you want to use.
@@ -35,7 +35,7 @@ At a high level, Cloud Tiering works like this:
 
 == NetApp Service Connector
 
-The Service Connector is software that communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster and to set up data tiering. Cloud Tiering prompts you to deploy the Service Connector in an AWS VPC when discovering your first ONTAP cluster. Connections to ONTAP take place from the Service Connector. A single Service Connector can discover multiple ONTAP clusters.
+The Service Connector is software that communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster and to set up data tiering. Cloud Tiering prompts you to deploy the Service Connector when you discover your first ONTAP cluster. Connections to ONTAP take place from the Service Connector. A single Service Connector can discover multiple ONTAP clusters.
 
 == Object storage
 
@@ -43,10 +43,14 @@ Each ONTAP cluster tiers inactive data to a single object store that Cloud Tieri
 
 === S3 storage classes
 
-When you set up data tiering on a cluster, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
+When you set up data tiering to AWS, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
 
 * https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
 * link:task_tiering.html[Learn how to set up data tiering on a cluster].
+
+=== Azure Blob access tiers
+
+When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. No other access tiers are supported at this time.
 
 == Cold data
 

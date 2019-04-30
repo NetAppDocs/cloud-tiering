@@ -1,0 +1,77 @@
+---
+sidebar: sidebar
+permalink: task_tiering_azure.html
+keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, aws, network, security group, tier, volume, azure, blob, container
+summary: After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+---
+
+= Tiering inactive data from your first cluster to Azure Blob storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+After you prepare your Azure environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+
+== Discovering your first cluster
+
+Your first step is to deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
+
+.What you'll need
+* The cluster management IP address of your cluster.
+* The user name and password of an ONTAP account that has administrator-level privileges.
++
+The Service Connector uses this account to send API operations to the ONTAP cluster.
+* An Azure account that has the required permissions to deploy the Service Connector virtual machine.
+* The Azure subscription, region, VNet, and subnet in which the Service Connector will reside.
+
+If you haven't met these requirements, see link:task_preparing_azure.html[Preparing to tier data to Azure].
+
+.Steps
+
+. Go to http://cloud.netapp.com[NetApp Cloud Central^].
+
+. Log in and select the Cloud Tiering service.
+
+. Click *Let's Start, Discover Your First Cluster*.
+
+. Enter information about your ONTAP cluster:
++
+* The cluster management IP address
+* The user name and password of an account that has administrator-level privileges
+
+. Click *Add Service Connector* and follow the prompts:
+
+.. Select *Microsoft Azure* as the target location for the Service Connector.
+
+.. When prompted, accept the permissions request from Microsoft.
++
+The form is owned and hosted by Microsoft. Your credentials are not provided to NetApp.
+
+.. *Virtual Machine Authentication*: Enter a name for the virtual machine and choose an authentication method.
+
+.. *Basic Settings*: Select an Azure subscription, choose a region, and specify a new or existing resource group for the virtual machine.
+
+.. *Network*: Select a VNet and subnet, choose whether to assign a public IP address, and specify an HTTP proxy, if one is required for outbound connectivity.
++
+Remember, the Service Connector must have a constant connection to the ONTAP cluster and a constant internet connection to the Cloud Tiering service.
+
+.. *Security Group*: Select *Create a new security group* so Cloud Tiering can create the security group, or select an existing security group.
++
+The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
+
+. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
++
+image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in Azure.]
+
+== Tiering inactive data to Azure Blob storage
+
+You're now ready to start tiering inactive data to low-cost object storage.
+
+.Steps
+
+. Click *Set up Tiering*.
+
+. ???

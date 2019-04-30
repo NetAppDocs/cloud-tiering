@@ -1,0 +1,130 @@
+---
+sidebar: sidebar
+permalink: task_preparing_azure.html
+keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.2, 9.3, 9.4, 9.5, object, cloud provider, azure, blob, container, account, permissions, regions, service connector
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your Azure object storage, and set up a location for the Service Connector.
+---
+
+= Preparing to tier inactive data to Azure Blob storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before you use Cloud Tiering, verify support for your ONTAP cluster, provide the required permissions, and set up your networking.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_tiering_azure.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage.]
+
+== Preparing your ONTAP clusters
+
+Your ONTAP clusters must meet the following requirements.
+
+Supported ONTAP platforms::
+* AFF
+** A800
+** A700S, A700
+** A300
+** A220, A200
+** AFF8080, AFF8060, AFF8040
+* FAS
+** FAS9000
+** FAS8200
+** FAS8080, FAS8060, FAS8040
+** FAS2750, FAS2720
+** FAS2650, FAS2620
+
+Supported ONTAP version::
+ONTAP 9.2 or later
+
+Cluster networking requirements::
+* An inbound and outbound connection to Azure Blob storage is required.
++
+Although ExpressRoute provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and Azure Blob storage. Because performance is significantly better when using ExpressRoute, doing so is the recommended best practice.
+
+* An inbound connection is required from the NetApp Service Connector, which resides in an Azure VNet.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security.
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. It's likely that you have only the "Default" IPspace, but you'll need to choose the right custom IPspace if you created one.
+
+Supported volumes and aggregates::
+The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
+
+== Granting Azure permissions
+
+Ensure that your Azure account has the required permissions to deploy the NetApp Service Connector in an Azure VNet. The Service Connector is NetApp software that communicates with your ONTAP clusters.
+
+TIP: During deployment, Cloud Tiering creates and assigns a role to the Service Connector that provides the required permissions to tier data to Azure Blob storage.
+
+.Steps
+
+. Create a custom role using the NetApp Cloud Central policy:
+
+.. Download the https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json[Cloud Central policy for Azure^].
+
+.. Modify the JSON file by adding your Azure subscription ID to the assignable scope.
++
+*Example*
++
+[source,json]
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+],
+
+.. Use the JSON file to create a custom role in Azure.
++
+The following example shows how to create a custom role using the Azure CLI 2.0:
++
+*az role definition create --role-definition C:\Policy_for_Setup_As_Service_Azure.json*
++
+You should now have a custom role called _Azure SetupAsService_.
+
+. Assign the role to the user who will deploy the Service Connector from Cloud Tiering:
+
+.. Open the *Subscriptions* service and select the user's subscription.
+
+.. Click *Access control (IAM)*.
+
+.. Click *Add* and then add the permissions:
+
+* Select the *Azure SetupAsService* role.
++
+NOTE: Azure SetupAsService is the default name provided in the https://mysupport.netapp.com/info/web/ECMP11022837.html[Cloud Central policy^]. If you chose a different name for the role, then select that name instead.
+
+* Assign access to an *Azure AD user, group, or application*.
+
+* Select the user account.
+
+* Click *Save*.
+
+.Result
+
+The Azure user now has the permissions required to deploy the Service Connector.
+
+== Setting up Azure networking for the Service Connector
+
+Cloud Tiering guides you through the process of deploying the Service Connector on an Azure virtual machine. Make sure that the Azure VNet provides the required networking connections.
+
+.Steps
+
+. Identify a VNet for the Service Connector that enables the following connections:
+
+* An outbound internet connection to the Cloud Tiering service
+* A connection to Azure Blob storage
+* A connection to your ONTAP clusters
++
+Cloud Tiering enables you to deploy the virtual machine with a public IP address and you can configure it to use your own proxy server.
++
+You don't need to create your own network security group because Cloud Tiering can do that for you. The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
+
+. If needed, enable a VNet service endpoint to Azure storage.
++
+A VNet service endpoint to Azure storage is recommended if you have an ExpressRoute or VPN connection from your ONTAP cluster to the VNet and you want communication between the Service Connector and Blob storage to stay in your virtual private network.
