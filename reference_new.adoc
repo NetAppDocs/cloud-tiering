@@ -15,6 +15,31 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 2 May 2019
+
+This update includes the following new features and enhancements.
+
+* <<Support for Microsoft Azure>>
+* <<Ability to choose an IPspace for connections to object storage>>
+
+=== Support for Microsoft Azure
+
+You can now tier inactive data from your ONTAP clusters to Azure Blob storage.
+
+* link:task_quick_start_azure.html[Learn how to tier inactive data to Azure]
+* link:reference_azure_support.html[Review support for Azure Blob access tiers and Azure regions]
+
+=== Ability to choose an IPspace for connections to object storage
+
+When you set up tiering for an ONTAP cluster, you now need to select the IPspace that ONTAP should use to connect to object storage. Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
+
+<screenshot>
+
+To understand the requirements for the IPspace and the associated intercluster LIFs, refer to ONTAP cluster requirements:
+
+* link:task_preparing.html[Preparing to tier inactive data to AWS S3]
+* link:task_preparing_azure.html[Preparing to tier inactive data to Azure Blob storage]
+
 == 7 Apr 2019
 
 This update includes the following new features and enhancements.
