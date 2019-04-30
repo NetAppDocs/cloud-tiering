@@ -19,9 +19,6 @@ NetApp periodically updates Cloud Tiering to bring you new features, enhancement
 
 This update includes the following new features and enhancements.
 
-* <<Support for Microsoft Azure>>
-* <<Ability to choose an IPspace for connections to object storage>>
-
 === Support for Microsoft Azure
 
 You can now tier inactive data from your ONTAP clusters to Azure Blob storage.
