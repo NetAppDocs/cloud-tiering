@@ -43,7 +43,9 @@ Set up data tiering for additional volumes at any time--for example, after creat
 
 . From the Cluster Dashboard, click *Set up Tiering*.
 
-. If you have a system running ONTAP 9.4 or later, keep the default option to tier all cold data, or to tier Snapshot copies only.
+. If you have a system running ONTAP 9.4 or later, keep the default _Auto_ tiering policy or change to the _Snapshot only_ tiering policy.
++
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
 
 . Select the volumes that you would like to tier and click *Continue*.
 +
@@ -87,4 +89,4 @@ image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering hea
 
 .. Verify that the Service Connector is running and that it has outbound connections to the Cloud Tiering service, to the object store, and to the ONTAP clusters that it discovers.
 +
-TIP: The EC2 instance name for the Service Connector is prefixed with "Service-connector."
+TIP: The name of the Service Connector instance/virtual machine is prefixed with "Service-connector."
