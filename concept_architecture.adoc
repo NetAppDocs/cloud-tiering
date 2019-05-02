@@ -50,7 +50,7 @@ When you set up data tiering to AWS, you can choose the _S3 Standard_ storage cl
 
 === Azure Blob access tiers
 
-When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release..
+When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
 
 == Volume tiering policies
 
