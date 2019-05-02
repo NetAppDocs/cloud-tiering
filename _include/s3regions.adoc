@@ -17,6 +17,7 @@
 ==== North America
 
 * Canada Central
+* GovCloud (US-West) – starting with ONTAP 9.3
 * US East (N. Virginia)
 * US East (Ohio)
 * US West (N. California)
