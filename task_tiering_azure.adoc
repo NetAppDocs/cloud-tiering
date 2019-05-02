@@ -64,7 +64,7 @@ The security group that Cloud Tiering creates has no inbound connectivity and op
 
 . Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
 +
-image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in Azure.]
+image:screenshot_discover_info_azure.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in Azure.]
 
 == Tiering inactive data to Azure Blob storage
 
@@ -72,6 +72,35 @@ You're now ready to start tiering inactive data to low-cost object storage.
 
 .Steps
 
-. Click *Set up Tiering*.
+. Click *Set up Tiering* and follow the prompts.
 
-. ???
+. *Source Volumes*: Optionally change the tiering policy and then select the volumes to tier.
+
+.. Keep the default _Auto_ tiering policy or change to the _Snapshot only_ tiering policy.
++
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+
+.. Select the volumes that you would like to tier and click *Continue*.
++
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+
+. *Cluster Connectivity*: Select the IPspace that ONTAP should use to connect to object storage.
++
+Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
++
+If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing_azure.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
+
+. *Object Storage Provider*: Click *Continue* to choose Azure as your object storage provider.
+
+. *Bucket*: Enter the information needed for your object storage provider and click *Continue*.
+* The region for the Blob container
+* The Blob access tier (only Hot is supported at this time)
++
+TIP: You don't need to create the Blob container. Cloud Tiering does that for you.
+
+. *Review*: Review your selections and click *Tier Cluster*.
++
+image:screenshot_volumes_review_azure.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
+
+.What's next?
+Add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].

@@ -32,7 +32,7 @@ You need the following:
 * An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
 * An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC.
 +
-The VPC needs an outbound internet connection and an outbound connection to the ONTAP cluster in your data center.
+The VPC must provide an outbound connection to the ONTAP cluster in your data center, to S3 storage, and to the Cloud Tiering service.
 +
 This account can be the same account that you use for the S3 bucket, or a different account.
 

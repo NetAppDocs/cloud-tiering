@@ -69,30 +69,34 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 
 .Steps
 
-. Click *Set up Tiering*.
+. Click *Set up Tiering* and follow the prompts.
 
-. If you have a system running ONTAP 9.4 or later, keep the default option to tier all cold data, or to tier Snapshot copies only.
+. *Source Volumes*: Optionally change the tiering policy and then select the volumes to tier.
 
-. Select the volumes that you would like to tier and click *Continue*.
+.. If you have a system running ONTAP 9.4 or later, keep the default _Auto_ tiering policy or change to the _Snapshot only_ tiering policy.
++
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+
+.. Select the volumes that you would like to tier and click *Continue*.
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
 
-. Select the IPspace that ONTAP should use to connect to object storage.
+. *Cluster Connectivity*: Select the IPspace that ONTAP should use to connect to object storage.
 +
 Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
 +
 If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
 
-. Click *Continue* to choose AWS as your object storage provider.
+. *Object Storage Provider*: Click *Continue* to choose AWS as your object storage provider.
 
-. Enter the information needed for your object storage provider:
+. *Bucket*: Enter the information needed for your object storage provider.
 * The access key ID and secret key for the account
 * The region for the S3 bucket
 * The S3 storage class that you want to use
 +
 TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 
-. Review your selections and click *Tier Cluster*.
+. *Review*: Review your selections and click *Tier Cluster*.
 +
 image:screenshot_volumes_review.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 
