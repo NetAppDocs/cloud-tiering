@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: task_quick_start.html
-keywords: quick start, register, prepare, tier
-summary: Getting started with Cloud Tiering includes a few steps.
+keywords: quick start, register, prepare, tier, aws
+summary: Getting started with Cloud Tiering in AWS includes a few steps.
 ---
 
-= Quick start for the Cloud Tiering service
+= Quick start for tiering inactive data to AWS
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,7 +13,7 @@ summary: Getting started with Cloud Tiering includes a few steps.
 :imagesdir: ./media/
 
 [.lead]
-Getting started with Cloud Tiering includes a few steps.
+Getting started with Cloud Tiering in AWS includes a few steps.
 
 [discrete]
 ==== image:number1.png[number 1] link:task_registering.html[Register for the Controlled Availability]
@@ -22,7 +22,7 @@ Getting started with Cloud Tiering includes a few steps.
 Go to https://cloud.netapp.com[NetApp Cloud Central^], navigate to Cloud Tiering, and click *Register for Preview*.
 
 [discrete]
-==== image:number2.png[number 2] link:task_preparing.html[Prepare your environment]
+==== image:number2.png[number 2] link:task_preparing.html[Prepare to tier data to AWS]
 
 [role="quick-margin-para"]
 You need the following:
@@ -32,7 +32,7 @@ You need the following:
 * An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
 * An AWS account that has an access key and https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector in a VPC.
 +
-The VPC needs an outbound internet connection and an outbound connection to the ONTAP cluster in your data center.
+The VPC must provide an outbound connection to the ONTAP cluster in your data center, to S3 storage, and to the Cloud Tiering service.
 +
 This account can be the same account that you use for the S3 bucket, or a different account.
 

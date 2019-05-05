@@ -1,0 +1,40 @@
+---
+sidebar: sidebar
+permalink: task_quick_start_azure.html
+keywords: quick start, register, prepare, tier, azure
+summary: Getting started with Cloud Tiering in Microsoft Azure includes a few steps.
+---
+
+= Quick start for tiering inactive data to Azure
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Getting started with Cloud Tiering in Microsoft Azure includes a few steps.
+
+[discrete]
+==== image:number1.png[number 1] link:task_registering.html[Register for the Controlled Availability]
+
+[role="quick-margin-para"]
+Go to https://cloud.netapp.com[NetApp Cloud Central^], navigate to Cloud Tiering, and click *Register for Preview*.
+
+[discrete]
+==== image:number2.png[number 2] link:task_preparing_azure.html[Prepare to tier data to Azure Blob storage]
+
+[role="quick-margin-para"]
+You need the following:
+
+[role="quick-margin-list"]
+* An AFF or FAS system with all-SSD aggregates running ONTAP 9.4 or later, and a network connection to Azure Blob storage.
+* An Azure account that has the https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json[required permissions^] to deploy the Service Connector in a VNet.
++
+The VNet must provide an outbound connection to the ONTAP cluster in your data center, to Azure Blob storage, and to the Cloud Tiering service.
+
+[discrete]
+==== image:number3.png[number3] link:task_tiering_azure.html[Tier inactive data from your first cluster]
+
+[role="quick-margin-para"]
+Log in to https://cloud.netapp.com[NetApp Cloud Central^], select the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.

@@ -15,50 +15,88 @@ summary: This FAQ can help if you're just looking for a quick answer to a questi
 [.lead]
 This FAQ can help if you're just looking for a quick answer to a question.
 
-== What are the requirements for my ONTAP cluster?
+== ONTAP
 
-You need an AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and a network connection to AWS S3. For details, see link:task_preparing.html#preparing-your-ontap-cluster[Preparing your ONTAP cluster].
+The following questions relate to ONTAP.
 
-== Which object storage providers are supported?
+=== What are the requirements for my ONTAP cluster?
 
-AWS S3 is supported at this time. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
+Refer to the following:
 
-== Which AWS regions are supported?
+* link:task_preparing.html#preparing-your-ontap-clusters[Preparing to tier inactive data to AWS S3]
+* link:task_preparing_azure.html#preparing-your-ontap-clusters[Preparing to tier inactive data to Azure Blob storage]
 
-Most regions are supported. See link:reference_storage_providers.html#supported-aws-regions[Supported AWS regions] for the full list.
+=== Does Cloud Tiering enable inactive data reporting?
 
-== Which S3 storage classes are supported?
+Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setting enables us to identify the amount of inactive data that can be tiered to low-cost object storage.
 
-Cloud Tiering supports data tiering to two S3 storage classes: Standard and Standard-Infrequent Access. See link:reference_storage_providers.html#supported-s3-storage-classes[Supported S3 storage classes] for more details.
+== Object storage
 
-== Does Cloud Tiering create one S3 bucket for the entire cluster or one per aggregate?
+The following questions relate to object storage.
 
-One bucket for the entire cluster.
+=== Which object storage providers are supported?
 
-== Can I apply policies to my object store to move data around independent of tiering?
+AWS S3 and Azure Blob storage are supported. Support for additional object storage providers will be added later.
+
+=== Which regions are supported?
+
+See link:reference_aws_support.html[Supported AWS regions] and link:reference_azure_support.html[Supported Azure regions].
+
+=== Which S3 storage classes are supported?
+
+Cloud Tiering supports data tiering to _Standard_ or _Standard-Infrequent Access_. See link:reference_aws_support.html[Supported S3 storage classes] for more details.
+
+=== Which Azure Blob access tiers are supported?
+
+Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
+
+=== Does Cloud Tiering create one object store for the entire cluster or one per aggregate?
+
+One object store for the entire cluster.
+
+=== Can I apply policies to my object store to move data around independent of tiering?
 
 No, Cloud Tiering does not support object lifecycle management rules that move or delete data from object stores.
 
-== What is the Service Connector?
+== NetApp Service Connector
+
+The following questions relate to the NetApp Service Connector.
+
+=== What is the Service Connector?
 
 The Service Connector is NetApp software that communicates with ONTAP clusters to discover information about active and inactive data, and to set up data tiering. For more details, see link:concept_architecture.html[How Cloud Tiering works].
 
-== Where can I run the Service Connector?
+=== Where can I run the Service Connector?
 
-In AWS. Support for Microsoft Azure is coming soon.
+In an AWS VPC when tiering data to S3, and in an Azure VNet when tiering data to Blob storage.
 
-== How do you name the EC2 instance for the Service Connector?
+=== How do you name the instance/virtual machine for the Service Connector?
 
-The EC2 instance name for the Service Connector is prefixed with "Service-connector."
+The name of the Service Connector is prefixed with "Service-connector."
 
-== What are the networking requirements?
+== Networking
 
-You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters, to the object store, and to the Cloud Tiering service. For more details, see link:task_preparing.html[Preparing your environment].
+The following questions relate to networking.
 
-== What cloud provider permissions are required?
+=== What are the networking requirements?
 
-Permissions are needed link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[to deploy the Service Connector in AWS] and link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
+You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters, to the object store, and to the Cloud Tiering service.
 
-== Does Cloud Tiering enable inactive data reporting?
+For more details, see:
 
-Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setting enables us to identify the amount of inactive data that can be tiered to low-cost object storage.
+* link:task_preparing.html[Preparing to tier inactive data to AWS S3]
+* link:task_preparing_azure.html[Preparing to tier inactive data to Azure Blob storage]
+
+== Permissions
+
+The following questions relate to permissions.
+
+=== What permissions are required in AWS?
+
+Permissions are needed link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[to deploy the Service Connector in an AWS VPC] and link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
+
+=== What permissions are required in Azure?
+
+Permissions are needed link:task_preparing_azure.html#granting-azure-permissions[to deploy the Service Connector in an Azure VNet].
+
+During deployment, Cloud Tiering creates and assigns a role to the Service Connector that provides the required permissions so ONTAP can tier inactive data to Azure Blob storage.

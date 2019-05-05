@@ -1,0 +1,66 @@
+---
+sidebar: sidebar
+permalink: reference_azure_support.html
+keywords: microsoft azure, azure, hot, access tier, cold, regions
+summary: Cloud Tiering supports the Hot access tier and most regions.
+---
+
+= Supported Azure Blob access tiers and regions
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Tiering supports the _Hot_ access tier and most regions.
+
+== Supported Azure Blob access tiers
+
+When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
+
+== Supported Azure regions
+
+Cloud Tiering supports the following Azure regions.
+
+=== Africa
+
+* South Africa North
+
+=== Asia Pacific
+
+* Australia East
+* Australia Southeast
+* East Asia
+* Japan East
+* Japan West
+* Korea Central
+* Korea South
+* Southeast Asia
+
+=== Europe
+
+* France Central
+* Germany Central
+* Germany Northeast
+* North Europe
+* UK South
+* UK West
+* West Europe
+
+=== North America
+
+* Canada Central
+* Canada East
+* Central US
+* East US
+* East US 2
+* North Central US
+* South Central US
+* West US
+* West US 2
+* West Central US
+
+=== South America
+
+* Brazil South
