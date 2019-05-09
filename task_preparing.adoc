@@ -26,18 +26,7 @@ NOTE: Communication between the Service Connector and S3 is for object storage s
 Your ONTAP clusters must meet the following requirements when tiering data to AWS S3.
 
 Supported ONTAP platforms::
-* AFF
-** A800
-** A700S, A700
-** A300
-** A220, A200
-** AFF8080, AFF8060, AFF8040
-* FAS
-** FAS9000
-** FAS8200
-** FAS8080, FAS8060, FAS8040
-** FAS2750, FAS2720
-** FAS2650, FAS2620
+Cloud Tiering supports AFF systems and all-SSD aggregates on FAS systems.
 
 Supported ONTAP version::
 ONTAP 9.2 or later
