@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: task_licensing.html
+keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws
+summary: Subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+---
+
+= Subscribing to the Cloud Tiering service from the AWS Marketplace
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+
+.Steps
+
+. In Cloud Tiering, click *Licensing*.
+
+. Click *Subscribe* and then click *Continue*.
+
+. Subscribe from the AWS Marketplace, and then log back in to the Cloud Tiering service to complete the registration.
++
+[[subscribe]]The following video shows the process:
++
+video coming soon

@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: concept_licensing.html
 keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license, free trial, trial, controlled availability
-summary: The Controlled Availability release of Cloud Tiering includes a 30-day free trial. Cloud Tiering will offer capacity-based licensing after the Controlled Availability release.
+summary: Cloud Tiering offers capacity-based licensing in a pay-as-you-go model. We plan to offer a bring your own license (BYOL) model in the coming months.
 ---
 
 = How Cloud Tiering licenses work
@@ -13,10 +13,14 @@ summary: The Controlled Availability release of Cloud Tiering includes a 30-day 
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering offers capacity-based licensing in a pay-as-you-go model.
+Cloud Tiering offers capacity-based licensing in a pay-as-you-go model. We plan to offer a bring your own license (BYOL) model in the coming months.
 
-A 30-day free trial starts when you set up tiering to your first cluster. You should subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+A 30-day free trial of Cloud Tiering starts when you set up tiering to your first cluster. You should subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
 
-A bring your own license (BYOL) model will be available in the coming months.
+link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
 
-link:task_licensing.html[Subscribe to the Cloud Tiering service from the AWS Marketplace]
+We're planning to add Cloud Tiering to the Azure Marketplace as soon we can.
+
+==== What happens if my free trial ends and I don't subscribe?
+
+No new data is tiered to object storage, but existing data is still available for access. Also, you can't set up data tiering for any additional clusters.
