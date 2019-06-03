@@ -16,13 +16,7 @@ summary: Getting started with Cloud Tiering in Microsoft Azure includes a few st
 Getting started with Cloud Tiering in Microsoft Azure includes a few steps.
 
 [discrete]
-==== image:number1.png[number 1] link:task_registering.html[Register for the Controlled Availability]
-
-[role="quick-margin-para"]
-Go to https://cloud.netapp.com[NetApp Cloud Central^], navigate to Cloud Tiering, and click *Register for Preview*.
-
-[discrete]
-==== image:number2.png[number 2] link:task_preparing_azure.html[Prepare to tier data to Azure Blob storage]
+==== image:number1.png[number 1] link:task_preparing_azure.html[Prepare to tier data to Azure Blob storage]
 
 [role="quick-margin-para"]
 You need the following:
@@ -34,7 +28,12 @@ You need the following:
 The VNet must provide an outbound connection to the ONTAP cluster in your data center, to Azure Blob storage, and to the Cloud Tiering service.
 
 [discrete]
-==== image:number3.png[number3] link:task_tiering_azure.html[Tier inactive data from your first cluster]
+==== image:number2.png[number2] link:task_tiering_azure.html[Tier inactive data from your first cluster]
 
 [role="quick-margin-para"]
-Log in to https://cloud.netapp.com[NetApp Cloud Central^], select the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
+Log in to https://cloud.netapp.com[NetApp Cloud Central^], start a free trial of the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
+
+//==== image:number3.png[number 3] link:task_registering.html[Subscribe to the Cloud Tiering service]
+
+//[role="quick-margin-para"]
+//Ensure that there's no disruption of service after your free trial ends. Click *Licensing*, click *Subscribe*, and then follow the prompts.
