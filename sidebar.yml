@@ -17,8 +17,6 @@ entries:
     entries:
       - title: Supported object storage providers
         url: /reference_storage_providers.html
-      - title: Registering for Controlled Availability
-        url: /task_registering.html
       - title: Getting started in AWS
         entries:
         - title: Quick start for AWS
@@ -27,7 +25,9 @@ entries:
           url: /task_preparing.html
         - title: Tiering data to AWS S3
           url: /task_tiering.html
-        - title: S3 storage classes and regions
+        - title: Subscribing to the service
+          url: task_licensing.html
+        - title: Supported storage classes and regions
           url: /reference_aws_support.html
       - title: Getting started in Azure
         entries:
@@ -37,7 +37,7 @@ entries:
           url: /task_preparing_azure.html
         - title: Tiering data to Blob storage
           url: /task_tiering_azure.html
-        - title: Blob access tiers and regions
+        - title: Supported access tiers and regions
           url: /reference_azure_support.html
   - title: Managing data tiering
     url: /task_managing_tiering.html
