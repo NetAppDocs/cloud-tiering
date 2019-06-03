@@ -13,8 +13,10 @@ summary: The Controlled Availability release of Cloud Tiering includes a 30-day 
 :imagesdir: ./media/
 
 [.lead]
-The Controlled Availability release of Cloud Tiering includes a 30-day free trial. Cloud Tiering will offer capacity-based licensing after the Controlled Availability release.
+Cloud Tiering offers capacity-based licensing in a pay-as-you-go model.
 
-Cloud Tiering will offer capacity-based licensing in a pay-as-you-go model and in a bring your own license (BYOL) model. The licensing is flexible--you can mix and match between pay-as-you-go and BYOL. More details will be available soon.
+A 30-day free trial starts when you set up tiering to your first cluster. You should subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
 
-link:task_registering.html[Register for the Controlled Availability release]
+A bring your own license (BYOL) model will be available in the coming months.
+
+link:task_licensing.html[Subscribe to the Cloud Tiering service from the AWS Marketplace]
