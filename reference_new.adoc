@@ -29,11 +29,11 @@ After your free trial starts, subscribe to the Cloud Tiering service to ensure t
 
 link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
 
-NOTE: We're planning to add Cloud Tiering to the Azure Marketplace as soon we can.
+NOTE: We're planning to add Cloud Tiering to the Azure Marketplace as soon Azure supports SaaS pricing.
 
 === Support for FlexGroup volumes
 
-You can now tier inactive data from FlexGroup volumes to object storage. Setup works the same as any other volume.
+You can now tier inactive data from FlexGroup volumes to object storage, starting with ONTAP 9.5. Setup works the same as any other volume.
 
 == 5 May 2019
 
