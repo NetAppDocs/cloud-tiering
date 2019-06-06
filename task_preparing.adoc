@@ -64,11 +64,11 @@ TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 . Provide the following permissions to the IAM user:
 +
 [source,json]
-"s3:ListAllMyBuckets"
-"s3:ListBucket"
-"s3:GetBucketLocation"
-"s3:GetObject"
-"s3:PutObject"
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetBucketLocation",
+"s3:GetObject",
+"s3:PutObject",
 "s3:DeleteObject"
 +
 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]
