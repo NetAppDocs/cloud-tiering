@@ -101,4 +101,6 @@ TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 image:screenshot_volumes_review.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 
 .What's next?
-Add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].
+link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the AWS Marketplace]. 
+
+You can also add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].

@@ -49,6 +49,8 @@ When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. 
 Supported volumes and aggregates::
 The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
 
+NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
+
 == Preparing AWS S3 for data tiering
 
 The AWS account to which you tier inactive data must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
@@ -62,11 +64,11 @@ TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 . Provide the following permissions to the IAM user:
 +
 [source,json]
-"s3:ListAllMyBuckets"
-"s3:ListBucket"
-"s3:GetBucketLocation"
-"s3:GetObject"
-"s3:PutObject"
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetBucketLocation",
+"s3:GetObject",
+"s3:PutObject",
 "s3:DeleteObject"
 +
 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]

@@ -15,6 +15,26 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 10 June 2019
+
+This update includes the following new features and enhancements.
+
+=== Cloud Tiering is now generally available
+
+The Controlled Availability release of Cloud Tiering has completed--Cloud Tiering is now available for customer use from https://cloud.netapp.com[NetApp Cloud Central^]. A 30-day free trial is available for both AWS and Azure. It starts when you set up tiering to your first cluster.
+
+=== Pay-as-you-go from the AWS Marketplace
+
+After your free trial starts, subscribe to the Cloud Tiering service to ensure that there's no disruption of service after the trial ends. When it ends, you'll be charged hourly according to the amount of data that you tier.
+
+link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
+
+NOTE: We're planning to add Cloud Tiering to the Azure Marketplace as soon Azure supports SaaS pricing.
+
+=== Support for FlexGroup volumes
+
+You can now tier inactive data from FlexGroup volumes to object storage, starting with ONTAP 9.5. Setup works the same as any other volume.
+
 == 5 May 2019
 
 This update includes the following new features and enhancements.
