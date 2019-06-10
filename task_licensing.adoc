@@ -25,4 +25,4 @@ Subscribe to the Cloud Tiering service to ensure that there's no disruption of s
 +
 [[subscribe]]The following video shows the process:
 +
-video coming soon
+video::video_subscribing_aws.mp4[width=848, height=480]
