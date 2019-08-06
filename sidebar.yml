@@ -23,6 +23,8 @@ entries:
           url: /task_quick_start.html
         - title: Preparing to tier data to AWS
           url: /task_preparing.html
+        - title: Installing the Service Connector on prem
+          url: /task_installing_service_connector.html
         - title: Tiering data to AWS S3
           url: /task_tiering.html
         - title: Subscribing to the service
