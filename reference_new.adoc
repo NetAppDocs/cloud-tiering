@@ -15,6 +15,21 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 7 Aug 2019
+
+This update includes the following new features and enhancements.
+
+=== On-premises Service Connector for data tiering to S3
+
+You can now install the Service Connector on an on-premises Linux host when you tier cold data to AWS S3.
+link:task_installing_service_connector.html[Learn more].
+
+=== Object storage connectivity check
+
+If Cloud Tiering finds a connectivity problem with the object storage bucket, the tiering health indicator in the dashboard provides details about the problem.
+
+image:screenshot_tiering_health_failure.gif[A screenshot that shows a tiering failure on the dashboard.]
+
 == 4 July 2019
 
 Cloud Tiering was updated to fix a few bugs.
