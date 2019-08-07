@@ -1,0 +1,253 @@
+---
+sidebar: sidebar
+permalink: task_installing_service_connector.html
+keywords: install, installation, installing, linux, installer, software, on prem, on-prem, silent, installing service connector, installing service connector on prem, on-prem service connector, on prem service connector
+summary: If you want to tier cold data to AWS S3, you can deploy the Service Connector either on your premises or in an AWS VPC. This page describes how to install the on-premises Service Connector.
+---
+
+= Installing the Service Connector on your premises
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+If you want to tier cold data to AWS S3, you can deploy the Service Connector either on your premises or in an AWS VPC. This page describes how to install the on-premises Service Connector.
+
+To deploy the Service Connector in AWS, link:task_tiering.html[follow the prompts in Cloud Tiering when discovering your first cluster].
+
+== Understanding the relationship between the Service Connector and Cloud Manager
+
+To install the Service Connector, you need to download and install https://docs.netapp.com/us-en/occm/concept_overview.html[NetApp Cloud Manager software^]. You need to do this because the Service Connector is part of Cloud Manager.
+
+== Verifying host requirements
+
+The Service Connector is supported on a Linux host that meets the following requirements.
+
+Supported operating systems::
+* CentOS 7.2
+* CentOS 7.3
+* CentOS 7.4
+* Red Hat Enterprise Linux 7.2
+* Red Hat Enterprise Linux 7.3
+* Red Hat Enterprise Linux 7.4
++
+The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during installation.
++
+The Service Connector software is supported on English-language versions of these operating systems.
+
+Hypervisor:: A bare metal or hosted hypervisor that is certified to run CentOS or Red Hat Enterprise Linux
+https://access.redhat.com/certified-hypervisors[Red Hat Solution: Which hypervisors are certified to run Red Hat Enterprise Linux?^]
+
+CPU:: 2.27 GHz or higher with two cores
+
+RAM:: 4 GB
+
+Free disk space:: 50 GB
+
+Ports::
+The following ports must be available:
+* 80 for HTTP access
+* 443 for HTTPS access
+* 3306 for the database
+* 8080 for the API proxy
++
+If other services are using these ports, the installation fails.
++
+NOTE: There is a potential conflict with port 3306. If another instance of MySQL is running on the host, it uses port 3306 by default. You must change the port that the existing MySQL instance uses.
++
+You can change the default HTTP and HTTPS ports when you install the Service Connector. You cannot change the default port for the MySQL database. If you change the HTTP and HTTPS ports, you must ensure that users can access the web console from a remote host:
++
+** Modify the security group to allow inbound connections through the ports.
+** Specify the port when you enter the URL to the web console.
+
+== Preparing your networking
+
+The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and to the Cloud Tiering service.
+
+.Steps
+
+. Set up an on-premises location for the Service Connector that enables the following connections:
+
+* An outbound internet connection to the Cloud Tiering service
+* A connection to S3
+* A connection to your ONTAP clusters
+
+. Ensure that outbound internet access is allowed to those endpoints:
+* \http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+* \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+* \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
++
+The installer accesses these URLs during the installation process.
+
+== Providing permissions to an AWS account
+
+After you install the Service Connector, you need to provide access keys for an AWS account. That account needs specific permissions so the Service Connector can set up data tiering to AWS S3 on your behalf.
+
+.Steps
+
+. From the AWS IAM console, create an IAM policy by copying and pasting the permissions below.
++
+For step-by-step instructions, refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html[AWS Documentation: Creating IAM Policies^].
++
+[source,json]
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:DecodeAuthorizationMessage",
+                "s3:ListBucket",
+                "ec2:DescribeRegions",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "fabricPoolPolicy",
+            "Effect": "Allow",
+            "Action": [
+                "s3:DeleteBucket",
+                "s3:GetLifecycleConfiguration",
+                "s3:PutLifecycleConfiguration",
+                "s3:CreateBucket",
+                "s3:GetBucketTagging",
+                "s3:PutBucketTagging"
+            ],
+            "Resource": "arn:aws:s3:::fabric-pool*"
+        }
+    ]
+}
+
+. Attach the policy to an IAM role or an IAM user.
++
+For step-by-step instructions, refer to the following:
++
+* https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html[AWS Documentation: Creating IAM Roles^]
+* https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html[AWS Documentation: Adding and Removing IAM Policies^]
+
+.Result
+
+The account now has the required permissions. You need to provide access keys for the AWS account after you install the Service Connector.
+
+== Installing the Service Connector on an on-premises Linux host
+
+After you verify system and network requirements, download and install the software on a supported Linux host.
+
+.About this task
+
+* Root privileges are not required for installation.
+
+* The Service Connector installs the AWS command line tools (awscli) to enable recovery procedures from NetApp support.
++
+If you receive a message that installing the awscli failed, you can safely ignore the message. The Service Connector can operate successfully without the tools.
+
+* The installer that is available on the NetApp Support Site might be an earlier version. After installation, the software automatically updates itself if a new version is available.
+
+.Steps
+
+. From your Linux host, https://repo.tiering.cloud.netapp.com/pre-install.sh[download the pre-installation script^].
++
+TIP: If the link opens in a new browser tab, right click the page and select *Save As*.
+
+.	Assign permissions to execute the script.
++
+*Example*
++
+`chmod +x pre-install.sh`
+
+.	Generate a refresh token for the Cloud Central API:
+.. https://services.cloud.netapp.com/refresh-token[Go to the Refresh Token Generator^].
+.. Under All Cloud Central APIs, click *Generate Refresh Token* and copy the generated token to your clipboard.
+
+.	Run the pre-installation script:
++
+`./pre-install.sh -t W4clgk2XDKccpUEJu_xQHXH71lKzB4QS6vlRqyYnWURaD -c NetApp -i myCloudManager -a myAccount -e production`
++
+*	*-t*: The refresh token string from the previous step
+*	*-c*: Your company name
+*	*-i*: A name for the Service Connector
+*	*-a*: The name of your link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Cloud Central account^] (will be created if there is no previous account)
+*	*-e*: Environment: production
+
+. Download the installation script for Cloud Manager 3.7 or later from the http://mysupport.netapp.com/NOW/cgi-bin/software[NetApp Support Site^], and then copy it to the Linux host.
++
+<<Understanding the relationship between the Service Connector and Cloud Manager,Why do I need to install Cloud Manager?>>
+
+. Assign permissions to execute the script.
++
+*Example*
++
+`chmod +x OnCommandCloudManager-V3.7.0.sh`
+
+. Run the installation script:
++
+ ./OnCommandCloudManager-V3.7.0.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
++
+_silent_ runs the installation without prompting you for information.
++
+_proxy_ is required if the host is behind a proxy server.
++
+_proxyport_ is the port for the proxy server.
++
+_proxyuser_ is the user name for the proxy server, if basic authentication is required.
++
+_proxypwd_ is the password for the user name that you specified.
+
+. Unless you specified the silent parameter, type *Y* to continue the script, and then enter the HTTP and HTTPS ports when prompted.
++
+If you change the HTTP and HTTPS ports, you must ensure that users can access the Cloud Manager web console from a remote host:
+
+* Modify the security group to allow inbound connections through the ports.
+
+* Specify the port when you enter the URL to the web console.
++
+The Service Connector is now installed. At the end of the installation, the Cloud Manager service (occm) restarts twice if you specified a proxy server.
+
+. Open a web browser and enter the following URL:
++
+https://_ipaddress_:__port__
++
+_ipaddress_ can be localhost, a private IP address, or a public IP address, depending on the configuration of the host.
++
+_port_ is required if you changed the default HTTP (80) or HTTPS (443) ports. For example, if the HTTPS port was changed to 8443, you would enter https://_ipaddress_:8443
+
+. Sign up at NetApp Cloud Central or log in.
+
+. After you log in, set up Cloud Manager:
+.. Specify the Cloud Central account to associate with this Cloud Manager system. This should be the same account that you specified when you ran the pre-installation script.
++
+link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Learn about Cloud Central accounts^].
+.. Enter a name for the system.
++
+image:https://docs.netapp.com/us-en/occm/media/screenshot_set_up_cloud_manager.gif[A screenshot that shows the set up Cloud Manager screen that enables you to select a Cloud Central account and name the Cloud Manager system.]
+
+.After you finish
+
+Add an AWS account to Cloud Manager that has the required permissions.
+
+== Adding the AWS account to Cloud Manager
+
+After you provide an AWS account with the required permissions, you need to add AWS access keys to Cloud Manager. This enables the Service Connector to set up data tiering to AWS S3 on your behalf.
+
+.Steps
+
+. In the upper right of the Cloud Manager console, click the Settings icon, and select *Cloud Provider & Support Accounts*.
++
+image:https://docs.netapp.com/us-en/occm/media/screenshot_settings_icon.gif[A screenshot that shows the Settings icon in the upper right of the Cloud Manager console.]
+
+. Click *Add New Account* and select *AWS*.
+
+. Select *AWS keys*.
+
+. Confirm that the policy requirements have been met and then click *Create Account*.
+
+.Result
+
+The Service Connector is now installed with the permissions that it needs to tier cold data from your ONTAP systems to AWS S3. You should now see the Service Connector when you link:task_tiering.html[set up tiering to a new cluster].

@@ -17,15 +17,16 @@ After you prepare your AWS environment, just log in to Cloud Tiering and start t
 
 == Discovering your first cluster
 
-Your first step is to deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
+Your first step is to select or deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
 
 .What you'll need
 * The cluster management IP address of your cluster.
 * The user name and password of an ONTAP account that has administrator-level privileges.
 +
 The Service Connector uses this account to send API operations to the ONTAP cluster.
-* The AWS region, VPC, and subnet in which the Service Connector will reside.
-* An AWS account that has the required permissions and an access key.
+* To deploy the Service Connector in AWS, you'll need the following:
+** The AWS region, VPC, and subnet in which the Service Connector will reside.
+** An AWS account that has the required permissions and an access key.
 
 If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
 
@@ -39,7 +40,10 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 
 . Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 
-. Click *Add Service Connector* and follow the prompts:
+. For the Service Connector, choose one of the following options:
+* Select the link:task_installing_service_connector.html[on-premises Service Connector that you previously deployed] and click *Continue*.
+* Click *Add Service Connector* and follow the prompts to deploy a Service Connector in AWS:
++
 .. *Select Provider*: Click *Continue* to choose AWS as the target location for the Service Connector.
 .. *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
 
@@ -53,7 +57,7 @@ Remember, the Service Connector must have a constant connection to the ONTAP clu
 +
 The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
 
-. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
+.. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
 +
 image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in AWS.]
 
@@ -101,6 +105,6 @@ TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 image:screenshot_volumes_review.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 
 .What's next?
-link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the AWS Marketplace]. 
+link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the AWS Marketplace].
 
 You can also add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].

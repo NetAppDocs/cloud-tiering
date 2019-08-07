@@ -68,7 +68,8 @@ The Service Connector is NetApp software that communicates with ONTAP clusters t
 
 === Where can I run the Service Connector?
 
-In an AWS VPC when tiering data to S3, and in an Azure VNet when tiering data to Blob storage.
+* When tiering cold data to S3, the Service Connector can reside in an AWS VPC or on your premises.
+* When tiering cold data to Blob storage, the Service Connector must reside in an Azure VNet.
 
 === How do you name the instance/virtual machine for the Service Connector?
 
@@ -93,7 +94,12 @@ The following questions relate to permissions.
 
 === What permissions are required in AWS?
 
-Permissions are needed link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[to deploy the Service Connector in an AWS VPC] and link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
+Permissions are needed to install the Service Connector:
+
+* link:task_preparing.html#setting-up-an-aws-account-for-the-service-connector[These permissions are required to deploy the Service Connector in an AWS VPC]
+* link:task_installing_service_connector.html#providing-permissions-to-an-aws-account[These permissions are required when you deploy the Service Connector on an on-premises Linux host]
+
+A different set of permissions are required link:task_preparing.html#preparing-aws-s3-for-data-tiering[to manage the S3 bucket].
 
 === What permissions are required in Azure?
 
