@@ -24,6 +24,10 @@ This update includes the following new features and enhancements.
 You can now install the Service Connector on an on-premises Linux host when you tier cold data to AWS S3.
 link:task_installing_service_connector.html[Learn more].
 
+=== Auto discovery of clusters
+
+If you discovered ONTAP clusters through NetApp Cloud Manager, the clusters are automatically added to Cloud Tiering if they support data tiering.
+
 === Object storage connectivity check
 
 If Cloud Tiering finds a connectivity problem with the object storage bucket, the tiering health indicator in the dashboard provides details about the problem.
