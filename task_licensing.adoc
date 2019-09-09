@@ -15,6 +15,8 @@ summary: Subscribe to the Cloud Tiering service to ensure that there's no disrup
 [.lead]
 Subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
 
+If you use NetApp Cloud Manager and you've already https://aws.amazon.com/marketplace/pp/B07QX2QLXX[subscribed through its new AWS Marketplace offering^], then you're automatically subscribed to Cloud Tiering, as well. You'll see an active subscription in Cloud Tiering in the *Licensing* tab. You won't need to subscribe.
+
 .Steps
 
 . In Cloud Tiering, click *Licensing*.
