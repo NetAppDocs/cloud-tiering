@@ -15,6 +15,22 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 8 Sept 2019
+
+This Cloud Tiering update includes the following new features and enhancements.
+
+=== Tiering setup status
+
+Cloud Tiering now shows the status of tiering setup for each cluster. For example, the status might indicate that Cloud Tiering is setting up the object store, or that it successfully set up 145 volumes for data tiering. The status also identifies if any failures occurred during setup.
+
+image:screenshot_tiering_setup_status.gif[A screenshot that shows the Tiering setup status for a cluster. In this example, 2 volumes were successfully setup for tiering.]
+
+=== Integration with Cloud Manager AWS subscriptions
+
+If you use NetApp Cloud Manager and you've already https://aws.amazon.com/marketplace/pp/B07QX2QLXX[subscribed through its new AWS Marketplace offering^], then you're automatically subscribed to Cloud Tiering, as well. You'll see an active subscription in Cloud Tiering in the *Licensing* tab. You won't need to subscribe.
+
+If you've already subscribed through Cloud Tiering, then this change has no impact to you. You're all set.
+
 == 7 Aug 2019
 
 This update includes the following new features and enhancements.
@@ -32,7 +48,7 @@ If you discovered ONTAP clusters through NetApp Cloud Manager, the clusters are 
 
 If Cloud Tiering finds a connectivity problem with the object storage bucket, the tiering health indicator in the dashboard provides details about the problem.
 
-image:screenshot_tiering_health_failure.gif[A screenshot that shows a tiering failure on the dashboard.]
+image:screenshot_tiering_health.gif[A screenshot that shows a tiering failure on the dashboard.]
 
 == 4 July 2019
 
