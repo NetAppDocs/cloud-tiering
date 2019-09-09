@@ -71,13 +71,13 @@ Here's an example:
 +
 image:screenshot_cluster_info.gif[A screenshot that shows the cluster report, which details total used capacity, cluster used capacity, cluster information, and object storage information.]
 
-== Fixing tiering health
+== Fixing operational health
 
-Failures can happen. When they do, Cloud Tiering displays a "Failed" health status on the Cluster Dashboard. The health reflects the status of the ONTAP system and the Service Connector.
+Failures can happen. When they do, Cloud Tiering displays a "Failed" operational health status on the Cluster Dashboard. The health reflects the status of the ONTAP system and the Service Connector.
 
 .Steps
 
-. Identify any clusters that have a tiering health of "Failed."
+. Identify any clusters that have an operational health of "Failed."
 +
 image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering health status for a cluster.]
 
