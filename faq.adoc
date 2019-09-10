@@ -81,7 +81,9 @@ The following questions relate to networking.
 
 === What are the networking requirements?
 
-You need a connection between your ONTAP cluster and the object storage provider. The NetApp Service Connector needs an outbound connection to your ONTAP clusters, to the object store, and to the Cloud Tiering service.
+You need an HTTPS connection over port 443 between your ONTAP cluster and the object storage provider.
+
+The NetApp Service Connector needs an outbound HTTPS connection over port 443 to your ONTAP clusters, to the object store, and to the Cloud Tiering service.
 
 For more details, see:
 

@@ -70,9 +70,9 @@ The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and 
 
 . Set up an on-premises location for the Service Connector that enables the following connections:
 
-* An outbound internet connection to the Cloud Tiering service
-* A connection to S3
-* A connection to your ONTAP clusters
+* An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
+* An HTTPS connection over port 443 to S3
+* An HTTPS connection over port 443 to your ONTAP clusters
 
 . Ensure that outbound internet access is allowed to those endpoints:
 * \http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm

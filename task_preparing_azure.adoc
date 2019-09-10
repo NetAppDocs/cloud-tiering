@@ -32,7 +32,7 @@ Supported ONTAP version::
 ONTAP 9.4 or later
 
 Cluster networking requirements::
-* An inbound and outbound connection to Azure Blob storage is required.
+* An inbound and outbound HTTPS connection over port 443 to Azure Blob storage is required.
 +
 Although ExpressRoute provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and Azure Blob storage. Because performance is significantly better when using ExpressRoute, doing so is the recommended best practice.
 
@@ -108,9 +108,9 @@ Cloud Tiering guides you through the process of deploying the Service Connector 
 
 . Identify a VNet for the Service Connector that enables the following connections:
 
-* An outbound internet connection to the Cloud Tiering service
-* A connection to Azure Blob storage
-* A connection to your ONTAP clusters
+* An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
+* An HTTPS connection over port 443 to Azure Blob storage
+* An HTTPS connection over port 443 to your ONTAP clusters
 +
 Cloud Tiering enables you to deploy the virtual machine with a public IP address and you can configure it to use your own proxy server.
 +
