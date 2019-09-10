@@ -22,11 +22,11 @@ Getting started with Cloud Tiering in AWS includes a few steps.
 You need the following:
 
 [role="quick-margin-list"]
-* An AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and a network connection to AWS S3.
+* An AFF or FAS system with all-SSD aggregates running ONTAP 9.2 or later, and an HTTPS connection to AWS S3.
 * An AWS account that has an access key and link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required permissions] so the ONTAP cluster can tier inactive data in and out of AWS S3.
 * A location for the Service Connector: either link:task_preparing.html#preparing-to-deploy-the-service-connector-in-an-aws-vpc[an AWS VPC] or link:task_installing_service_connector.html[an on-premises Linux host].
 +
-With either option, the Service Connector needs an outbound connection to the ONTAP cluster, to S3 storage, and to the Cloud Tiering service.
+With either option, the Service Connector needs an outbound HTTPS connection to the ONTAP cluster, to S3 storage, and to the Cloud Tiering service.
 
 [discrete]
 ==== image:number2.png[number 2] link:task_tiering.html[Tier inactive data from your first cluster]

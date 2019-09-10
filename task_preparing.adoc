@@ -32,7 +32,7 @@ Supported ONTAP version::
 ONTAP 9.2 or later
 
 Cluster networking requirements::
-* An inbound and outbound connection to AWS S3 is required.
+* An inbound and outbound HTTPS connection over port 443 to AWS S3 is required.
 +
 Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and AWS S3. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.
 
@@ -123,9 +123,9 @@ The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and 
 
 . Identify a VPC for the Service Connector that enables the following connections:
 
-* An outbound internet connection to the Cloud Tiering service
-* A connection to S3
-* A connection to your ONTAP clusters
+* An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
+* An HTTPS connection over port 443 to S3
+* An HTTPS connection over port 443 to your ONTAP clusters
 +
 Cloud Tiering enables you to deploy the EC2 instance with a public IP address and you can configure it to use your own proxy server.
 +
