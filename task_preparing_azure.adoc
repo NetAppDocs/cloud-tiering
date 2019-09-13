@@ -32,7 +32,9 @@ Supported ONTAP version::
 ONTAP 9.4 or later
 
 Cluster networking requirements::
-* An inbound and outbound HTTPS connection over port 443 to Azure Blob storage is required.
+* The ONTAP cluster initiates an HTTPS connection over port 443 to Azure Blob storage.
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
 +
 Although ExpressRoute provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and Azure Blob storage. Because performance is significantly better when using ExpressRoute, doing so is the recommended best practice.
 
