@@ -21,7 +21,7 @@ Cloud Tiering displays an estimate because a 31-day cooling period is needed to 
 
 Here's an example of an estimate showing 8.7 TB of capacity savings:
 
-image:screenshot_savings_estimate.gif[A screenshot that shows a cluster with an estimated space savings of 10.5 TB.]
+image:screenshot_savings_estimate.gif[A screenshot that shows a cluster with an estimated space savings of 8.7 TB.]
 
 Here's an example of a precise value for a different cluster that has not been set up for tiering:
 
