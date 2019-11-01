@@ -46,7 +46,7 @@ If you haven't met these requirements, see link:task_preparing_azure.html[Prepar
 
 .. Select *Microsoft Azure* as the target location for the Service Connector.
 
-.. When prompted, accept the permissions request from Microsoft.
+.. When prompted, sign in and accept the permissions request from Microsoft.
 +
 The form is owned and hosted by Microsoft. Your credentials are not provided to NetApp.
 
@@ -74,13 +74,9 @@ You're now ready to start tiering inactive data to low-cost object storage.
 
 . Click *Set up Tiering* and follow the prompts.
 
-. *Source Volumes*: Optionally change the tiering policy and then select the volumes to tier.
-
-.. Keep the default _Auto_ tiering policy or change to the _Snapshot only_ tiering policy.
+. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
 +
 link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
-
-.. Select the volumes that you would like to tier and click *Continue*.
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
 
@@ -92,13 +88,13 @@ If you haven't reviewed requirements for the IPspace and the associated interclu
 
 . *Object Storage Provider*: Click *Continue* to choose Azure as your object storage provider.
 
-. *Bucket*: Enter the information needed for your object storage provider and click *Continue*.
+. *Object Storage*: Enter the information needed for your object storage provider and click *Continue*.
 * The region for the Blob container
 * The Blob access tier (only Hot is supported at this time)
 +
 TIP: You don't need to create the Blob container. Cloud Tiering does that for you.
 
-. *Review*: Review your selections and click *Tier Cluster*.
+. *Review*: Review your selections and click *Go*.
 +
 image:screenshot_volumes_review_azure.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 
