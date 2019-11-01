@@ -1,0 +1,53 @@
+---
+sidebar: sidebar
+permalink: reference_google_support.html
+keywords: google, gcp, regions, google regions, gcp regions, storage class, standard storage class
+summary: Cloud Tiering supports the Standard storage class and most regions.
+---
+
+= Supported Google Cloud storage classes and regions
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Cloud Tiering supports the Standard storage class and most Google Cloud regions.
+
+== Supported access tiers
+
+Cloud Tiering uses the _Standard_ access tier for your inactive data.
+
+== Supported Google Cloud regions
+
+Cloud Tiering supports the following regions.
+
+=== Americas
+
+* Iowa
+* Los Angeles
+* Montreal
+* N. Virginia
+* Oregon
+* Sao-Paulo
+* South Carolina
+
+=== Asia Pacific
+
+* Hong Kong
+* Mumbai
+* Osaka
+* Singapore
+* Sydney
+* Taiwan
+* Tokyo
+
+=== Europe
+
+* Belgium
+* Finland
+* Frankfurt
+* London
+* Netherlands
+* Zurich

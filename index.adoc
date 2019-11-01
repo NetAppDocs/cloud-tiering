@@ -31,6 +31,7 @@ link:reference_new.html[What's new in Cloud Tiering]
 
 * link:task_quick_start.html[Quick start for AWS]
 * link:task_quick_start_azure.html[Quick start for Azure]
+* link:task_quick_start_google.html[Quick start for GCP]
 
 == Automate with APIs
 

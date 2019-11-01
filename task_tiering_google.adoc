@@ -1,0 +1,108 @@
+---
+sidebar: sidebar
+permalink: task_tiering_google.html
+keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, gcp, network, security group, tier, volume
+summary: After you prepare your GCP environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+---
+
+= Tiering inactive data from your first cluster to Google Cloud Storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+After you prepare your Google Cloud environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+
+== Discovering your first cluster
+
+Your first step is to deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
+
+.What you'll need
+* The cluster management IP address of your cluster.
+* The user name and password of an ONTAP account that has administrator-level privileges.
++
+The Service Connector uses this account to send API operations to the ONTAP cluster.
+* A Google account that has the required permissions to deploy the Service Connector virtual machine.
+* The project, region, VPC, and subnet in which the Service Connector will reside.
+* A service account that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^]. 
+
+If you haven't met these requirements, see link:task_preparing_google.html[Preparing to tier data to Google Cloud Storage].
+
+.Steps
+
+. Go to http://cloud.netapp.com[NetApp Cloud Central^].
+
+. Log in and select the Cloud Tiering service.
+
+. Click *Let's Start, Discover Your First Cluster*.
+
+. Enter information about your ONTAP cluster:
++
+* The cluster management IP address
+* The user name and password of an account that has administrator-level privileges
+
+. Click *Add Service Connector* and follow the prompts:
+
+.. Select *Google Cloud Platform* as the target location for the Service Connector.
+
+.. When prompted, sign in and accept the permissions request from Google.
++
+The form is owned and hosted by Google. Your credentials are not provided to NetApp.
+
+.. *Basic Settings*: Enter a name for the virtual machine and then select a project and service account.
+
+.. *Location*: Specify networking for the virtual machine--a region, zone, VPC, and subnet, and then choose whether you want to assign a public IP address and specify an HTTP proxy for outbound connectivity.
++
+Remember, the Service Connector must have a constant connection to the ONTAP cluster and a constant internet connection to the Cloud Tiering service.
+
+.. *Firewall Policy*: Select *Create a new firewall policy* so Cloud Tiering can create the security group, or select an existing firewall policy.
++
+The firewall policy that Cloud Tiering creates allows inbound HTTP, HTTPS, and SSH connectivity. It has open outbound connectivity.
+
+.. Click *Go*.
+
+. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
++
+image:screenshot_discover_info_google.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in GCP.]
+
+== Tiering inactive data to a Google Cloud Storage bucket
+
+You're now ready to start tiering inactive data to low-cost object storage.
+
+.What you'll need
+* Storage access keys for a service account that has the Storage Admin role.
+* The region where the Google Cloud Storage bucket will reside.
+
+.Steps
+
+. Click *Set up Tiering* and follow the prompts.
+
+. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
++
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
++
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+
+. *Cluster Connectivity*: Select the IPspace that ONTAP should use to connect to object storage.
++
+Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
++
+If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing_google.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
+
+. *Object Storage Provider*: Click *Continue* to choose Google Cloud as your object storage provider.
+
+. *Object Storage*: Enter the information needed for the GCP bucket:
+* A storage access key and secret key for a service account
+* The region for the bucket
+* The storage class (only Standard is supported at this time)
++
+TIP: You don't need to create the Google Cloud Storage bucket. Cloud Tiering does that for you.
+
+. *Review*: Review your selections and click *Go*.
++
+image:screenshot_volumes_review_google.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
+
+.What's next?
+Add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].
