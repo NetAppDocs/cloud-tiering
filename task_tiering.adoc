@@ -44,7 +44,8 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 * Select the link:task_installing_service_connector.html[on-premises Service Connector that you previously deployed] and click *Continue*.
 * Click *Add Service Connector* and follow the prompts to deploy a Service Connector in AWS:
 +
-.. *Select Provider*: Click *Continue* to choose AWS as the target location for the Service Connector.
+.. *Select Provider*: Select *Amazon Web Services* as the target location for the Service Connector.
+
 .. *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
 
 .. *Location*: Select the AWS region, VPC, and subnet for the Service Connector EC2 instance.
@@ -75,13 +76,9 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 
 . Click *Set up Tiering* and follow the prompts.
 
-. *Source Volumes*: Optionally change the tiering policy and then select the volumes to tier.
-
-.. If you have a system running ONTAP 9.4 or later, keep the default _Auto_ tiering policy or change to the _Snapshot only_ tiering policy.
+. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
 +
 link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
-
-.. Select the volumes that you would like to tier and click *Continue*.
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
 
@@ -93,14 +90,14 @@ If you haven't reviewed requirements for the IPspace and the associated interclu
 
 . *Object Storage Provider*: Click *Continue* to choose AWS as your object storage provider.
 
-. *Bucket*: Enter the information needed for your object storage provider.
+. *Object Storage*: Enter the information needed for your object storage provider.
 * The access key ID and secret key for the account
 * The region for the S3 bucket
 * The S3 storage class that you want to use
 +
 TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
 
-. *Review*: Review your selections and click *Tier Cluster*.
+. *Review*: Review your selections and click *Go*.
 +
 image:screenshot_volumes_review.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 

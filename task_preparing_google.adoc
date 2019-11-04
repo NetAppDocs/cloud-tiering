@@ -1,0 +1,120 @@
+---
+sidebar: sidebar
+permalink: task_preparing_google.html
+keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, firewall rules, aff, lif, ontap, version, 9.4, 9.5, 9.6, object, cloud provider, account, permissions, service connector
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, provide the required permissions, and set up your networking.
+---
+
+= Preparing to tier inactive data to Google Cloud Storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before you start tiering data, verify support for your ONTAP cluster, provide the required permissions, and set up your networking.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_tiering_google.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage.]
+
+NOTE: Communication between the Service Connector and Google Cloud Storage is for object storage setup only.
+
+== Preparing your ONTAP clusters
+
+Your ONTAP clusters must meet the following requirements when tiering data to Google Cloud Storage.
+
+Supported ONTAP platforms::
+Cloud Tiering supports AFF systems and all-SSD aggregates on FAS systems.
+
+Supported ONTAP versions::
+ONTAP 9.6 or later
+
+Cluster networking requirements::
+* The ONTAP cluster initiates an HTTPS connection over port 443 to Google Cloud Storage.
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
++
+Although a Google Cloud Interconnect provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and Google Cloud Storage. Because performance is significantly better when using Google Cloud Interconnect, doing so is the recommended best practice.
+
+* An inbound connection is required from the NetApp Service Connector, which resides in an Google Cloud Platform VPC.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html[Learn more about IPspaces^].
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+
+Supported volumes and aggregates::
+The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
+
+== Preparing Google Cloud Storage for data tiering
+
+When you set up tiering, you need to provide Cloud Tiering with storage access keys for a service account that has Storage Admin permissions. A service account enables Cloud Tiering to authenticate and access Cloud Storage buckets used for data tiering. The keys are required so that Google Cloud Storage knows who is making the request.
+
+.Steps
+
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account[Create a service account that has the predefined Storage Admin role^].
+
+. Go to https://console.cloud.google.com/storage/settings[GCP Storage Settings^] and create access keys for the service account:
+
+.. Select a project, and click *Interoperability*. If you haven’t already done so, click *Enable interoperability access*.
+
+.. Under *Access keys for service accounts*, click *Create a key for a service account*, select the service account that you just created, and click *Create Key*.
++
+You'll need to link:task_tiering_google.html#tiering-inactive-data-to-a-google-cloud-storage-bucket[enter the keys in Cloud Tiering] later when you set up tiering.
+
+== Setting up GCP permissions to deploy the Service Connector
+
+Ensure that your GCP user has the required permissions to deploy the NetApp Service Connector in a Google Cloud Platform VPC. You also need to enable a few APIs in the project.
+
+.Steps
+
+. Ensure that the GCP user who deploys the Service Connector has the permissions in the https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml[Cloud Central policy for GCP].
++
+https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud[You can create a custom role using the YAML file^] and then attach it to the user. You’ll need to use the gcloud command line to create the role.
+
+. https://cloud.google.com/apis/docs/getting-started#enabling_apis[Enable the following Google Cloud APIs in your project^]:
++
+* Cloud Deployment Manager V2 API
+* Cloud Resource Manager API
+* Compute Engine API
+
+.Result
+
+The GCP user now has the permissions required to deploy the Service Connector in GCP from Cloud Tiering.
+
+== Setting up a service account for the Service Connector instance
+
+When you deploy the Service Connector from Cloud Tiering, you need to select a service account to associate with the VM instance. This service account needs specific permissions to enable management of tiering.
+
+.Steps
+
+. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud[Create a role in GCP^] that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^]. 
++
+You'll need to use the gcloud command line to create the role.
+
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account[Create a GCP service account and apply the custom role that you just created^].
+
+== Setting up GCP networking for the Service Connector
+
+Cloud Tiering guides you through the process of deploying the Service Connector on a GCP virtual machine instance. Make sure that the VPC provides the required networking connections.
+
+.Steps
+
+. Identify a VPC for the Service Connector that enables the following connections:
+
+* An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
+* An HTTPS connection over port 443 to Google Cloud Storage
+* An HTTPS connection over port 443 to your ONTAP clusters
++
+Cloud Tiering enables you to deploy the virtual machine with a public IP address and you can configure it to use your own proxy server.
++
+You don't need to create your own firewall rules for the instance because Cloud Tiering can do that for you. The firewall rules that Cloud Tiering creates allows inbound connectivity over HTTP, HTTPS, and SSH. Outbound connectivity is open.
+
+. Optional: Enable Private Google Access on the subnet where you plan to deploy the Service Connector.
++
+https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is recommended if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Service Connector and Google Cloud Storage to stay in your virtual private network. Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).

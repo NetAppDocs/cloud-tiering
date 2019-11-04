@@ -1,0 +1,48 @@
+---
+sidebar: sidebar
+permalink: task_quick_start_google.html
+keywords: quick start, register, prepare, tier, gcp, google
+summary: Getting started with data tiering to Google Cloud Storage includes a few steps.
+---
+
+= Quick start for tiering inactive data to Google Cloud Storage
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Start tiering inactive data to Google Cloud Storage by completing a few steps.
+
+[discrete]
+==== image:number1.png[number 1] Prepare to tier data to Google Cloud Storage
+
+[role="quick-margin-para"]
+You need the following:
+
+[role="quick-margin-list"]
+* An AFF or FAS system with all-SSD aggregates that's running ONTAP 9.6 or later and has an HTTPS connection to Google Cloud Storage.
+* A service account that has the predefined Storage Admin role and storage access keys.
+* A service account that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^].
+* Google Cloud APIs enabled in your project: Cloud Deployment Manager V2 API, Cloud Resource Manager API, and Compute Engine API.
+* A GCP user that has the https://occm-sample-policies.s3.amazonaws.com/Setup_As_Service_3.7.3_GCP.yaml[required permissions] to deploy the Service Connector in a Google Cloud Platform VPC.
++
+The VPC where you deploy the Service Connector must provide an outbound HTTPS connection to the ONTAP cluster in your data center, to Google Cloud Storage, and to the Cloud Tiering service.
+
+[role="quick-margin-para"]
+For step-by-step instructions, see link:task_preparing_google.html[Preparing to tier inactive data to Google Cloud Storage].
+
+[discrete]
+==== image:number2.png[number2] Tier inactive data from your first cluster
+
+[role="quick-margin-para"]
+Log in to https://cloud.netapp.com[NetApp Cloud Central^], start a free trial of the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
+
+[role="quick-margin-para"]
+For step-by-step instructions, see link:task_tiering_google.html[Tiering inactive data from your first cluster to Google Cloud Storage].
+
+//==== image:number3.png[number 3] link:task_registering.html[Subscribe to the Cloud Tiering service]
+
+//[role="quick-margin-para"]
+//Ensure that there's no disruption of service after your free trial ends. Click *Licensing*, click *Subscribe*, and then follow the prompts.

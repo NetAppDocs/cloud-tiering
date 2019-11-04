@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar
 permalink: reference_storage_providers.html
-keywords: object storage provider, provider, cloud provider, aws, amazon, s3, microsoft azure, azure, gcp, google, storagegrid
-summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Support is coming soon for Microsoft Azure, Google Cloud Platform, and StorageGRID.
+keywords: object storage provider, provider, cloud provider, aws, amazon, s3, microsoft azure, azure, gcp, google, google cloud storage.
+summary: Cloud Tiering can tier inactive data from an ONTAP cluster to AWS S3, Microsoft Azure Blob storage, or Google Cloud Storage.
 ---
 
 = Supported object storage providers
@@ -13,7 +13,7 @@ summary: At this time, Cloud Tiering can tier your inactive data to AWS S3. Supp
 :imagesdir: ./media/
 
 [.lead]
-At this time, Cloud Tiering can tier your inactive data to AWS S3 or to Microsoft Azure Blob storage. Support for additional object storage providers will be added later.
+Cloud Tiering can tier inactive data from an ONTAP cluster to AWS S3, Microsoft Azure Blob storage, or Google Cloud Storage.
 
 == AWS S3
 
@@ -24,3 +24,8 @@ At this time, Cloud Tiering can tier your inactive data to AWS S3 or to Microsof
 
 * link:task_quick_start_azure.html[Quick start for Azure]
 * link:reference_azure_support.html[Supported Azure Blob access tiers and regions]
+
+== Google Cloud Storage
+
+* link:task_quick_start_google.html[Quick start for Google Cloud Storage]
+* link:reference_google_support.html[Supported Google Cloud storage classes and regions]

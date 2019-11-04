@@ -13,41 +13,51 @@ entries:
         url: /concept_licensing.html
       - title: Savings opportunities
         url: /concept_savings.html
-  - title: Getting started
+  - title: Get started
     entries:
       - title: Supported object storage providers
         url: /reference_storage_providers.html
-      - title: Getting started in AWS
+      - title: Tier data to AWS S3
         entries:
-        - title: Quick start for AWS
+        - title: Quick start
           url: /task_quick_start.html
-        - title: Preparing to tier data to AWS
+        - title: Prepare to tier data
           url: /task_preparing.html
-        - title: Installing the Service Connector on prem
+        - title: Install the Service Connector on prem
           url: /task_installing_service_connector.html
-        - title: Tiering data to AWS S3
+        - title: Set up tiering to AWS S3
           url: /task_tiering.html
-        - title: Subscribing to the service
+        - title: Subscribe to the service
           url: task_licensing.html
         - title: Supported storage classes and regions
           url: /reference_aws_support.html
-      - title: Getting started in Azure
+      - title: Tier data to Azure Blob storage
         entries:
-        - title: Quick start for Azure
+        - title: Quick start
           url: /task_quick_start_azure.html
-        - title: Preparing to tier data to Azure
+        - title: Prepare to tier data
           url: /task_preparing_azure.html
-        - title: Tiering data to Blob storage
+        - title: Set up tiering to Blob storage
           url: /task_tiering_azure.html
         - title: Supported access tiers and regions
           url: /reference_azure_support.html
-  - title: Managing data tiering
+      - title: Tier data to Google Cloud Storage
+        entries:
+        - title: Quick start
+          url: /task_quick_start_google.html
+        - title: Prepare to tier data
+          url: /task_preparing_google.html
+        - title: Set up tiering to Google Cloud
+          url: /task_tiering_google.html
+        - title: Supported storage classes and regions
+          url: /reference_google_support.html
+  - title: Manage data tiering
     url: /task_managing_tiering.html
-  - title: Cloud Tiering APIs
+  - title: Get help
+    url: /reference_help.html
+  - title: APIs
     url: /reference_apis.html
   - title: FAQ
     url: /faq.html
-  - title: Getting help
-    url: /reference_help.html
   - title: Legal notices
     url: /reference_legal_notices.html

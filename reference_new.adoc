@@ -15,6 +15,22 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 3 Nov 2019
+
+This update includes the following new features and enhancements.
+
+=== Support for Google Cloud
+
+You can now tier inactive data from your ONTAP clusters to Google Cloud Storage.
+
+link:task_quick_start_google.html[Learn how to get started]
+
+=== Tiering policy per volume
+
+You can now choose a different tiering policy for each volume when you set up tiering.
+
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+
 == 8 Sept 2019
 
 This Cloud Tiering update includes the following new features and enhancements.

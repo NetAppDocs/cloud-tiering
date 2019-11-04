@@ -21,10 +21,11 @@ The following questions relate to ONTAP.
 
 === What are the requirements for my ONTAP cluster?
 
-Refer to the following:
+It depends on where you tier the cold data. Refer to the following:
 
 * link:task_preparing.html#preparing-your-ontap-clusters[Preparing to tier inactive data to AWS S3]
 * link:task_preparing_azure.html#preparing-your-ontap-clusters[Preparing to tier inactive data to Azure Blob storage]
+* link:task_preparing_google.html#preparing-your-ontap-clusters[Preparing to tier inactive data to Google Cloud Storage]
 
 === Does Cloud Tiering enable inactive data reporting?
 
@@ -36,11 +37,13 @@ The following questions relate to object storage.
 
 === Which object storage providers are supported?
 
-AWS S3 and Azure Blob storage are supported. Support for additional object storage providers will be added later.
+AWS S3, Azure Blob storage, and Google Cloud Storage are supported. Support for additional object storage providers will be added later.
 
 === Which regions are supported?
 
-See link:reference_aws_support.html[Supported AWS regions] and link:reference_azure_support.html[Supported Azure regions].
+* link:reference_aws_support.html[Supported AWS regions]
+* link:reference_azure_support.html[Supported Azure regions]
+* link:reference_google_support.html[Supported Google Cloud regions]
 
 === Which S3 storage classes are supported?
 
@@ -50,6 +53,10 @@ Cloud Tiering supports data tiering to _Standard_ or _Standard-Infrequent Access
 
 Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
 
+=== Which storage classes are supported for Google Cloud Storage?
+
+Cloud Tiering uses the _Standard_ storage class for inactive data.
+
 === Does Cloud Tiering create one object store for the entire cluster or one per aggregate?
 
 One object store for the entire cluster.
@@ -57,6 +64,10 @@ One object store for the entire cluster.
 === Can I apply policies to my object store to move data around independent of tiering?
 
 No, Cloud Tiering does not support object lifecycle management rules that move or delete data from object stores.
+
+=== How does Cloud Tiering name the bucket/container?
+
+When Cloud Tiering creates the bucket/container, the name is prefixed with "fabric-pool."
 
 == NetApp Service Connector
 
@@ -70,6 +81,7 @@ The Service Connector is NetApp software that communicates with ONTAP clusters t
 
 * When tiering cold data to S3, the Service Connector can reside in an AWS VPC or on your premises.
 * When tiering cold data to Blob storage, the Service Connector must reside in an Azure VNet.
+* When tiering cold data to Google Cloud Storage, the Service Connector must reside in a Google Cloud Platform VPC.
 
 === How do you name the instance/virtual machine for the Service Connector?
 
@@ -91,6 +103,7 @@ For more details, see:
 
 * link:task_preparing.html[Preparing to tier inactive data to AWS S3]
 * link:task_preparing_azure.html[Preparing to tier inactive data to Azure Blob storage]
+* link:task_preparing_google.html[Preparing to tier inactive data to Google Cloud Storage]
 
 == Permissions
 
@@ -110,3 +123,13 @@ A different set of permissions are required link:task_preparing.html#preparing-a
 Permissions are needed link:task_preparing_azure.html#granting-azure-permissions[to deploy the Service Connector in an Azure VNet].
 
 During deployment, Cloud Tiering creates and assigns a role to the Service Connector that provides the required permissions so ONTAP can tier inactive data to Azure Blob storage.
+
+=== What permissions are required in Google Cloud Platform?
+
+* Permissions are needed for the GCP user who will deploy the Service Connector in GCP from Cloud Tiering.
+
+* Permissions are needed for a service account that has storage access keys.
+
+* Permissions are needed for a service account that you'll associate with the Service Connector VM instance.
+
+For details, see link:task_preparing_google.html[Preparing to tier inactive data to Google Cloud Storage].

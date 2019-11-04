@@ -15,8 +15,6 @@ summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technolo
 [.lead]
 Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
 
-NOTE: At this time, Cloud Tiering can tier your inactive data to AWS S3 or Azure Blob storage. Support for additional object storage providers will be added later.
-
 == Overview
 
 The following image shows the relationship between each component:
@@ -27,8 +25,9 @@ At a high level, Cloud Tiering works like this:
 
 . You deploy a NetApp Service Connector.
 +
-* If you want to tier cold data to S3, the Service Connector can be in an AWS VPC or on your premises.
-* If you want to tier cold data to Blob storage, the Service Connector must be in an Azure VNet.
+* When tiering to S3, the Service Connector can be in an AWS VPC or on your premises.
+* When tiering to Blob storage, the Service Connector must be in an Azure VNet.
+* When tiering to Google Cloud Storage, the Service Connector must reside in a Google Cloud Platform VPC.
 . The Service Connector communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster.
 . You choose the volumes to tier and the tiering policy to apply to those volumes.
 . You choose the object storage provider that you want to use.
@@ -48,23 +47,28 @@ Each ONTAP cluster tiers inactive data to a single object store that Cloud Tieri
 
 When you set up data tiering to AWS, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
 
-* https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
-* link:task_tiering.html[Learn how to set up data tiering on a cluster].
+https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
 
 === Azure Blob access tiers
 
 When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
 
+=== Google Cloud storage classes
+
+Cloud Tiering uses the _Standard_ access tier for your inactive data.
+
 == Volume tiering policies
 
-When you select the volumes that you want to tier, you also choose the _volume tiering policy_ to apply to those volumes. A tiering policy defines the type of cold data that you want to tier from the volumes.
+When you select the volumes that you want to tier, you also choose a _volume tiering policy_ to apply to each volume. A tiering policy defines the type of cold data that you want to tier from the volumes.
 
-Auto:: ONTAP tiers all cold blocks in the volume to object storage. The cold data includes not just Snapshot copies but also cold user data from the active file system.
+Cold snapshots (Snapshot only):: ONTAP tiers cold Snapshot blocks in the volume that are not shared with the active file system to object storage. If read, cold data blocks on the cloud tier become hot and are moved to the performance tier.
++
+Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 2 days.
+
+Cold user data (Auto):: ONTAP tiers all cold blocks in the volume (not including metadata) to object storage. The cold data includes not just Snapshot copies but also cold user data from the active file system.
 +
 If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
 +
 Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
 
-Snapshot only:: ONTAP tiers cold Snapshot blocks in the volume that are not shared with the active file system to object storage. If read, cold data blocks on the cloud tier become hot and are moved to the performance tier.
-+
-Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 2 days.
+All user data (All):: All data (not including metadata) is _immediately_ moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier.

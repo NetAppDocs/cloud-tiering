@@ -19,8 +19,6 @@ A 30-day free trial of Cloud Tiering starts when you set up tiering to your firs
 
 link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
 
-We're planning to add Cloud Tiering to the Azure Marketplace as soon Azure supports SaaS pricing.
-
 ==== What happens if my free trial ends and I don't subscribe?
 
 No new data is tiered to object storage, but existing data is still available for access. Also, you can't set up data tiering for any additional clusters.
