@@ -15,8 +15,6 @@ summary: Cloud Tiering offers capacity-based licensing in a pay-as-you-go model.
 [.lead]
 Cloud Tiering offers capacity-based licensing in a pay-as-you-go model. We plan to offer a bring your own license (BYOL) model in the coming months.
 
-NOTE: We're currently charging for data that's tiered to AWS. At this time, there's no charging for data that's tiered to Azure or Google Cloud.
-
 A 30-day free trial of Cloud Tiering starts when you set up tiering to your first cluster. You should subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
 
 link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
