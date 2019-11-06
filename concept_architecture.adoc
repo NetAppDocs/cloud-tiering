@@ -71,4 +71,8 @@ If read by random reads, cold data blocks on the cloud tier become hot and are m
 +
 Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
 
-All user data (All):: All data (not including metadata) is _immediately_ moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier.
+All user data (All):: All data (not including metadata) is _immediately_ moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier. This policy is available starting with ONTAP 9.6.
+
+All DP user data (Backup):: All data on a data protection volume (not including metadata) is immediately moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier (starting with ONTAP 9.4).
++
+NOTE: This policy is available for ONTAP 9.5 or earlier. It was replaced with the *All* tiering policy starting with ONTAP 9.6.

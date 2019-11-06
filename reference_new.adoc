@@ -25,6 +25,15 @@ You can now tier inactive data from your ONTAP clusters to Google Cloud Storage.
 
 link:task_quick_start_google.html[Learn how to get started]
 
+=== Support for additional tiering policies
+
+You can now select the following tiering policies when setting up tiering:
+
+* All user data (All)
+* All DP user data (Backup)
+
+link:concept_architecture.html#volume-tiering-policies[Learn about these tiering policies].
+
 === Tiering policy per volume
 
 You can now choose a different tiering policy for each volume when you set up tiering.
