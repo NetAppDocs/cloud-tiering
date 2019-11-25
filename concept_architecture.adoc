@@ -64,14 +64,29 @@ When you select the volumes that you want to tier, you also choose a _volume tie
 Cold snapshots (Snapshot only):: ONTAP tiers cold Snapshot blocks in the volume that are not shared with the active file system to object storage. If read, cold data blocks on the cloud tier become hot and are moved to the performance tier.
 +
 Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 2 days.
++
+NOTE: Writes from the cloud tier to the performance tier are disabled if performance tier capacity is greater than 70%. If this occurs, blocks are accessed directly from the cloud tier.
 
 Cold user data (Auto):: ONTAP tiers all cold blocks in the volume (not including metadata) to object storage. The cold data includes not just Snapshot copies but also cold user data from the active file system.
 +
 If read by random reads, cold data blocks on the cloud tier become hot and are moved to the performance tier. If read by sequential reads, such as those associated with index and antivirus scans, cold data blocks on the cloud tier stay cold and are not written to the performance tier.
 +
 Data is tiered only after an aggregate has reached 50% capacity and when the data has reached the cooling period, which is approximately 31 days. The cooling period is the time that user data in a volume must remain inactive for the data to be considered "cold" and moved to the object store.
++
+NOTE: Writes from the cloud tier to the performance tier are disabled if performance tier capacity is greater than 70%. If this occurs, blocks are accessed directly from the cloud tier.
 
-All user data (All):: All data (not including metadata) is _immediately_ moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier. This policy is available starting with ONTAP 9.6.
+All user data (All):: All data (not including metadata) is _immediately_ moved to the cloud tier. There is no need to wait 48 hours for new blocks in a volume to become cold. Note that blocks located in the volume prior to the All policy being set require 48 hours to become cold.
++
+If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier. This policy is available starting with ONTAP 9.6.
++
+Take the following into consideration before you choose this tiering policy:
++
+* Tiering data immediately reduces storage efficiencies (inline only).
+* You should use this policy only if you are confident that cold data on the volume will not change.
+* Object storage is not transactional and will result in significant fragmentation if subjected to change.
+* Consider the impact of SnapMirror transfers before assigning the All tiering policy to source volumes in data protection relationships.
++
+Because data is tiered immediately, SnapMirror will read data from the cloud tier rather than the performance tier. This will result in slower SnapMirror operations--possibly slowing other SnapMirror operations later in queue—even if they are using different tiering policies.
 
 All DP user data (Backup):: All data on a data protection volume (not including metadata) is immediately moved to the cloud tier. If read, cold data blocks on the cloud tier stay cold and are not written back to the performance tier (starting with ONTAP 9.4).
 +
