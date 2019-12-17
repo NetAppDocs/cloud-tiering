@@ -26,7 +26,7 @@ Your first step is to deploy a NetApp Service Connector, which discovers informa
 The Service Connector uses this account to send API operations to the ONTAP cluster.
 * A Google account that has the required permissions to deploy the Service Connector virtual machine.
 * The project, region, VPC, and subnet in which the Service Connector will reside.
-* A service account that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^]. 
+* A service account that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^].
 
 If you haven't met these requirements, see link:task_preparing_google.html[Preparing to tier data to Google Cloud Storage].
 
@@ -105,4 +105,6 @@ TIP: You don't need to create the Google Cloud Storage bucket. Cloud Tiering doe
 image:screenshot_volumes_review_google.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
 
 .What's next?
-Add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].
+link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the GCP Marketplace].
+
+You can also add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].

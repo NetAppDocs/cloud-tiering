@@ -34,8 +34,11 @@ With either option, the Service Connector needs an outbound HTTPS connection to 
 [role="quick-margin-para"]
 Log in to https://cloud.netapp.com[NetApp Cloud Central^], start a free trial of the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
 
-[discrete]
-==== image:number3.png[number 3] link:task_registering.html[Subscribe to the Cloud Tiering service]
+==== image:number3.png[number 3] link:task_licensing.html[Set up licensing]
 
 [role="quick-margin-para"]
-Ensure that there's no disruption of service after your free trial ends. Click *Licensing*, click *Subscribe*, and then follow the prompts to subscribe from the AWS Marketplace.
+After your free trial ends, pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both:
+
+[role="quick-margin-list"]
+* To subscribe from the AWS Marketplace, click *Licensing*, click *Subscribe*, and then follow the prompts.
+* To add a tiering license, mailto:ng-cloud-tiering@netapp.com?subject=Licensing[contact us if you need to purchase one], and then add it to your cluster from ONTAP System Manager.
