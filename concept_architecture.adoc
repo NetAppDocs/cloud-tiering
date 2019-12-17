@@ -59,7 +59,9 @@ Cloud Tiering uses the _Standard_ access tier for your inactive data.
 
 == Volume tiering policies
 
-When you select the volumes that you want to tier, you also choose a _volume tiering policy_ to apply to each volume. A tiering policy defines the type of cold data that you want to tier from the volumes.
+When you select the volumes that you want to tier, you also choose a _volume tiering policy_ to apply to each volume. A tiering policy determines when or whether the user data blocks of a volume are moved to the cloud.
+
+No tiering policy:: Keeps the data on a volume in the performance tier, preventing it from being moved to the cloud.
 
 Cold snapshots (Snapshot only):: ONTAP tiers cold Snapshot blocks in the volume that are not shared with the active file system to object storage. If read, cold data blocks on the cloud tier become hot and are moved to the performance tier.
 +
