@@ -31,11 +31,11 @@ You should subscribe even if you have a free trial or if you bring your own lice
 +
 When the trial ends, you’ll be charged hourly according to the amount of data that you tier.
 
-* If you tier more data than allowed by your FabricPool license, then data tiering continues through your PAYGO subscription.
+* If you tier more data than allowed by your FabricPool license, then data tiering continues through your pay-as-you-go subscription.
 +
-For example, if you have a 10 TB license, all capacity beyond the 10 TB is charged through the PAYGO subscription.
+For example, if you have a 10 TB license, all capacity beyond the 10 TB is charged through the pay-as-you-go subscription.
 
-You won't be charged from your PAYGO subscription during your free trial or if you haven't exceeded your FabricPool license.
+You won't be charged from your pay-as-you-go subscription during your free trial or if you haven't exceeded your FabricPool license.
 
 link:task_licensing.html[Learn how to set up a pay-as-you-go subscription].
 
