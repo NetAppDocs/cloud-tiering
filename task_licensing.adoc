@@ -2,7 +2,7 @@
 sidebar: sidebar
 permalink: task_licensing.html
 keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws
-summary: Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both.
+summary: Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both. If you want to pay as you go, then you need to subscribe from the marketplace for the cloud provider to which you want to tier cold data. There's no need to subscribe from every marketplace.
 ---
 
 = Set up licensing for Cloud Tiering
@@ -13,7 +13,7 @@ summary: Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP ti
 :imagesdir: ./media/
 
 [.lead]
-Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both.
+Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both. If you want to pay as you go, then you need to subscribe from the marketplace for the cloud provider to which you want to tier cold data. There's no need to subscribe from every marketplace.
 
 link:concept_licensing.html[Learn how licensing works for Cloud Tiering].
 
