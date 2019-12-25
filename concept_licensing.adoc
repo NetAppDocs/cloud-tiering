@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
 permalink: concept_licensing.html
-keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license, free trial, trial, controlled availability
-summary: Cloud Tiering offers capacity-based licensing in a pay-as-you-go model. We plan to offer a bring your own license (BYOL) model in the coming months.
+keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license, free trial, trial, controlled availability, aws marketplace, gcp marketplace, azure marketplace, aws paygo, azure paygo, gcp paygo
+summary: Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license called FabricPool, or a combination of both. A 30-day free trial is available for your first cluster if you don't have a license.
 ---
 
-= How Cloud Tiering licenses work
+= How licensing works
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,12 +13,40 @@ summary: Cloud Tiering offers capacity-based licensing in a pay-as-you-go model.
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering offers capacity-based licensing in a pay-as-you-go model. We plan to offer a bring your own license (BYOL) model in the coming months.
+Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license called _FabricPool_, or a combination of both. A 30-day free trial is available for your first cluster if you don't have a license.
 
-A 30-day free trial of Cloud Tiering starts when you set up tiering to your first cluster. You should subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+== 30-day free trial
 
-link:task_licensing.html[Learn how to subscribe from the AWS Marketplace].
+If you don't have a FabricPool license, a 30-day free trial of Cloud Tiering starts when you set up tiering to your first cluster. After that 30-day free trial ends, you'll need to pay for Cloud Tiering through a pay-as-you-go subscription, a FabricPool license, or a combination of both.
 
-==== What happens if my free trial ends and I don't subscribe?
+If your free trial ends and you haven't subscribed or added a license, then ONTAP no longer tiers cold data to object storage, but existing data is still available for access.
 
-No new data is tiered to object storage, but existing data is still available for access. Also, you can't set up data tiering for any additional clusters.
+== Pay-as-you-go subscription
+
+Cloud Tiering offers consumption-based licensing in a pay-as-you-go model. After subscribing through your cloud provider's marketplace, you pay per GB for data that's tiered--there’s no up-front payment. You are billed by your cloud provider through your monthly bill.
+
+You should subscribe even if you have a free trial or if you bring your own license (BYOL):
+
+* Subscribing ensures that there’s no disruption of service after your free trial ends.
++
+When the trial ends, you’ll be charged hourly according to the amount of data that you tier.
+
+* If you tier more data than allowed by your FabricPool license, then data tiering continues through your pay-as-you-go subscription.
++
+For example, if you have a 10 TB license, all capacity beyond the 10 TB is charged through the pay-as-you-go subscription.
+
+You won't be charged from your pay-as-you-go subscription during your free trial or if you haven't exceeded your FabricPool license.
+
+link:task_licensing.html[Learn how to set up a pay-as-you-go subscription].
+
+== Bring your own license
+
+You can purchase term-based or perpetual licenses directly from NetApp.
+
+If you bring your own license, you'll need to add the FabricPool license to the cluster through ONTAP System Manager or the CLI. If a license is available on the cluster, then Cloud Tiering displays the license in the *Licensing* page.
+
+TIP: In a future release, you'll be able to add FabricPool licenses to ONTAP directly from Cloud Tiering.
+
+As noted above, we recommend that you set up a pay-as-you-go subscription, even if your cluster has a BYOL license.
+
+mailto:ng-cloud-tiering@netapp.com?subject=Licensing[Contact us to purchase a license].

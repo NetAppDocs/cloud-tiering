@@ -15,6 +15,39 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 22 Dec 2019
+
+This update includes the following new features and enhancements.
+
+=== Changing a volume's tiering policy
+
+You can now change a volume's tiering policy after you set the initial tiering policy. For example, you can easily change from _Cold snapshots_ to _Cold user data_.
+
+link:task_managing_tiering.html#changing-the-tiering-policy-for-a-volume[Learn how to change a volume's tiering policy].
+
+=== Licensing enhancements
+
+* Support for ONTAP FabricPool licenses
++
+Cloud Tiering now supports the FabricPool licenses that you add to an ONTAP cluster. If a license is available on the cluster, then Cloud Tiering displays the license in the *Licensing* page and enables you to tier data to the cloud based on that license.
+
+* Support for pay-as-you-go from the Azure Marketplace
++
+You can now pay-as-you-go when tiering cold data to Azure Blob storage.
+
+* Support for pay-as-you-go from the GCP Marketplace
++
+You can now pay-as-you-go when tiering cold data to Google Cloud storage.
+
+* Support for a combination of PAYGO and BYOL licensing
++
+You can combine a FabricPool license with a pay-as-you-go subscription to pay for data that you tier to the cloud. If your FabricPool license expires or if you tier more data than allowed by the license, then data tiering is never interrupted—​it continues through your PAYGO subscription.
+
+For more details:
+
+* link:concept_licensing.html[Learn how licensing works]
+* link:task_licensing.html[Learn how to set up pay-as-you-go subscriptions and BYOL]
+
 == 3 Nov 2019
 
 This update includes the following new features and enhancements.

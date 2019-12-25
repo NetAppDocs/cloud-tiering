@@ -27,8 +27,6 @@ entries:
           url: /task_installing_service_connector.html
         - title: Set up tiering to AWS S3
           url: /task_tiering.html
-        - title: Subscribe to the service
-          url: task_licensing.html
         - title: Supported storage classes and regions
           url: /reference_aws_support.html
       - title: Tier data to Azure Blob storage
@@ -51,6 +49,8 @@ entries:
           url: /task_tiering_google.html
         - title: Supported storage classes and regions
           url: /reference_google_support.html
+      - title: Set up licensing
+        url: /task_licensing.html
   - title: Manage data tiering
     url: /task_managing_tiering.html
   - title: Get help

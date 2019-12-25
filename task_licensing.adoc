@@ -2,10 +2,10 @@
 sidebar: sidebar
 permalink: task_licensing.html
 keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws
-summary: Subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+summary: Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both. If you want to pay as you go, then you need to subscribe from the marketplace for the cloud provider to which you want to tier cold data. There's no need to subscribe from every marketplace.
 ---
 
-= Subscribing to the Cloud Tiering service from the AWS Marketplace
+= Set up licensing for Cloud Tiering
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,18 +13,72 @@ summary: Subscribe to the Cloud Tiering service to ensure that there's no disrup
 :imagesdir: ./media/
 
 [.lead]
-Subscribe to the Cloud Tiering service to ensure that there's no disruption of service after your free trial ends. When the trial ends, you'll be charged hourly according to the amount of data that you tier.
+Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both. If you want to pay as you go, then you need to subscribe from the marketplace for the cloud provider to which you want to tier cold data. There's no need to subscribe from every marketplace.
 
-If you use NetApp Cloud Manager and you've already https://aws.amazon.com/marketplace/pp/B07QX2QLXX[subscribed through its new AWS Marketplace offering^], then you're automatically subscribed to Cloud Tiering, as well. You'll see an active subscription in Cloud Tiering in the *Licensing* tab. You won't need to subscribe.
+link:concept_licensing.html[Learn how licensing works for Cloud Tiering].
+
+== Subscribing from the AWS Marketplace
+
+Subscribe to Cloud Tiering from the AWS Marketplace to set up a pay-as-you-go subscription for data tiering from ONTAP clusters to AWS S3.
+
+TIP: If you use NetApp Cloud Manager and you've already https://aws.amazon.com/marketplace/pp/B07QX2QLXX[subscribed through its new AWS Marketplace offering^], then you're automatically subscribed to Cloud Tiering, as well. You'll see an active subscription in Cloud Tiering in the *Licensing* tab. You won't need to subscribe.
+
+.Steps
+[[subscribe-aws]]
+. In Cloud Tiering, click *Licensing*.
+
+. Click *Subscribe* under AWS Marketplace and then click *Continue*.
+
+. Subscribe from the AWS Marketplace, and then log back in to Cloud Central to complete the registration.
++
+The following video shows the process:
++
+video::video_subscribing_aws.mp4[width=848, height=480]
+
+== Subscribing from the Azure Marketplace
+
+Subscribe to Cloud Tiering from the Azure Marketplace to set up a pay-as-you-go subscription for data tiering from ONTAP clusters to Azure Blob storage.
+
+.Steps
+[[subscribe-azure]]
+. In Cloud Tiering, click *Licensing*.
+
+. Click *Subscribe* under Azure Marketplace and then click *Continue*.
+
+. Subscribe from the Azure Marketplace, and then log back in to Cloud Central to complete the registration.
++
+The following video shows the process:
++
+video::video_subscribing_azure.mp4[width=848, height=480]
+
+== Subscribing from the GCP Marketplace
+
+Subscribe to Cloud Tiering from the GCP Marketplace to set up a pay-as-you-go subscription for data tiering from ONTAP clusters to Google Cloud storage.
 
 .Steps
 
 . In Cloud Tiering, click *Licensing*.
 
-. Click *Subscribe* and then click *Continue*.
+. Click *Subscribe* under GCP Marketplace and then click *Continue*.
 
-. Subscribe from the AWS Marketplace, and then log back in to the Cloud Tiering service to complete the registration.
+. Subscribe from the GCP Marketplace, and then log back in to Cloud Central to complete the registration.
+//+
+//[[subscribe-gcp]]The following video shows the process:
+//+
+//video::video_subscribing_gcp.mp4[width=848, height=480]
+
+== Adding a tiering license to ONTAP
+
+Bring your own license by purchasing an ONTAP FabricPool license from NetApp. You'll need to add the license to ONTAP from System Manager.
+
+TIP: In a future release, you'll be able to add FabricPool licenses to ONTAP directly from Cloud Tiering.
+
+.Steps
+
+. If you don't have a license, mailto:ng-cloud-tiering@netapp.com?subject=Licensing[contact us to purchase one].
+
+. Use ONTAP System Manager to add the license to your ONTAP cluster.
 +
-[[subscribe]]The following video shows the process:
-+
-video::video_subscribing_aws.mp4[width=848, height=480]
+https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html[ONTAP System Manager docs: Enable new features by adding license keys^]
+
+. In Cloud Tiering, go to the *Licensing* page and verify that the license is available on the cluster.
