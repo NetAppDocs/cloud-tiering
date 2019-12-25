@@ -15,7 +15,7 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
-== 22 Dec 2019
+== 25 Dec 2019
 
 This update includes the following new features and enhancements.
 
