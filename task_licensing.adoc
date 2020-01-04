@@ -62,10 +62,10 @@ Subscribe to Cloud Tiering from the GCP Marketplace to set up a pay-as-you-go su
 . Click *Subscribe* under GCP Marketplace and then click *Continue*.
 
 . Subscribe from the GCP Marketplace, and then log back in to Cloud Central to complete the registration.
-//+
-//[[subscribe-gcp]]The following video shows the process:
-//+
-//video::video_subscribing_gcp.mp4[width=848, height=480]
++
+[[subscribe-gcp]]The following video shows the process:
++
+video::video_subscribing_gcp.mp4[width=848, height=480]
 
 == Adding a tiering license to ONTAP
 
