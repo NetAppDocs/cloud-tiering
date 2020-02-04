@@ -184,11 +184,11 @@ TIP: If the link opens in a new browser tab, right click the page and select *Sa
 +
 *Example*
 +
-`chmod +x OnCommandCloudManager-V3.7.0.sh`
+`chmod +x OnCommandCloudManager-V3.8.0.sh`
 
 . Run the installation script:
 +
- ./OnCommandCloudManager-V3.7.0.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
+ ./OnCommandCloudManager-V3.8.0.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
 +
 _silent_ runs the installation without prompting you for information.
 +
