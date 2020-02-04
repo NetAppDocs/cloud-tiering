@@ -31,6 +31,10 @@ It depends on where you tier the cold data. Refer to the following:
 
 Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setting enables us to identify the amount of inactive data that can be tiered to low-cost object storage.
 
+=== Can I tier data from NAS volumes and SAN volumes?
+
+You can use Cloud Tiering to tier data from NAS volumes. In the next release, you will be able to use Cloud Tiering with volumes that clients access using SAN protocols.
+
 == Object storage
 
 The following questions relate to object storage.
