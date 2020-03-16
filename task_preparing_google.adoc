@@ -48,8 +48,7 @@ IPspaces enable network traffic segregation, allowing for separation of client t
 +
 When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
 
-Supported volumes and aggregates::
-The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
+include::/_include/supported_volumes.adoc[]
 
 == Preparing Google Cloud Storage for data tiering
 
@@ -93,7 +92,7 @@ When you deploy the Service Connector from Cloud Tiering, you need to select a s
 
 .Steps
 
-. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud[Create a role in GCP^] that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^]. 
+. https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud[Create a role in GCP^] that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^].
 +
 You'll need to use the gcloud command line to create the role.
 
