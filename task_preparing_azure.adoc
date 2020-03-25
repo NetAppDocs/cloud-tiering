@@ -48,7 +48,7 @@ IPspaces enable network traffic segregation, allowing for separation of client t
 +
 When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
 
-include::https://raw.githubusercontent.com/NetAppDocs/cloudsync/master/_include/blah.adoc[]
+include::/_include/supported_volumes.adoc[]
 
 == Granting Azure permissions
 
