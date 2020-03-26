@@ -41,7 +41,11 @@ The following questions relate to object storage.
 
 === Which object storage providers are supported?
 
-AWS S3, Azure Blob storage, and Google Cloud Storage are supported. Support for additional object storage providers will be added later.
+AWS S3, Azure Blob storage, and Google Cloud Storage are supported.
+
+=== Can I use my own bucket/container?
+
+Yes, you can. When you set up data tiering, you have the choice to add a new bucket/container or to select an existing bucket/container.
 
 === Which regions are supported?
 
@@ -51,7 +55,7 @@ AWS S3, Azure Blob storage, and Google Cloud Storage are supported. Support for 
 
 === Which S3 storage classes are supported?
 
-Cloud Tiering supports data tiering to _Standard_ or _Standard-Infrequent Access_. See link:reference_aws_support.html[Supported S3 storage classes] for more details.
+Cloud Tiering supports data tiering to the _Standard_, _Standard-Infrequent Access_, _One Zone-IA_, or _Intelligent_ storage class. See link:reference_aws_support.html[Supported S3 storage classes] for more details.
 
 === Which Azure Blob access tiers are supported?
 
@@ -61,17 +65,13 @@ Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. W
 
 Cloud Tiering uses the _Standard_ storage class for inactive data.
 
-=== Does Cloud Tiering create one object store for the entire cluster or one per aggregate?
+=== Does Cloud Tiering use one object store for the entire cluster or one per aggregate?
 
 One object store for the entire cluster.
 
 === Can I apply policies to my object store to move data around independent of tiering?
 
 No, Cloud Tiering does not support object lifecycle management rules that move or delete data from object stores.
-
-=== How does Cloud Tiering name the bucket/container?
-
-When Cloud Tiering creates the bucket/container, the name is prefixed with "fabric-pool."
 
 == NetApp Service Connector
 
