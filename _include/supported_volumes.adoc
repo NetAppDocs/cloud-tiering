@@ -1,4 +1,2 @@
 Supported volumes and aggregates::
 The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That's because volumes can't be tiered from some aggregates. For example, you can't tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for link:http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html[functionality or features not supported by FabricPool^].
-
-NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
