@@ -15,88 +15,90 @@ summary: After you prepare your environment, just log in to Cloud Tiering and st
 [.lead]
 After you prepare your Azure environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
 
-== Discovering your first cluster
-
-Your first step is to deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
-
 .What you'll need
-* The cluster management IP address of your cluster.
-* The user name and password of an ONTAP account that has administrator-level privileges.
+* To discover the cluster, you'll need the following:
+** The cluster management IP address.
+** The user name and password of an ONTAP account that has administrator-level privileges.
 +
 The Service Connector uses this account to send API operations to the ONTAP cluster.
-* An Azure account that has the required permissions to deploy the Service Connector virtual machine.
-* The Azure subscription, region, VNet, and subnet in which the Service Connector will reside.
+* To deploy the Service Connector in Azure, you'll need the following:
+** An Azure account that has the required permissions to deploy the Service Connector virtual machine.
+** The Azure subscription, region, VNet, and subnet in which the Service Connector will reside.
 
 If you haven't met these requirements, see link:task_preparing_azure.html[Preparing to tier data to Azure].
 
 .Steps
 
-. Go to http://cloud.netapp.com[NetApp Cloud Central^].
+. Log in to http://cloud.netapp.com[NetApp Cloud Central^].
 
-. Log in and select the Cloud Tiering service.
+. Select the Cloud Tiering service.
 
 . Click *Let's Start, Discover Your First Cluster*.
 
-. Enter information about your ONTAP cluster:
+. Complete the steps on the *Discover Cluster* page:
+
+.. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-* The cluster management IP address
-* The user name and password of an account that has administrator-level privileges
+image:screenshot_discover_cluster.gif[A screenshot...]
 
-. Click *Add Service Connector* and follow the prompts:
+.. Click *Discover Cluster*.
++
+If you already have an existing Service Connector, then Cloud Tiering automatically attempts to use that Service Connector. Cloud Tiering moves on to the next step, if any existing Service Connector has connectivity to the cluster.
 
-.. Select *Microsoft Azure* as the target location for the Service Connector.
+.. If Cloud Tiering prompts you to create a Service Connector, click *Create your first Service Connector*.
++
+If you have an existing Service Connector and Cloud Tiering can't use it, then you'll need to do one of two things:
++
+* Click *Add Service Connector* to create a new Service Connector.
+* Check the status and connectivity of any existing Service Connectors and then try to discover the cluster again.
 
-.. When prompted, sign in and accept the permissions request from Microsoft.
+.. If you clicked the button to create a Service Connector, follow the prompts to deploy it in Azure:
+
+* *Select Provider*: Select *Microsoft Azure* as the target location for the Service Connector.
++
+When prompted, sign in and accept the permissions request from Microsoft.
 +
 The form is owned and hosted by Microsoft. Your credentials are not provided to NetApp.
 
-.. *Virtual Machine Authentication*: Enter a name for the virtual machine and choose an authentication method.
+* *Virtual Machine Authentication*: Enter a name for the virtual machine and choose an authentication method.
 
-.. *Basic Settings*: Select an Azure subscription, choose a region, and specify a new or existing resource group for the virtual machine.
+* *Basic Settings*: Select an Azure subscription, choose a region, and specify a new or existing resource group for the virtual machine.
 
-.. *Network*: Select a VNet and subnet, choose whether to assign a public IP address, and specify an HTTP proxy, if one is required for outbound connectivity.
+* *Network*: Select a VNet and subnet, choose whether to assign a public IP address, and specify an HTTP proxy, if one is required for outbound connectivity.
 +
 Remember, the Service Connector must have a constant connection to the ONTAP cluster and a constant internet connection to the Cloud Tiering service.
 
-.. *Security Group*: Select *Create a new security group* so Cloud Tiering can create the security group, or select an existing security group.
+* *Security Group*: Select *Create a new security group* so Cloud Tiering can create the security group, or select your own. Then click *Go*.
 +
 The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
-
-. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
 +
-image:screenshot_discover_info_azure.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in Azure.]
+Leave the page open until the deployment is complete.
 
-== Tiering inactive data to Azure Blob storage
+.. Back on the Discover Cluster page, select the Service Connector that you just created.
 
-You're now ready to start tiering inactive data to low-cost object storage.
+. Complete the steps on the *Tiering Setup* page:
 
-.Steps
+.. *Azure Container*: Add a new Blob container or select an existing container and click *Continue*.
 
-. Click *Set up Tiering* and follow the prompts.
+.. *Access Tier*: Select the access tier that you want to use for the tiered data and click *Continue*.
 
-. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
-+
-link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
-+
-image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
-
-. *Cluster Connectivity*: Select the IPspace that ONTAP should use to connect to object storage.
+.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and click *Continue*.
 +
 Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
 +
-If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing_azure.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
+If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
 
-. *Object Storage Provider*: Click *Continue* to choose Azure as your object storage provider.
+. Click *Continue* to select the volumes that you want to tier.
 
-. *Object Storage*: Enter the information needed for your object storage provider and click *Continue*.
-* The region for the Blob container
-* The Blob access tier (only Hot is supported at this time)
+. On the *Tier Volumes* page, choose a tiering policy for each volume and click *Continue*.
 +
-TIP: You don't need to create the Blob container. Cloud Tiering does that for you.
-
-. *Review*: Review your selections and click *Go*.
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
 +
-image:screenshot_volumes_review_azure.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Volumes page.]
+
+.Result
+
+You've successfully set up data tiering from volumes on the cluster to Azure Blob object storage.
 
 .What's next?
 link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the Azure Marketplace].
