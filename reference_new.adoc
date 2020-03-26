@@ -15,6 +15,28 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 1 Apr 2020
+
+We're pleased to announce the following new features and enhancements.
+
+=== Simplified cluster setup
+
+We enhanced how you set up data tiering on a new cluster. The simplified wizard walks you through three steps: discover the cluster, set up the cluster for tiering, and then choose the volumes that you want to tier. The following pages provide more details:
+
+* link:task_tiering.html[Tiering data to AWS S3]
+* link:task_tiering_azure.html[Tiering data to Azure Blob storage]
+* link:task_tiering_google.html[Tiering data to Google Cloud storage]
+
+=== Ability to add or select an existing bucket/container
+
+When you set up data tiering on a cluster, you now have the choice to add a new bucket/container or to select an existing bucket/container. Prior to this change, Cloud Tiering automatically created it for you.
+
+=== Support for additional S3 storage classes
+
+Cloud Tiering now supports two additional S3 storage classes: _Zone-IA_ and _Intelligent_.
+
+When you set up data tiering, Cloud Tiering can apply a lifecycle rule so the tiered data transitions from the _Standard_ storage class to another storage class after 30 days. link:reference_aws_support.html[Learn more].
+
 == 25 Dec 2019
 
 This update includes the following new features and enhancements.
