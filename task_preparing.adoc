@@ -50,37 +50,13 @@ When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. 
 
 include::/_include/supported_volumes.adoc[]
 
-== Preparing AWS S3 for data tiering
-
-The AWS account to which you tier inactive data must have permissions and an access key that the ONTAP cluster can use to tier data in and out of S3.
-
-Most AWS regions are supported. link:reference_aws_support.html[Click here to see the list of supported regions].
-
-TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
-
-.Steps
-
-. Provide the following permissions to the IAM user:
-+
-[source,json]
-"s3:ListAllMyBuckets",
-"s3:ListBucket",
-"s3:GetBucketLocation",
-"s3:GetObject",
-"s3:PutObject",
-"s3:DeleteObject"
-+
-https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]
-
-. Create or locate an access key.
-+
-Cloud Tiering passes the access key on to the ONTAP cluster. The credentials are not stored in the Cloud Tiering service.
-+
-https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[AWS Documentation: Managing Access Keys for IAM Users^]
+NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
 
 == Choosing a location for the Service Connector
 
 The Service Connector is NetApp software that communicates with your ONTAP clusters. You can deploy the Service Connector on your premises or in an AWS VPC.
+
+Be sure to set up the Service Connector in the same AWS account to which you want to tier data.
 
 * link:task_installing_service_connector.html[Installing the Service Connector on prem]
 * <<Preparing to deploy the Service Connector in an AWS VPC>>
@@ -89,18 +65,9 @@ The Service Connector is NetApp software that communicates with your ONTAP clust
 
 Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.
 
-Most AWS regions are supported. link:reference_aws_support.html#supported-aws-regions[Click here to see the list of supported regions].
-
-.Steps
-
-. <<Setting up an AWS account for the Service Connector,Set up an AWS account>>.
-. <<Setting up AWS networking for the Service Connector,Set up AWS networking>>.
-
 === Setting up an AWS account for the Service Connector
 
-The AWS account where you deploy the EC2 instance must have permissions and an access key.
-
-TIP: This account can be the same account that you use for the S3 bucket, or a different account. If it's the same account, just use one set of credentials that contain the full set of permissions required for the S3 bucket and the EC2 instance.
+The AWS account where you deploy the EC2 instance must have permissions and an access key. Cloud Tiering tiers data to an S3 bucket that resides in the same AWS account as the Service Connector.
 
 .Steps
 
@@ -133,3 +100,29 @@ You don't need to create your own security group because Cloud Tiering can do th
 . If needed, enable a VPC Endpoint to S3.
 +
 A VPC Endpoint to S3 is recommended if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Service Connector and S3 to stay in your AWS internal network.
+
+== Preparing AWS S3 for data tiering
+
+When you set up data tiering to a new cluster, Cloud Tiering prompts you to create an S3 bucket or select an existing S3 bucket in the AWS account where you set up the Service Connector.
+
+The AWS account must have permissions and an access key that you can enter in Cloud Tiering. The ONTAP cluster uses the access key to tier data in and out of S3.
+
+.Steps
+
+. Provide the following permissions to the IAM user:
++
+[source,json]
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetBucketLocation",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject"
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html[AWS Documentation: Creating a Role to Delegate Permissions to an IAM User^]
+
+. Create or locate an access key.
++
+Cloud Tiering passes the access key on to the ONTAP cluster. The credentials are not stored in the Cloud Tiering service.
++
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html[AWS Documentation: Managing Access Keys for IAM Users^]
