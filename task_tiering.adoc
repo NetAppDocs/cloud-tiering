@@ -40,7 +40,7 @@ If you haven't met these requirements, see link:task_preparing.html[Preparing yo
 
 .. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-image:screenshot_discover_cluster.gif[A screenshot...]
+image:screenshot_discover_cluster.gif[A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password.]
 
 .. Click *Discover Cluster*.
 +
@@ -57,7 +57,7 @@ If you have an existing Service Connector and Cloud Tiering can't use it, then y
 +
 * *Select Provider*: Select *Amazon Web Services* as the target location for the Service Connector.
 
-* *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
+* *AWS Credentials*: Enter the AWS access key ID and secret key for an IAM user that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
 
 * *Location*: Select the AWS region, VPC, and subnet for the Service Connector EC2 instance.
 +
@@ -85,7 +85,9 @@ For example, you could name the S3 bucket fabric-pool-AFF1, where AFF1 is the na
 +
 If you choose Standard, then the data remains in that storage class.
 
-.. *Credentials*: Enter the access key ID and secret key for the account that...
+.. *Credentials*: Enter the access key ID and secret key for an IAM user who has link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required S3 permissions].
++
+The IAM user must be in the same AWS account as the bucket that you selected or created on the *S3 Bucket* page.
 
 .. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and click *Continue*.
 +

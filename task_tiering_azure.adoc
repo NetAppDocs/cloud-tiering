@@ -39,7 +39,7 @@ If you haven't met these requirements, see link:task_preparing_azure.html[Prepar
 
 .. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-image:screenshot_discover_cluster.gif[A screenshot...]
+image:screenshot_discover_cluster.gif[A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password.]
 
 .. Click *Discover Cluster*.
 +

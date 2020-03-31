@@ -41,7 +41,7 @@ If you haven't met these requirements, see link:task_preparing_google.html[Prepa
 
 .. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-image:screenshot_discover_cluster.gif[A screenshot...]
+image:screenshot_discover_cluster.gif[A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password.]
 
 .. Click *Discover Cluster*.
 +
@@ -60,7 +60,7 @@ If you have an existing Service Connector and Cloud Tiering can't use it, then y
 +
 When prompted, sign in and accept the permissions request from Google. The form is owned and hosted by Google. Your credentials are not provided to NetApp.
 
-* *Basic Settings*: Enter a name for the virtual machine and then select a project and service account.
+* *Basic Settings*: Enter a name for the virtual machine, select a project, and then select a service account that includes the permissions defined in the link:media/Policy_for_Service_Connector.yaml[Service Connector policy for GCP^].
 
 * *Location*: Specify networking for the virtual machine--a region, zone, VPC, and subnet, and then choose whether you want to assign a public IP address and specify an HTTP proxy for outbound connectivity.
 +
@@ -80,7 +80,7 @@ Leave the page open until the deployment is complete.
 
 .. *Storage Class*: Select the storage class that you want to use for the tiered data and click *Continue*.
 
-.. *Credentials*: Enter the storage access key and secret key for a service account.
+.. *Credentials*: Enter the storage access key and secret key for a service account that has the Storage Admin role.
 
 .. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and click *Continue*.
 +
