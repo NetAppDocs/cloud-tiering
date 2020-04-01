@@ -15,91 +15,97 @@ summary: After you prepare your environment, just log in to Cloud Tiering and st
 [.lead]
 After you prepare your AWS environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
 
-== Discovering your first cluster
-
-Your first step is to select or deploy a NetApp Service Connector, which discovers information about the active and inactive data on your ONTAP cluster.
-
 .What you'll need
-* The cluster management IP address of your cluster.
-* The user name and password of an ONTAP account that has administrator-level privileges.
+* To discover the cluster, you'll need the following:
+** The cluster management IP address.
+** The user name and password of an ONTAP account that has administrator-level privileges.
 +
 The Service Connector uses this account to send API operations to the ONTAP cluster.
 * To deploy the Service Connector in AWS, you'll need the following:
 ** The AWS region, VPC, and subnet in which the Service Connector will reside.
-** An AWS account that has the required permissions and an access key.
+** An AWS access key for an IAM user who has the required permissions.
+* To set up tiering to S3, you'll need an AWS access key for an IAM user who has the required S3 permissions.
 
 If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
 
 .Steps
 
-. Go to http://cloud.netapp.com[NetApp Cloud Central^].
+. Log in to http://cloud.netapp.com[NetApp Cloud Central^].
 
-. Log in and select the Cloud Tiering service.
+. Select the Cloud Tiering service.
 
 . Click *Let's Start, Discover Your First Cluster*.
 
-. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
+. Complete the steps on the *Discover Cluster* page:
 
-. For the Service Connector, choose one of the following options:
-* Select the link:task_installing_service_connector.html[on-premises Service Connector that you previously deployed] and click *Continue*.
-* Click *Add Service Connector* and follow the prompts to deploy a Service Connector in AWS:
+.. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-.. *Select Provider*: Select *Amazon Web Services* as the target location for the Service Connector.
+image:screenshot_discover_cluster.gif[A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password.]
 
-.. *AWS Credentials*: Enter the AWS access key ID and secret key for an account that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
+.. Click *Discover Cluster*.
++
+If you already have an existing Service Connector, then Cloud Tiering automatically attempts to use that Service Connector. Cloud Tiering moves on to the next step, if any existing Service Connector has connectivity to the cluster.
 
-.. *Location*: Select the AWS region, VPC, and subnet for the Service Connector EC2 instance.
+.. If Cloud Tiering prompts you to create a Service Connector, click *Create your first Service Connector*.
++
+If you have an existing Service Connector and Cloud Tiering can't use it, then you'll need to do one of two things:
++
+* Click *Add Service Connector* to create a new Service Connector.
+* Check the status and connectivity of any existing Service Connectors and then try to discover the cluster again.
+
+.. If you clicked the button to create a Service Connector, follow the prompts to deploy it in AWS:
++
+* *Select Provider*: Select *Amazon Web Services* as the target location for the Service Connector.
+
+* *AWS Credentials*: Enter the AWS access key ID and secret key for an IAM user that has https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json[the required permissions^] to deploy the Service Connector.
+
+* *Location*: Select the AWS region, VPC, and subnet for the Service Connector EC2 instance.
 +
 Remember, the Service Connector must have a constant connection to the ONTAP cluster and a constant internet connection to the Cloud Tiering service.
 
-.. *Network*: Select a key pair to use for the EC2 instance, choose whether to assign a public IP, and specify an HTTP proxy, if one is required for outbound connectivity.
+* *Network*: Select a key pair to use for the EC2 instance, choose whether to assign a public IP, and specify an HTTP proxy, if one is required for outbound connectivity.
 
-.. *Security Group*: Select *Create a new security group* so Cloud Tiering can create the security group, or select your own.
+* *Security Group*: Select *Create a new security group* so Cloud Tiering can create the security group, or select your own. Then click *Go*.
 +
 The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.
-
-.. Back on the Discover ONTAP Cluster page, select the Service Connector that you just created and click *Continue*.
 +
-image:screenshot_discover_info.gif[A screenshot that shows details of an ONTAP cluster and a selected Service Connector running in AWS.]
+Leave the page open until the deployment is complete.
 
-== Tiering inactive data to AWS S3
+.. Back on the Discover Cluster page, select the Service Connector that you just created.
 
-You're now ready to start tiering inactive data to low-cost object storage.
+. Complete the steps on the *Tiering Setup* page:
 
-.What you'll need
-* An AWS access key for the account in which you want the S3 bucket to reside
-* The right permissions for that account so the ONTAP cluster can tier data in and out of S3
-
-If you haven't met these requirements, see link:task_preparing.html[Preparing your environment].
-
-.Steps
-
-. Click *Set up Tiering* and follow the prompts.
-
-. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
+.. *S3 Bucket*: Add a new S3 bucket or select an existing S3 bucket that starts with the prefix _fabric-pool_ and click *Continue*.
 +
-link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+The _fabric-pool_ prefix is required because the IAM policy for the Service Connector enables the instance to perform S3 actions on buckets named with that exact prefix.
 +
-image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+For example, you could name the S3 bucket fabric-pool-AFF1, where AFF1 is the name of the cluster.
 
-. *Cluster Connectivity*: Select the IPspace that ONTAP should use to connect to object storage.
+.. *Storage Class*: Select the S3 storage class that you want to transition the data to after 30 days and click *Continue*.
++
+If you choose Standard, then the data remains in that storage class.
+
+.. *Credentials*: Enter the access key ID and secret key for an IAM user who has link:task_preparing.html#preparing-aws-s3-for-data-tiering[the required S3 permissions].
++
+The IAM user must be in the same AWS account as the bucket that you selected or created on the *S3 Bucket* page.
+
+.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and click *Continue*.
 +
 Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
 +
 If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
 
-. *Object Storage Provider*: Click *Continue* to choose AWS as your object storage provider.
+. Click *Continue* to select the volumes that you want to tier.
 
-. *Object Storage*: Enter the information needed for your object storage provider.
-* The access key ID and secret key for the account
-* The region for the S3 bucket
-* The S3 storage class that you want to use
+. On the *Tier Volumes* page, choose a tiering policy for each volume and click *Continue*.
 +
-TIP: You don't need to create the S3 bucket. Cloud Tiering does that for you.
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
++
+image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Volumes page.]
 
-. *Review*: Review your selections and click *Go*.
-+
-image:screenshot_volumes_review.gif[A screenshot that shows the Review and Approve page, which summarizes the cluster selected, the number of volumes to tier, the object store.]
+.Result
+
+You've successfully set up data tiering from volumes on the cluster to S3 object storage.
 
 .What's next?
 link:task_licensing.html[Be sure to subscribe to the Cloud Tiering service from the AWS Marketplace].

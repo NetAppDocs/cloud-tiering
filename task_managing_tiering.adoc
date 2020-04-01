@@ -27,11 +27,18 @@ image:screenshot_discover_icon.gif[A screenshot that shows the icon for discover
 
 . Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 
-. Select an existing Service Connector that has a connection to the cluster, or create a new one and click *Continue*.
+. Click *Discover Cluster*.
++
+If you already have an existing Service Connector, then Cloud Tiering automatically attempts to use that Service Connector.
+
+. If you have an existing Service Connector and Cloud Tiering can't use it, then you'll need to do one of two things:
++
+* Click *Add Service Connector* to create a new Service Connector.
+* Check the status and connectivity of any existing Service Connectors and then try to discover the cluster again.
 
 .What's next?
 
-Click *Set up Tiering* to start tiering inactive data from the cluster.
+Click *Tier Volumes* to start tiering inactive data from the cluster.
 
 image:screenshot_setup_tiering.gif[A screenshot that shows the Set up Tiering button on the Cluster Dashboard.]
 
@@ -41,41 +48,35 @@ Set up data tiering for additional volumes at any time--for example, after creat
 
 .Steps
 
-. From the Cluster Dashboard, click *Set up Tiering*.
+. From the *Cluster Dashboard*, click *Tier Volumes*.
 
-. *Source Volumes*: Select the volumes that you want to tier and choose a tiering policy for each volume.
+. Choose a tiering policy for each volume and click *Continue*.
 +
 link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
 +
 image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
-
-. *Review*: Review your selections and click *Go*.
 +
 TIP: You don't need to configure the object storage because it was already configured when you initially set up tiering for the cluster. ONTAP will tier inactive data from these volumes to the same object store.
 
-== Changing the tiering policy for a volume
+== Changing a volume's tiering policy
 
 Changing the tiering policy for a volume changes how ONTAP tiers cold data to object storage. The change starts from the moment that you change the policy--it changes only the subsequent tiering behavior for the volume.
 
 .Steps
 
-. From the *Cluster Dashboard*, click *Set up Tiering* for the cluster.
+. From the *Cluster Dashboard*, click *Tier Volumes* for the cluster.
 
-. *Source Volumes*: Choose a different tiering policy for one or more volumes.
+. Choose a tiering policy for each volume and click *Continue*.
 +
-image:screenshot_change_tiering_policy.gif[A screenshot of the Source Volumes screen where two volumes are selected and "Cold user data" is the tiering policy.]
+link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
 
-. *Review*: Review your selections and click *Go*.
-+
-image:screenshot_change_tiering_policy_review.gif[A screenshot of the Review & Approve page which shows a summary of changes to two volumes.]
-
-== Reviewing data tiering info for a cluster
+== Reviewing tiering info for a cluster
 
 You might want to see how much data is in the cloud tier and how much data is on disks. Or, you might want to see the amount of hot and cold data on the cluster's disks. Cloud Tiering provides this information for each cluster.
 
 .Steps
 
-. From the Cluster Dashboard, click *More info* for a cluster.
+. From the *Cluster Dashboard*, click *More info* for a cluster.
 +
 image:screenshot_more_info.gif[A screenshot that shows the More info button, which is available on the Cluster Dashboard for each cluster.]
 

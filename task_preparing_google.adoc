@@ -50,23 +50,23 @@ When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. 
 
 include::/_include/supported_volumes.adoc[]
 
-== Preparing Google Cloud Storage for data tiering
+NOTE: Cloud Tiering supports FlexGroup volumes. Setup works the same as any other volume.
 
-When you set up tiering, you need to provide Cloud Tiering with storage access keys for a service account that has Storage Admin permissions. A service account enables Cloud Tiering to authenticate and access Cloud Storage buckets used for data tiering. The keys are required so that Google Cloud Storage knows who is making the request.
+== Preparing to deploy the Service Connector in GCP
+
+The Service Connector is NetApp software that communicates with your ONTAP clusters. Cloud Tiering guides you through the process of deploying the Service Connector on a GCP virtual machine instance.
+
+A few steps are required before you can deploy the Service Connector in GCP. You'll need to provide the required permissions, set up a service account, and set up your networking.
+
+It's important to note that Cloud Tiering tiers data to a Google Cloud bucket that resides in the same project as the Service Connector. So be sure to complete these steps in the project where both the Service Connector and bucket should reside.
 
 .Steps
 
-. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account[Create a service account that has the predefined Storage Admin role^].
+. <<Setting up GCP permissions,Set up GCP permissions>>.
+. <<Setting up a service account,Set up a service account>>.
+. <<Setting up GCP networking,Set up networking>>.
 
-. Go to https://console.cloud.google.com/storage/settings[GCP Storage Settings^] and create access keys for the service account:
-
-.. Select a project, and click *Interoperability*. If you haven’t already done so, click *Enable interoperability access*.
-
-.. Under *Access keys for service accounts*, click *Create a key for a service account*, select the service account that you just created, and click *Create Key*.
-+
-You'll need to link:task_tiering_google.html#tiering-inactive-data-to-a-google-cloud-storage-bucket[enter the keys in Cloud Tiering] later when you set up tiering.
-
-== Setting up GCP permissions to deploy the Service Connector
+=== Setting up GCP permissions
 
 Ensure that your GCP user has the required permissions to deploy the NetApp Service Connector in a Google Cloud Platform VPC. You also need to enable a few APIs in the project.
 
@@ -86,7 +86,7 @@ https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-
 
 The GCP user now has the permissions required to deploy the Service Connector in GCP from Cloud Tiering.
 
-== Setting up a service account for the Service Connector instance
+=== Setting up a service account
 
 When you deploy the Service Connector from Cloud Tiering, you need to select a service account to associate with the VM instance. This service account needs specific permissions to enable management of tiering.
 
@@ -98,9 +98,9 @@ You'll need to use the gcloud command line to create the role.
 
 . https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account[Create a GCP service account and apply the custom role that you just created^].
 
-== Setting up GCP networking for the Service Connector
+=== Setting up GCP networking
 
-Cloud Tiering guides you through the process of deploying the Service Connector on a GCP virtual machine instance. Make sure that the VPC provides the required networking connections.
+Cloud Tiering prompts you for the VPC where the Service Connector should be deployed. Make sure that the VPC provides the required networking connections.
 
 .Steps
 
@@ -117,3 +117,19 @@ You don't need to create your own firewall rules for the instance because Cloud 
 . Optional: Enable Private Google Access on the subnet where you plan to deploy the Service Connector.
 +
 https://cloud.google.com/vpc/docs/configure-private-google-access[Private Google Access^] is recommended if you have a direct connection from your ONTAP cluster to the VPC and you want communication between the Service Connector and Google Cloud Storage to stay in your virtual private network. Note that Private Google Access works with VM instances that have only internal (private) IP addresses (no external IP addresses).
+
+== Preparing Google Cloud Storage for data tiering
+
+When you set up tiering, you need to provide Cloud Tiering with storage access keys for a service account that has Storage Admin permissions. A service account enables Cloud Tiering to authenticate and access Cloud Storage buckets used for data tiering. The keys are required so that Google Cloud Storage knows who is making the request.
+
+.Steps
+
+. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account[Create a service account that has the predefined Storage Admin role^].
+
+. Go to https://console.cloud.google.com/storage/settings[GCP Storage Settings^] and create access keys for the service account:
+
+.. Select a project, and click *Interoperability*. If you haven’t already done so, click *Enable interoperability access*.
+
+.. Under *Access keys for service accounts*, click *Create a key for a service account*, select the service account that you just created, and click *Create Key*.
++
+You'll need to link:task_tiering_google.html#tiering-inactive-data-to-a-google-cloud-storage-bucket[enter the keys in Cloud Tiering] later when you set up tiering.

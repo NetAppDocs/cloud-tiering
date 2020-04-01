@@ -29,9 +29,15 @@ Supported operating systems::
 * CentOS 7.2
 * CentOS 7.3
 * CentOS 7.4
+* CentOS 7.5
+* CentOS 7.6
+* CentOS 7.7
 * Red Hat Enterprise Linux 7.2
 * Red Hat Enterprise Linux 7.3
 * Red Hat Enterprise Linux 7.4
+* Red Hat Enterprise Linux 7.5
+* Red Hat Enterprise Linux 7.6
+* Red Hat Enterprise Linux 7.7
 +
 The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during installation.
 +
@@ -44,7 +50,7 @@ CPU:: 2.27 GHz or higher with two cores
 
 RAM:: 4 GB
 
-Free disk space:: 50 GB
+Free disk space in /opt:: 100 GB
 
 Ports::
 The following ports must be available:
@@ -84,6 +90,8 @@ The installer accesses these URLs during the installation process.
 == Providing permissions to an AWS account
 
 After you install the Service Connector, you need to provide access keys for an AWS account. That account needs specific permissions so the Service Connector can set up data tiering to AWS S3 on your behalf.
+
+Cloud Tiering tiers data to an S3 bucket that resides in this AWS account.
 
 .Steps
 
@@ -235,6 +243,8 @@ Add an AWS account to Cloud Manager that has the required permissions.
 == Adding the AWS account to Cloud Manager
 
 After you provide an AWS account with the required permissions, you need to add AWS access keys to Cloud Manager. This enables the Service Connector to set up data tiering to AWS S3 on your behalf.
+
+Cloud Tiering tiers data to an S3 bucket that resides in this AWS account.
 
 .Steps
 

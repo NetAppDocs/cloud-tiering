@@ -45,8 +45,6 @@ You can purchase term-based or perpetual licenses directly from NetApp.
 
 If you bring your own license, you'll need to add the FabricPool license to the cluster through ONTAP System Manager or the CLI. If a license is available on the cluster, then Cloud Tiering displays the license in the *Licensing* page.
 
-TIP: In a future release, you'll be able to add FabricPool licenses to ONTAP directly from Cloud Tiering.
-
 As noted above, we recommend that you set up a pay-as-you-go subscription, even if your cluster has a BYOL license.
 
 mailto:ng-cloud-tiering@netapp.com?subject=Licensing[Contact us to purchase a license].

@@ -50,9 +50,24 @@ When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. 
 
 include::/_include/supported_volumes.adoc[]
 
-== Granting Azure permissions
+NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
 
-Ensure that your Azure account has the required permissions to deploy the NetApp Service Connector in an Azure VNet. The Service Connector is NetApp software that communicates with your ONTAP clusters.
+== Preparing to deploy the Service Connector in Azure
+
+The Service Connector is NetApp software that communicates with your ONTAP clusters. Cloud Tiering guides you through the process of deploying the Service Connector on an Azure virtual machine.
+
+A few steps are required before you can deploy the Service Connector in Azure. You'll need to provide the required permissions and set up your networking.
+
+It's important to note that Cloud Tiering tiers data to a Blob container that resides in the same Azure subscription as the Service Connector. So be sure to complete these steps in the Azure subscription where both the Service Connector and Blob container should reside.
+
+.Steps
+
+. <<Granting Azure permissions,Grant Azure permissions>>.
+. <<Setting up Azure networking,Set up networking>>.
+
+=== Granting Azure permissions
+
+Ensure that your Azure account has the required permissions to deploy the NetApp Service Connector in an Azure VNet.
 
 TIP: During deployment, Cloud Tiering creates and assigns a role to the Service Connector that provides the required permissions so ONTAP can tier inactive data to Azure Blob storage.
 
@@ -101,9 +116,9 @@ NOTE: Azure SetupAsService is the default name provided in the https://mysupport
 
 The Azure user now has the permissions required to deploy the Service Connector.
 
-== Setting up Azure networking for the Service Connector
+=== Setting up Azure networking
 
-Cloud Tiering guides you through the process of deploying the Service Connector on an Azure virtual machine. Make sure that the Azure VNet provides the required networking connections.
+Cloud Tiering prompts you for the Azure VNet where the Service Connector should be deployed. Make sure that the VNet provides the required networking connections.
 
 .Steps
 

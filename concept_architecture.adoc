@@ -23,16 +23,14 @@ image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tieri
 
 At a high level, Cloud Tiering works like this:
 
-. You deploy a NetApp Service Connector.
+. You provide Cloud Tiering with details about your cluster and deploy a NetApp Service Connector.
 +
 * When tiering to S3, the Service Connector can be in an AWS VPC or on your premises.
 * When tiering to Blob storage, the Service Connector must be in an Azure VNet.
 * When tiering to Google Cloud Storage, the Service Connector must reside in a Google Cloud Platform VPC.
-. The Service Connector communicates with ONTAP clusters to discover the amount of active and inactive data on the cluster.
+. You provide details about your object storage, including the bucket/container and a storage class or access tier.
+. The Service Connector configures ONTAP to use the object storage provider and discovers the amount of active and inactive data on the cluster.
 . You choose the volumes to tier and the tiering policy to apply to those volumes.
-. You choose the object storage provider that you want to use.
-. The Service Connector configures ONTAP to use that object storage provider.
-. The Service Connector configures data tiering on each volume that you selected.
 . ONTAP starts tiering inactive data to the object store, as soon as the data has reached the thresholds to be considered inactive (see <<Volume tiering policies>>).
 
 == NetApp Service Connector
@@ -41,21 +39,11 @@ The Service Connector is software that communicates with ONTAP clusters to disco
 
 == Object storage
 
-Each ONTAP cluster tiers inactive data to a single object store that Cloud Tiering creates for you. Cloud Tiering prompts you to choose a cloud storage provider when you set up tiering for each cluster.
+Each ONTAP cluster tiers inactive data to a single object store. When you set up data tiering, you have the choice to add a new bucket/container or to select an existing bucket/container, along with a storage class or access tier.
 
-=== S3 storage classes
-
-When you set up data tiering to AWS, you can choose the _S3 Standard_ storage class or the _Standard-Infrequent Access_ storage class. If you choose Standard-Infrequent, inactive data starts in the Standard storage class and transitions to Standard-Infrequent Access, if the data is not accessed after 30 days.
-
-https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
-
-=== Azure Blob access tiers
-
-When you set up data tiering to Azure, Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
-
-=== Google Cloud storage classes
-
-Cloud Tiering uses the _Standard_ access tier for your inactive data.
+* link:reference_aws_support.html[Learn about supported S3 storage classes]
+* link:reference_azure_support.html[Learn about supported Azure Blob access tiers]
+* link:reference_google_support.html[Learn about supported Google Cloud storage classes]
 
 == Volume tiering policies
 
