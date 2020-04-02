@@ -48,5 +48,5 @@ For step-by-step instructions, see link:task_tiering_google.html[Tiering inactiv
 After your free trial ends, pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering license, or a combination of both:
 
 [role="quick-margin-list"]
-* To subscribe from the Azure Marketplace, click *Licensing*, click *Subscribe*, and then follow the prompts.
+* To subscribe from the GCP Marketplace, click *Licensing*, click *Subscribe*, and then follow the prompts.
 * To add a tiering license, mailto:ng-cloud-tiering@netapp.com?subject=Licensing[contact us if you need to purchase one], and then add it to your cluster from ONTAP System Manager.
