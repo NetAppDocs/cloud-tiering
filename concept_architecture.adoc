@@ -19,7 +19,7 @@ Cloud Tiering is a NetApp-managed service that uses FabricPool technology to aut
 
 The following image shows the relationship between each component:
 
-image:diagram_cloud_tiering.png[An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides in the ONTAP cluster, while inactive data resides in object storage.]
+image:diagram_cloud_tiering.png["An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides in the ONTAP cluster, while inactive data resides in object storage."]
 
 At a high level, Cloud Tiering works like this:
 
