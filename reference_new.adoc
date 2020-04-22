@@ -93,7 +93,7 @@ link:concept_architecture.html#volume-tiering-policies[Learn about these tiering
 
 You can now choose a different tiering policy for each volume when you set up tiering.
 
-image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Select Source Volumes page."]
 
 == 8 Sept 2019
 
@@ -103,7 +103,7 @@ This Cloud Tiering update includes the following new features and enhancements.
 
 Cloud Tiering now shows the status of tiering setup for each cluster. For example, the status might indicate that Cloud Tiering is setting up the object store, or that it successfully set up 145 volumes for data tiering. The status also identifies if any failures occurred during setup.
 
-image:screenshot_tiering_setup_status.gif[A screenshot that shows the Tiering setup status for a cluster. In this example, 2 volumes were successfully setup for tiering.]
+image:screenshot_tiering_setup_status.gif["A screenshot that shows the Tiering setup status for a cluster. In this example, 2 volumes were successfully setup for tiering."]
 
 === Integration with Cloud Manager AWS subscriptions
 
@@ -128,7 +128,7 @@ If you discovered ONTAP clusters through NetApp Cloud Manager, the clusters are 
 
 If Cloud Tiering finds a connectivity problem with the object storage bucket, the tiering health indicator in the dashboard provides details about the problem.
 
-image:screenshot_tiering_health.gif[A screenshot that shows a tiering failure on the dashboard.]
+image:screenshot_tiering_health.gif["A screenshot that shows a tiering failure on the dashboard."]
 
 == 4 July 2019
 
@@ -169,7 +169,7 @@ You can now tier inactive data from your ONTAP clusters to Azure Blob storage.
 
 When you set up tiering for an ONTAP cluster, you now need to select the IPspace that ONTAP should use to connect to object storage. Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
 
-image:screenshot_ipspace.gif[A screenshot that that shows the Cluster Connectivity page that is available when setting up tiering on a new cluster. The page enables you to choose an IPspace on the ONTAP cluster.]
+image:screenshot_ipspace.gif["A screenshot that that shows the Cluster Connectivity page that is available when setting up tiering on a new cluster. The page enables you to choose an IPspace on the ONTAP cluster."]
 
 To understand the requirements for the IPspace and the associated intercluster LIFs, refer to ONTAP cluster requirements:
 
@@ -209,6 +209,6 @@ The option is available after you click *Set up Tiering*.
 
 When you set up data tiering on a cluster for the first time, you can now choose to tier cold data to the S3 _Standard_ storage class or to the _Standard-Infrequent Access_ storage class. https://aws.amazon.com/s3/storage-classes/[Learn about these S3 storage classes^].
 
-image:screenshot_storage_class.gif[A screenshot that shows the Storage Class drop-down option that is available when you set up data tiering on a cluster.]
+image:screenshot_storage_class.gif["A screenshot that shows the Storage Class drop-down option that is available when you set up data tiering on a cluster."]
 
 link:task_tiering.html[Learn how to set up data tiering on a cluster].

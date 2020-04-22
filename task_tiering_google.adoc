@@ -41,7 +41,7 @@ If you haven't met these requirements, see link:task_preparing_google.html[Prepa
 
 .. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
 +
-image:screenshot_discover_cluster.gif[A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password.]
+image:screenshot_discover_cluster.gif["A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password."]
 
 .. Click *Discover Cluster*.
 +
@@ -94,7 +94,7 @@ If you haven't reviewed requirements for the IPspace and the associated interclu
 +
 link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
 +
-image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Volumes page.]
+image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Select Volumes page."]
 
 .Result
 
