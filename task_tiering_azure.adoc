@@ -90,11 +90,13 @@ If you haven't reviewed requirements for the IPspace and the associated interclu
 
 . Click *Continue* to select the volumes that you want to tier.
 
-. On the *Tier Volumes* page, choose a tiering policy for each volume and click *Continue*.
+. For each volume, click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for tiering volumes] icon, select a tiering policy, optionally adjust the cooling days, and click *Apply*.
 +
-link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+link:concept_architecture.html#volume-tiering-policies[Learn about volume tiering policies and cooling days].
 +
-image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Select Volumes page."]
+image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Tier Volumes page."]
+
+. When you're done, click *Close*.
 
 .Result
 
