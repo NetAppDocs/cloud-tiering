@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar
 permalink: task_managing_tiering.html
-keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed
+keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed, cooling period, cooling days
 summary: Now that you've discovered and tiered data from your first ONTAP cluster, you can tier data from additional volumes, discover additional clusters, and more.
 ---
 
@@ -50,15 +50,17 @@ Set up data tiering for additional volumes at any time--for example, after creat
 
 . From the *Cluster Dashboard*, click *Tier Volumes*.
 
-. Choose a tiering policy for each volume and click *Continue*.
+. For each volume, click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for tiering volumes] icon, select a tiering policy, optionally adjust the cooling days, and click *Apply*.
 +
-link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+link:concept_architecture.html#volume-tiering-policies[Learn about volume tiering policies and cooling days].
 +
-image:screenshot_volumes_select.gif[A screenshot that shows volumes selected in the Select Source Volumes page.]
+image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Tier Volumes page."]
 +
 TIP: You don't need to configure the object storage because it was already configured when you initially set up tiering for the cluster. ONTAP will tier inactive data from these volumes to the same object store.
 
-== Changing a volume's tiering policy
+. When you're done, click *Close*.
+
+== Changing a volume's tiering policy and cooling period
 
 Changing the tiering policy for a volume changes how ONTAP tiers cold data to object storage. The change starts from the moment that you change the policy--it changes only the subsequent tiering behavior for the volume.
 
@@ -66,9 +68,9 @@ Changing the tiering policy for a volume changes how ONTAP tiers cold data to ob
 
 . From the *Cluster Dashboard*, click *Tier Volumes* for the cluster.
 
-. Choose a tiering policy for each volume and click *Continue*.
+. Click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for tiering volumes] icon, select a tiering policy, optionally adjust the cooling days, and click *Apply*.
 +
-link:concept_architecture.html#volume-tiering-policies[Learn more about volume tiering policies].
+link:concept_architecture.html#volume-tiering-policies[Learn about volume tiering policies and cooling days].
 
 == Reviewing tiering info for a cluster
 
@@ -78,13 +80,13 @@ You might want to see how much data is in the cloud tier and how much data is on
 
 . From the *Cluster Dashboard*, click *More info* for a cluster.
 +
-image:screenshot_more_info.gif[A screenshot that shows the More info button, which is available on the Cluster Dashboard for each cluster.]
+image:screenshot_more_info.gif["A screenshot that shows the More info button, which is available on the Cluster Dashboard for each cluster."]
 
 . Review details about the cluster.
 +
 Here's an example:
 +
-image:screenshot_cluster_info.gif[A screenshot that shows the cluster report, which details total used capacity, cluster used capacity, cluster information, and object storage information.]
+image:screenshot_cluster_info.gif["A screenshot that shows the cluster report, which details total used capacity, cluster used capacity, cluster information, and object storage information."]
 
 == Fixing operational health
 

@@ -15,6 +15,24 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 18 May 2020
+
+This update includes the following new features and enhancements.
+
+=== Cooling days
+
+Cloud Tiering now enables you to adjust the cooling period that's associated with a volume tiering policy. The cooling period is the number of days that user data in a volume must remain inactive before it's considered "cold" and moved to object storage. Adjusting the cooling days enables you to optimize tiering for your environment.
+
+link:task_managing_tiering.html#changing-a-volumes-tiering-policy-and-cooling-period[Learn how to adjust the cooling period].
+
+=== Rediscovery of clusters
+
+We've made improvements to the Cloud Tiering service that requires you to deploy new Service Connectors and rediscover your clusters.
+
+The benefits include improved performance, the ability to release new features faster, improved error handling, an improved discovery process, and more.
+
+Cloud Tiering will prompt you to rediscover your clusters when you log in. If you need help, contact us by using the in-product chat.
+
 == 1 Apr 2020
 
 We're pleased to announce the following new features and enhancements.
