@@ -101,7 +101,7 @@ The following questions relate to networking.
 
 * The ONTAP cluster initiates an HTTPS connection over port 443 to a public cloud object storage provider.
 
-* For StorageGRID, the ONTAP cluster initiates a connection over port 80.
+* For StorageGRID, the ONTAP cluster initiates a connection over port 80 (but the port is configurable during setup).
 +
 ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
 

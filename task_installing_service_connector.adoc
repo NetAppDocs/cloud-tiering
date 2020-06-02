@@ -184,7 +184,7 @@ TIP: If the link opens in a new browser tab, right click the page and select *Sa
 *	*-a*: The name of your link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Cloud Central account^] (will be created if there is no previous account)
 *	*-e*: Environment: production
 
-. Download the installation script for Cloud Manager 3.7 or later from the http://mysupport.netapp.com/NOW/cgi-bin/software[NetApp Support Site^], and then copy it to the Linux host.
+. Download the installation script for Cloud Manager 3.7 or later from the https://mysupport.netapp.com/site/downloads[NetApp Support Site^], and then copy it to the Linux host.
 +
 <<Understanding the relationship between the Service Connector and Cloud Manager,Why do I need to install Cloud Manager?>>
 

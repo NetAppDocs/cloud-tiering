@@ -54,7 +54,7 @@ entries:
       - title: Tier data to StorageGRID
         entries:
         - title: Quick start
-          url: /task_quick_start_fabricpool.html
+          url: /task_quick_start_storagegrid.html
         - title: Prepare to tier data
           url: /task_preparing_storagegrid.html
         - title: Set up tiering to StorageGRID
