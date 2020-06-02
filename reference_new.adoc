@@ -15,6 +15,28 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 3 June 2020
+
+This Cloud Tiering update includes the following new features and enhancements.
+
+=== Support for StorageGRID
+
+You can now tier inactive data from your ONTAP clusters to StorageGRID.
+
+link:task_quick_start_storagegrid.html[Learn how to get started].
+
+=== View volumes before setup
+
+You can now view details about a cluster's volumes before you set up tiering on the volumes.
+
+image:screenshot_view_volumes.gif[A screenshot of the action menu for a cluster that shows the View Volumes option.]
+
+=== Multi-tenancy using Cloud Central accounts
+
+Cloud Tiering now supports multi-tenancy through Cloud Central accounts. Accounts enable multiple users to manage the same clusters in an account.
+
+link:concept_accounts.html[Learn more about accounts].
+
 == 18 May 2020
 
 This update includes the following new features and enhancements.
