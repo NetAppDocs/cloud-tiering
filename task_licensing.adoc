@@ -17,6 +17,8 @@ Pay for Cloud Tiering through a pay-as-you-go subscription, an ONTAP tiering lic
 
 link:concept_licensing.html[Learn how licensing works for Cloud Tiering].
 
+NOTE: A license isn't required when tiering data to StorageGRID.
+
 == Subscribing from the AWS Marketplace
 
 Subscribe to Cloud Tiering from the AWS Marketplace to set up a pay-as-you-go subscription for data tiering from ONTAP clusters to AWS S3.

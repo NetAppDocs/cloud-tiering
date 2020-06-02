@@ -1,0 +1,80 @@
+---
+sidebar: sidebar
+permalink: task_tiering_storagegrid.html
+keywords: discover, cluster, ontap, account, service connector, s3, permissions, aws s3, access keys, secret key
+summary: After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+---
+
+= Tiering inactive data from your first cluster to StorageGRID
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+After you prepare your environment, just log in to Cloud Tiering and start tiering inactive data from your first cluster.
+
+.What you'll need
+* To discover the cluster, you'll need the following:
+** The cluster management IP address.
+** The user name and password of an ONTAP account that has administrator-level privileges.
++
+The Service Connector uses this account to send API operations to the ONTAP cluster.
+
+* A Service Connector installed in your on-premises network.
+
+* To set up tiering to StorageGRID, you'll need the following:
+** The FQDN of the server.
+** An AWS access key and secret key for an account that has the required S3 permissions.
+
+If you haven't met these requirements, see link:task_preparing_storagegrid.html[Preparing to tier data to StorageGRID].
+
+.Steps
+
+. Log in to http://cloud.netapp.com[NetApp Cloud Central^].
+
+. Select the Cloud Tiering service.
+
+. Click *Let's Start, Discover Your First Cluster*.
+
+. Complete the steps on the *Discover Cluster* page:
+
+.. Enter the cluster management IP address and the user name and password of an account that has administrator-level privileges.
++
+image:screenshot_discover_cluster.gif["A screenshot that shows several fields to discover an ONTAP cluster: the cluster management IP address, user name, and password."]
+
+.. Click *Discover Cluster*.
++
+Cloud Tiering automatically uses the on-premises Service Connector to discover the cluster.
+
+. Complete the steps on the *Tiering Setup* page:
+
+.. *Choose your provider*: Select StorageGRID.
+
+.. *Server*: Enter the FQDN of the StorageGRID server, optionally change the default port (80) that ONTAP should use to communicate with StorageGRID, and enter the access key and secret key for an AWS account that has the required S3 permissions.
+
+.. *Bucket*: Add a new bucket or select an existing bucket for the tiered data.
+
+.. *Cluster Network*: Select the IPspace that ONTAP should use to connect to object storage and click *Continue*.
++
+Selecting the correct IPspace ensures that Cloud Tiering can set up a connection from ONTAP to your cloud provider's object storage.
++
+If you haven't reviewed requirements for the IPspace and the associated intercluster LIFs, see link:task_preparing_storagegrid.html#preparing-your-ontap-clusters[ONTAP cluster requirements].
+
+. Click *Continue* to select the volumes that you want to tier.
+
+. For each volume, click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for tiering volumes] icon, select a tiering policy, optionally adjust the cooling days, and click *Apply*.
++
+link:concept_architecture.html#volume-tiering-policies[Learn about volume tiering policies and cooling days].
++
+image:screenshot_volumes_select.gif["A screenshot that shows volumes selected in the Tier Volumes page."]
+
+. When you're done, click *Close*.
+
+.Result
+
+You've successfully set up data tiering from volumes on the cluster to StorageGRID.
+
+.What's next?
+You can add additional clusters or review information about the active and inactive data on the cluster. For details, see link:task_managing_tiering.html[Managing data tiering from your clusters].

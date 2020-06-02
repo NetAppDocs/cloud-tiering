@@ -1,0 +1,240 @@
+---
+sidebar: sidebar
+permalink: task_preparing_storagegrid.html
+keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, storagegrid
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare StorageGRID, and install a Service Connector on an on-premises Linux host.
+---
+
+= Preparing to tier inactive data to StorageGRID
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare StorageGRID, and install a Service Connector on an on-premises Linux host.
+
+The following image shows each component and the connections that you need to prepare between them:
+
+image:diagram_cloud_tiering_storagegrid.png["An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage."]
+
+NOTE: Communication between the Service Connector and StorageGRID is for object storage setup only.
+
+== Preparing your ONTAP clusters
+
+Your ONTAP clusters must meet the following requirements when tiering data to StorageGRID.
+
+Supported ONTAP platforms::
+Cloud Tiering supports AFF systems and all-SSD aggregates on FAS systems.
+
+Supported ONTAP version::
+ONTAP 9.4 or later
+
+Licensing::
+A FabricPool license isn't required on the ONTAP cluster when tiering data to StorageGRID.
+
+Cluster networking requirements::
+* The ONTAP cluster initiates an HTTP connection over port 80 to StorageGRID (the port is configurable during tiering setup).
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+
+* An inbound connection is required from the NetApp Service Connector, which resides on your premises.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html[Learn more about IPspaces^].
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+
+include::_include/supported_volumes.adoc[]
+
+NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
+
+== Preparing StorageGRID
+
+StorageGRID must meet the following requirements.
+
+Supported StorageGRID versions::
+StorageGRID 10.3 and later are supported.
+
+S3 credentials::
+When you set up tiering to StorageGRID, you need to provide Cloud Tiering with an S3 access key and secret key. Cloud Tiering uses the keys to access your buckets.
++
+These access keys must be associated with a user who has the following permissions:
++
+[source,json]
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+
+CA certificate::
+You need to install a CA certificate for StorageGRID, unless you explicitly disable certificate checking. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-F64A4AE2-AFEE-4CCF-A630-7D9AC4F909F3.html[Learn more^].
+
+Object versioning::
+You must not enable StorageGRID object versioning on the object store bucket.
+
+== Installing the Service Connector on-prem for StorageGRID
+
+To tier data to StorageGRID, you need to install a Service Connector on an on-prem Linux host.
+
+=== Understanding the relationship between the Service Connector and Cloud Manager
+
+To install the Service Connector, you need to download and install https://docs.netapp.com/us-en/occm/concept_overview.html[NetApp Cloud Manager software^]. You need to do this because the Service Connector is part of Cloud Manager.
+
+=== Verifying host requirements
+
+The Service Connector is supported on a Linux host that meets the following requirements.
+
+Supported operating systems::
+* CentOS 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
+* Red Hat Enterprise Linux 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
++
+The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during installation.
++
+The Service Connector software is supported on English-language versions of these operating systems.
+
+Hypervisor:: A bare metal or hosted hypervisor that is certified to run CentOS or Red Hat Enterprise Linux
+https://access.redhat.com/certified-hypervisors[Red Hat Solution: Which hypervisors are certified to run Red Hat Enterprise Linux?^]
+
+CPU:: 2.27 GHz or higher with two cores
+
+RAM:: 4 GB
+
+Free disk space in /opt:: 100 GB
+
+Ports::
+The following ports must be available:
+* 80 for HTTP access
+* 443 for HTTPS access
+* 3306 for the database
+* 8080 for the API proxy
++
+If other services are using these ports, the installation fails.
++
+NOTE: There is a potential conflict with port 3306. If another instance of MySQL is running on the host, it uses port 3306 by default. You must change the port that the existing MySQL instance uses.
++
+You can change the default HTTP and HTTPS ports when you install the Service Connector. You cannot change the default port for the MySQL database. If you change the HTTP and HTTPS ports, you must ensure that users can access the web console from a remote host:
++
+** Modify the security group to allow inbound connections through the ports.
+** Specify the port when you enter the URL to the web console.
+
+=== Preparing your networking
+
+The Service Connector needs a connection to your ONTAP clusters, to StorageGRID, and to the Cloud Tiering service.
+
+.Steps
+
+. Set up an on-premises location for the Service Connector that enables the following connections:
+
+* An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
+* An HTTPS connection over port 443 to StorageGRID
+* An HTTPS connection over port 443 to your ONTAP clusters
+
+. Ensure that outbound internet access is allowed to those endpoints:
+* \http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+* \https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+* \https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
++
+The installer accesses these URLs during the installation process.
+
+=== Installing the Service Connector on an on-premises Linux host
+
+After you verify system and network requirements, download and install the software on a supported Linux host.
+
+.About this task
+
+* Root privileges are not required for installation.
+
+* The Service Connector installs the AWS command line tools (awscli) to enable recovery procedures from NetApp support.
++
+If you receive a message that installing the awscli failed, you can safely ignore the message. The Service Connector can operate successfully without the tools.
+
+* The installer that is available on the NetApp Support Site might be an earlier version. After installation, the software automatically updates itself if a new version is available.
+
+.Steps
+
+. From your Linux host, https://repo.tiering.cloud.netapp.com/pre-install.sh[download the pre-installation script^].
++
+TIP: If the link opens in a new browser tab, right click the page and select *Save As*.
+
+.	Assign permissions to execute the script.
++
+*Example*
++
+`chmod +x pre-install.sh`
+
+.	Generate a refresh token for the Cloud Central API:
+.. https://services.cloud.netapp.com/refresh-token[Go to the Refresh Token Generator^].
+.. Under All Cloud Central APIs, click *Generate Refresh Token* and copy the generated token to your clipboard.
+
+.	Run the pre-installation script:
++
+`./pre-install.sh -t W4clgk2XDKccpUEJu_xQHXH71lKzB4QS6vlRqyYnWURaD -c NetApp -i myCloudManager -a myAccount -e production`
++
+*	*-t*: The refresh token string from the previous step
+*	*-c*: Your company name
+*	*-i*: A name for the Service Connector
+*	*-a*: The name of your link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Cloud Central account^] (will be created if there is no previous account)
+*	*-e*: Environment: production
+
+. Download the installation script for Cloud Manager 3.7 or later from the http://mysupport.netapp.com/NOW/cgi-bin/software[NetApp Support Site^], and then copy it to the Linux host.
++
+<<Understanding the relationship between the Service Connector and Cloud Manager,Why do I need to install Cloud Manager?>>
+
+. Assign permissions to execute the script.
++
+*Example*
++
+`chmod +x OnCommandCloudManager-V3.8.4.sh`
+
+. Run the installation script:
++
+ ./OnCommandCloudManager-V3.8.4.sh [silent] [proxy=ipaddress] [proxyport=port] [proxyuser=user_name] [proxypwd=password]
++
+_silent_ runs the installation without prompting you for information.
++
+_proxy_ is required if the host is behind a proxy server.
++
+_proxyport_ is the port for the proxy server.
++
+_proxyuser_ is the user name for the proxy server, if basic authentication is required.
++
+_proxypwd_ is the password for the user name that you specified.
+
+. Unless you specified the silent parameter, type *Y* to continue the script, and then enter the HTTP and HTTPS ports when prompted.
++
+If you change the HTTP and HTTPS ports, you must ensure that users can access the Cloud Manager web console from a remote host:
+
+* Modify the security group to allow inbound connections through the ports.
+
+* Specify the port when you enter the URL to the web console.
++
+The Service Connector is now installed. At the end of the installation, the Cloud Manager service (occm) restarts twice if you specified a proxy server.
+
+. Open a web browser and enter the following URL:
++
+https://_ipaddress_:__port__
++
+_ipaddress_ can be localhost, a private IP address, or a public IP address, depending on the configuration of the host.
++
+_port_ is required if you changed the default HTTP (80) or HTTPS (443) ports. For example, if the HTTPS port was changed to 8443, you would enter https://_ipaddress_:8443
+
+. Sign up at NetApp Cloud Central or log in.
+
+. After you log in, set up Cloud Manager:
+.. Specify the Cloud Central account to associate with this Cloud Manager system. This should be the same account that you specified when you ran the pre-installation script.
++
+link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Learn about Cloud Central accounts^].
+.. Enter a name for the system.
++
+image:https://docs.netapp.com/us-en/occm/media/screenshot_set_up_cloud_manager.gif[A screenshot that shows the set up Cloud Manager screen that enables you to select a Cloud Central account and name the Cloud Manager system.]
+
+.Result
+
+The Service Connector is now installed and setup. You can use it to discover a cluster in Cloud Tiering.

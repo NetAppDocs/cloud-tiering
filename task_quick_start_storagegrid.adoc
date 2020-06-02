@@ -1,0 +1,35 @@
+---
+sidebar: sidebar
+permalink: task_quick_start_storagegrid.html
+keywords: quick start, register, prepare, tier, storagegrid
+summary: Getting started with Cloud Tiering by tiering data from an ONTAP cluster to StorageGRID includes a few steps.
+---
+
+= Quick start for tiering inactive data to Azure
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Getting started with Cloud Tiering by tiering data from an ONTAP cluster to StorageGRID includes a few steps.
+
+[discrete]
+==== image:number1.png[number 1] link:task_preparing_storagegrid.html[Prepare to tier data to StorageGRID]
+
+[role="quick-margin-para"]
+You need the following:
+
+[role="quick-margin-list"]
+* An AFF or FAS system with all-SSD aggregates running ONTAP 9.4 or later, and a connection over port 80 to StorageGRID.
+* StorageGRID 10.3 or later with a CA certificate and AWS access keys that have S3 permissions.
+* A Service Connector installed on an on-premises Linux host.
++
+The Service Connector needs an outbound HTTPS connection to the ONTAP cluster, to StorageGRID, and to the Cloud Tiering service.
+
+[discrete]
+==== image:number2.png[number2] link:task_tiering_storagegrid.html[Tier inactive data from your first cluster]
+
+[role="quick-margin-para"]
+Log in to https://cloud.netapp.com[NetApp Cloud Central^], start a free trial of the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
