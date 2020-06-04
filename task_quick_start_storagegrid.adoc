@@ -34,4 +34,4 @@ The Service Connector needs an outbound HTTPS connection to the ONTAP cluster, t
 [role="quick-margin-para"]
 Log in to https://cloud.netapp.com[NetApp Cloud Central^], start a free trial of the Cloud Tiering service, and click *Let's Start, Discover Your First Cluster*.
 
-NOTE: There are no charges when tiering data to StorageGRID. Neither a BYOL license or PAYGO registration is required.
+There are no charges when tiering data to StorageGRID. Neither a BYOL license or PAYGO registration is required.
