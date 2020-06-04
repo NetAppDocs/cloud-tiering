@@ -15,6 +15,8 @@ summary: Getting started with Cloud Tiering by tiering data from an ONTAP cluste
 [.lead]
 Getting started with Cloud Tiering by tiering data from an ONTAP cluster to StorageGRID includes a few steps.
 
+NOTE: There are no charges when tiering data to StorageGRID. Neither a BYOL license or PAYGO registration is required.
+
 [discrete]
 ==== image:number1.png[number 1] link:task_preparing_storagegrid.html[Prepare to tier data to StorageGRID]
 

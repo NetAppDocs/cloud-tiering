@@ -21,7 +21,7 @@ After you prepare your environment, just log in to Cloud Tiering and start tieri
 ** The user name and password of an ONTAP account that has administrator-level privileges.
 +
 The Service Connector uses this account to send API operations to the ONTAP cluster.
-** A Service Connector installed in your on-premises network.
+** link:link:task_preparing_storagegrid.html[A Service Connector installed in your on-premises network].
 
 * To set up tiering to StorageGRID, you'll need the following:
 ** The FQDN of the server.
