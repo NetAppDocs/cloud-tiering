@@ -35,7 +35,7 @@ Licensing::
 A FabricPool license isn't required on the ONTAP cluster when tiering data to StorageGRID.
 
 Cluster networking requirements::
-* The ONTAP cluster initiates an HTTP connection over port 80 to StorageGRID (the port is configurable during tiering setup).
+* The ONTAP cluster initiates an HTTPS connection over a user-specified port to StorageGRID (the port is configurable during tiering setup).
 +
 ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
 
