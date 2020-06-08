@@ -160,30 +160,6 @@ If you receive a message that installing the awscli failed, you can safely ignor
 
 .Steps
 
-. From your Linux host, https://repo.tiering.cloud.netapp.com/pre-install.sh[download the pre-installation script^].
-+
-TIP: If the link opens in a new browser tab, right click the page and select *Save As*.
-
-.	Assign permissions to execute the script.
-+
-*Example*
-+
-`chmod +x pre-install.sh`
-
-.	Generate a refresh token for the Cloud Central API:
-.. https://services.cloud.netapp.com/refresh-token[Go to the Refresh Token Generator^].
-.. Under All Cloud Central APIs, click *Generate Refresh Token* and copy the generated token to your clipboard.
-
-.	Run the pre-installation script:
-+
-`./pre-install.sh -t W4clgk2XDKccpUEJu_xQHXH71lKzB4QS6vlRqyYnWURaD -c NetApp -i myCloudManager -a myAccount -e production`
-+
-*	*-t*: The refresh token string from the previous step
-*	*-c*: Your company name
-*	*-i*: A name for the Service Connector
-*	*-a*: The name of your link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Cloud Central account^] (will be created if there is no previous account)
-*	*-e*: Environment: production
-
 . Download the installation script for Cloud Manager 3.8.4 or later from the https://mysupport.netapp.com/site/products/all/details/cloud-manager/downloads-tab[NetApp Support Site^], and then copy it to the Linux host.
 +
 <<Understanding the relationship between the Service Connector and Cloud Manager,Why do I need to install Cloud Manager?>>
