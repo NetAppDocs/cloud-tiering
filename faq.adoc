@@ -26,6 +26,7 @@ It depends on where you tier the cold data. Refer to the following:
 * link:task_preparing.html#preparing-your-ontap-clusters[Preparing to tier inactive data to AWS S3]
 * link:task_preparing_azure.html#preparing-your-ontap-clusters[Preparing to tier inactive data to Azure Blob storage]
 * link:task_preparing_google.html#preparing-your-ontap-clusters[Preparing to tier inactive data to Google Cloud Storage]
+* link:task_preparing_storagegrid.html#preparing-your-ontap-clusters[Preparing to tier inactive data to StorageGRID]
 
 === Does Cloud Tiering enable inactive data reporting?
 
@@ -33,7 +34,7 @@ Yes, Cloud Tiering enables inactive data reporting on each aggregate. This setti
 
 === Can I tier data from NAS volumes and SAN volumes?
 
-You can use Cloud Tiering to tier data from NAS volumes.
+You can use Cloud Tiering to tier data from NAS volumes to the public cloud and from SAN volumes to a private cloud using StorageGRID.
 
 == Object storage
 
@@ -41,13 +42,13 @@ The following questions relate to object storage.
 
 === Which object storage providers are supported?
 
-AWS S3, Azure Blob storage, and Google Cloud Storage are supported.
+Amazon S3, Azure Blob storage, Google Cloud Storage, and StorageGRID using the S3 protocol are supported.
 
 === Can I use my own bucket/container?
 
 Yes, you can. When you set up data tiering, you have the choice to add a new bucket/container or to select an existing bucket/container.
 
-=== Which regions are supported?
+=== Which public cloud regions are supported?
 
 * link:reference_aws_support.html[Supported AWS regions]
 * link:reference_azure_support.html[Supported Azure regions]
@@ -86,6 +87,7 @@ The Service Connector is NetApp software that communicates with ONTAP clusters t
 * When tiering cold data to S3, the Service Connector can reside in an AWS VPC or on your premises.
 * When tiering cold data to Blob storage, the Service Connector must reside in an Azure VNet.
 * When tiering cold data to Google Cloud Storage, the Service Connector must reside in a Google Cloud Platform VPC.
+* When tiering cold data to StorageGRID, the Service Connector must reside on an on premises Linux host.
 
 === How do you name the instance/virtual machine for the Service Connector?
 
@@ -97,7 +99,9 @@ The following questions relate to networking.
 
 === What are the networking requirements?
 
-* The ONTAP cluster initiates an HTTPS connection over port 443 to your object storage provider.
+* The ONTAP cluster initiates an HTTPS connection over port 443 to a public cloud object storage provider.
+
+* For StorageGRID, the ONTAP cluster initiates a connection over port 80 (but the port is configurable during setup).
 +
 ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
 
@@ -108,6 +112,7 @@ For more details, see:
 * link:task_preparing.html[Preparing to tier inactive data to AWS S3]
 * link:task_preparing_azure.html[Preparing to tier inactive data to Azure Blob storage]
 * link:task_preparing_google.html[Preparing to tier inactive data to Google Cloud Storage]
+* link:task_preparing_storagegrid.html[Preparing to tier inactive data to StorageGRID]
 
 == Permissions
 
@@ -137,3 +142,7 @@ During deployment, Cloud Tiering creates and assigns a role to the Service Conne
 * Permissions are needed for a service account that you'll associate with the Service Connector VM instance.
 
 For details, see link:task_preparing_google.html[Preparing to tier inactive data to Google Cloud Storage].
+
+=== What permissions are required for StorageGRID?
+
+link:task_preparing_storagegrid.html#preparing-storagegrid[S3 permissions are needed].

@@ -1,11 +1,11 @@
 ---
 sidebar: sidebar
-permalink: task_installing_service_connector.html
-keywords: install, installation, installing, linux, installer, software, on prem, on-prem, silent, installing service connector, installing service connector on prem, on-prem service connector, on prem service connector
-summary: If you want to tier cold data to AWS S3, you can deploy the Service Connector either on your premises or in an AWS VPC. This page describes how to install the on-premises Service Connector.
+permalink: task_preparing_storagegrid.html
+keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, storagegrid
+summary: Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare StorageGRID, and install a Service Connector on an on-premises Linux host.
 ---
 
-= Installing the Service Connector on your premises for tiering to AWS S3
+= Preparing to tier inactive data to StorageGRID
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -13,31 +13,84 @@ summary: If you want to tier cold data to AWS S3, you can deploy the Service Con
 :imagesdir: ./media/
 
 [.lead]
-If you want to tier cold data to AWS S3, you can deploy the Service Connector either on your premises or in an AWS VPC. This page describes how to install the on-premises Service Connector.
+Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare StorageGRID, and install a Service Connector on an on-premises Linux host.
 
-To deploy the Service Connector in AWS, link:task_tiering.html[follow the prompts in Cloud Tiering when discovering your first cluster].
+The following image shows each component and the connections that you need to prepare between them:
 
-== Understanding the relationship between the Service Connector and Cloud Manager
+image:diagram_cloud_tiering_storagegrid.png["An architecture image that shows the Cloud Tiering service with a connection to the Service Connector on your premises, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage. Active data resides on the ONTAP cluster, while inactive data resides in object storage."]
+
+NOTE: Communication between the Service Connector and StorageGRID is for object storage setup only.
+
+== Preparing your ONTAP clusters
+
+Your ONTAP clusters must meet the following requirements when tiering data to StorageGRID.
+
+Supported ONTAP platforms::
+Cloud Tiering supports AFF systems and all-SSD aggregates on FAS systems.
+
+Supported ONTAP version::
+ONTAP 9.4 or later
+
+Licensing::
+A FabricPool license isn't required on the ONTAP cluster when tiering data to StorageGRID.
+
+Cluster networking requirements::
+* The ONTAP cluster initiates an HTTPS connection over a user-specified port to StorageGRID (the port is configurable during tiering setup).
++
+ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+
+* An inbound connection is required from the NetApp Service Connector, which resides on your premises.
++
+A connection between the cluster and the Cloud Tiering service is not required.
+
+* An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the _IPspace_ that ONTAP should use to connect to object storage.
++
+IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security. http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html[Learn more about IPspaces^].
++
+When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.
+
+include::_include/supported_volumes.adoc[]
+
+NOTE: Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
+
+== Preparing StorageGRID
+
+StorageGRID must meet the following requirements.
+
+Supported StorageGRID versions::
+StorageGRID 10.3 and later are supported.
+
+S3 credentials::
+When you set up tiering to StorageGRID, you need to provide Cloud Tiering with an S3 access key and secret key. Cloud Tiering uses the keys to access your buckets.
++
+These access keys must be associated with a user who has the following permissions:
++
+[source,json]
+"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject",
+"s3:CreateBucket"
+
+Object versioning::
+You must not enable StorageGRID object versioning on the object store bucket.
+
+== Installing the Service Connector on-prem for StorageGRID
+
+To tier data to StorageGRID, you need to install a Service Connector on an on-prem Linux host.
+
+=== Understanding the relationship between the Service Connector and Cloud Manager
 
 To install the Service Connector, you need to download and install https://docs.netapp.com/us-en/occm/concept_overview.html[NetApp Cloud Manager software^]. You need to do this because the Service Connector is part of Cloud Manager.
 
-== Verifying host requirements
+=== Verifying host requirements
 
 The Service Connector is supported on a Linux host that meets the following requirements.
 
 Supported operating systems::
-* CentOS 7.2
-* CentOS 7.3
-* CentOS 7.4
-* CentOS 7.5
-* CentOS 7.6
-* CentOS 7.7
-* Red Hat Enterprise Linux 7.2
-* Red Hat Enterprise Linux 7.3
-* Red Hat Enterprise Linux 7.4
-* Red Hat Enterprise Linux 7.5
-* Red Hat Enterprise Linux 7.6
-* Red Hat Enterprise Linux 7.7
+* CentOS 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
+* Red Hat Enterprise Linux 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
 +
 The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during installation.
 +
@@ -68,16 +121,16 @@ You can change the default HTTP and HTTPS ports when you install the Service Con
 ** Modify the security group to allow inbound connections through the ports.
 ** Specify the port when you enter the URL to the web console.
 
-== Preparing your networking
+=== Preparing your networking
 
-The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and to the Cloud Tiering service.
+The Service Connector needs a connection to your ONTAP clusters, to StorageGRID, and to the Cloud Tiering service.
 
 .Steps
 
 . Set up an on-premises location for the Service Connector that enables the following connections:
 
 * An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)
-* An HTTPS connection over port 443 to S3
+* An HTTPS connection over port 443 to StorageGRID
 * An HTTPS connection over port 443 to your ONTAP clusters
 
 . Ensure that outbound internet access is allowed to those endpoints:
@@ -87,64 +140,7 @@ The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and 
 +
 The installer accesses these URLs during the installation process.
 
-== Providing permissions to an AWS account
-
-After you install the Service Connector, you need to provide access keys for an AWS account. That account needs specific permissions so the Service Connector can set up data tiering to AWS S3 on your behalf.
-
-Cloud Tiering tiers data to an S3 bucket that resides in this AWS account.
-
-.Steps
-
-. From the AWS IAM console, create an IAM policy by copying and pasting the permissions below.
-+
-For step-by-step instructions, refer to https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html[AWS Documentation: Creating IAM Policies^].
-+
-[source,json]
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "sts:DecodeAuthorizationMessage",
-                "s3:ListBucket",
-                "ec2:DescribeRegions",
-                "cloudformation:CreateStack",
-                "cloudformation:DeleteStack",
-                "cloudformation:DescribeStacks",
-                "cloudformation:DescribeStackEvents",
-                "cloudformation:ValidateTemplate"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "fabricPoolPolicy",
-            "Effect": "Allow",
-            "Action": [
-                "s3:DeleteBucket",
-                "s3:GetLifecycleConfiguration",
-                "s3:PutLifecycleConfiguration",
-                "s3:CreateBucket",
-                "s3:GetBucketTagging",
-                "s3:PutBucketTagging"
-            ],
-            "Resource": "arn:aws:s3:::fabric-pool*"
-        }
-    ]
-}
-
-. Attach the policy to an IAM role or an IAM user.
-+
-For step-by-step instructions, refer to the following:
-+
-* https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html[AWS Documentation: Creating IAM Roles^]
-* https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html[AWS Documentation: Adding and Removing IAM Policies^]
-
-.Result
-
-The account now has the required permissions. You need to provide access keys for the AWS account after you install the Service Connector.
-
-== Installing the Service Connector on an on-premises Linux host
+=== Installing the Service Connector on an on-premises Linux host
 
 After you verify system and network requirements, download and install the software on a supported Linux host.
 
@@ -212,28 +208,6 @@ link:https://docs.netapp.com/us-en/occm/concept_cloud_central_accounts.html[Lear
 +
 image:https://docs.netapp.com/us-en/occm/media/screenshot_set_up_cloud_manager.gif[A screenshot that shows the set up Cloud Manager screen that enables you to select a Cloud Central account and name the Cloud Manager system.]
 
-.After you finish
-
-Add an AWS account to Cloud Manager that has the required permissions.
-
-== Adding the AWS account to Cloud Manager
-
-After you provide an AWS account with the required permissions, you need to add AWS access keys to Cloud Manager. This enables the Service Connector to set up data tiering to AWS S3 on your behalf.
-
-Cloud Tiering tiers data to an S3 bucket that resides in this AWS account.
-
-.Steps
-
-. In the upper right of the Cloud Manager console, click the Settings icon, and select *Cloud Provider & Support Accounts*.
-+
-image:https://docs.netapp.com/us-en/occm/media/screenshot_settings_icon.gif[A screenshot that shows the Settings icon in the upper right of the Cloud Manager console.]
-
-. Click *Add New Account* and select *AWS*.
-
-. Select *AWS keys*.
-
-. Confirm that the policy requirements have been met and then click *Create Account*.
-
 .Result
 
-The Service Connector is now installed with the permissions that it needs to tier cold data from your ONTAP systems to AWS S3. You should now see the Service Connector when you link:task_tiering.html[set up tiering to a new cluster].
+The Service Connector is now installed and setup. You can use it to discover a cluster in Cloud Tiering.

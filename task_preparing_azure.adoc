@@ -76,6 +76,8 @@ TIP: During deployment, Cloud Tiering creates and assigns a role to the Service 
 . Create a custom role using the NetApp Cloud Central policy:
 
 .. Download the https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service_Azure.json[Cloud Central policy for Azure^].
++
+TIP: Right-click the link and click *Save link as...* to download the file.
 
 .. Modify the JSON file by adding your Azure subscription ID to the assignable scope.
 +

@@ -13,6 +13,8 @@ entries:
         url: /concept_licensing.html
       - title: Savings opportunities
         url: /concept_savings.html
+      - title: Accounts
+        url: /concept_accounts.html
   - title: Get started
     entries:
       - title: Supported object storage providers
@@ -49,6 +51,14 @@ entries:
           url: /task_tiering_google.html
         - title: Supported storage classes and regions
           url: /reference_google_support.html
+      - title: Tier data to StorageGRID
+        entries:
+        - title: Quick start
+          url: /task_quick_start_storagegrid.html
+        - title: Prepare to tier data
+          url: /task_preparing_storagegrid.html
+        - title: Set up tiering to StorageGRID
+          url: /task_tiering_storagegrid.html
       - title: Set up licensing
         url: /task_licensing.html
   - title: Manage data tiering

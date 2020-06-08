@@ -13,7 +13,7 @@ summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technolo
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage in the cloud. Connections to ONTAP take place from the NetApp Service Connector.
+Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage your public cloud or private cloud. Connections to ONTAP take place from the NetApp Service Connector.
 
 == Overview
 
@@ -28,6 +28,7 @@ At a high level, Cloud Tiering works like this:
 * When tiering to S3, the Service Connector can be in an AWS VPC or on your premises.
 * When tiering to Blob storage, the Service Connector must be in an Azure VNet.
 * When tiering to Google Cloud Storage, the Service Connector must reside in a Google Cloud Platform VPC.
+* When tiering to StorageGRID, the Service Connector must reside on your premises.
 . You provide details about your object storage, including the bucket/container and a storage class or access tier.
 . The Service Connector configures ONTAP to use the object storage provider and discovers the amount of active and inactive data on the cluster.
 . You choose the volumes to tier and the tiering policy to apply to those volumes.
@@ -39,7 +40,7 @@ The Service Connector is software that communicates with ONTAP clusters to disco
 
 == Object storage
 
-Each ONTAP cluster tiers inactive data to a single object store. When you set up data tiering, you have the choice to add a new bucket/container or to select an existing bucket/container, along with a storage class or access tier.
+Each ONTAP cluster tiers inactive data to a single object store. When you set up data tiering, you have the choice to add a new bucket/container or to select an existing bucket/container, along with a storage class or access tier when tiering to the public cloud.
 
 * link:reference_aws_support.html[Learn about supported S3 storage classes]
 * link:reference_azure_support.html[Learn about supported Azure Blob access tiers]

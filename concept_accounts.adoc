@@ -1,0 +1,28 @@
+---
+sidebar: sidebar
+permalink: concept_accounts.html
+keywords: account, cloud central account, multi-tenancy, tenancy
+summary: Each Cloud Central user is associated with one or more Cloud Central accounts. An account enables multi-tenancy. Multiple users can manage the sync relationships in an account.
+---
+
+= Accounts
+:hardbreaks:
+:nofooter:
+:icons: font
+:linkattrs:
+:imagesdir: ./media/
+
+[.lead]
+Each Cloud Central user is associated with one or more Cloud Central accounts. An account enables multi-tenancy: multiple users can manage data tiering in a single account.
+
+For example, two users might be associated with the same Cloud Central account. Both of those users can see the same clusters that were discovered in that account.
+
+But if those two users are associated with _separate_ Cloud Central accounts, then the users would only see the clusters in the account that they are associated with.
+
+If a user is associated with multiple Cloud Central accounts, you can change to a different account at any time from the User Settings menu in Cloud Tiering.
+
+image:screenshot_user_settings_account.gif[An image of the User Settings widget and the Switch Account option.]
+
+If you want to associate a user to a specific account, you can use Cloud Central APIs, Cloud Manager’s user interface, or contact us for help using the in-product chat.
+
+https://services.cloud.netapp.com/api-doc/cloud-central[NetApp Cloud Central Services API^]
