@@ -5,7 +5,7 @@ keywords: quick start, register, prepare, tier, storagegrid
 summary: Getting started with Cloud Tiering by tiering data from an ONTAP cluster to StorageGRID includes a few steps.
 ---
 
-= Quick start for tiering inactive data to Azure
+= Quick start for tiering inactive data to StorageGRID
 :hardbreaks:
 :nofooter:
 :icons: font
@@ -23,7 +23,7 @@ You need the following:
 
 [role="quick-margin-list"]
 * An AFF or FAS system with all-SSD aggregates running ONTAP 9.4 or later, and a connection over a user-specified port to StorageGRID.
-* StorageGRID 10.3 or later with a CA certificate and AWS access keys that have S3 permissions.
+* StorageGRID 10.3 or later with AWS access keys that have S3 permissions.
 * A Service Connector installed on an on-premises Linux host.
 +
 The Service Connector needs an outbound HTTPS connection to the ONTAP cluster, to StorageGRID, and to the Cloud Tiering service.
