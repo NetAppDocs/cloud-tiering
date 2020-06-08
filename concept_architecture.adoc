@@ -13,7 +13,7 @@ summary: Cloud Tiering is a NetApp-managed service that uses FabricPool technolo
 :imagesdir: ./media/
 
 [.lead]
-Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage your public cloud or private cloud. Connections to ONTAP take place from the NetApp Service Connector.
+Cloud Tiering is a NetApp-managed service that uses FabricPool technology to automatically tier inactive (cold) data from your on-premises ONTAP clusters to object storage in your public cloud or private cloud. Connections to ONTAP take place from the NetApp Service Connector.
 
 == Overview
 
