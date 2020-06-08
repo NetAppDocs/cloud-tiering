@@ -60,7 +60,7 @@ Cloud Tiering supports data tiering to the _Standard_, _Standard-Infrequent Acce
 
 === Which Azure Blob access tiers are supported?
 
-Cloud Tiering automatically uses the _Hot_ access tier for your inactive data. We plan to add support for the _Cool_ access tier in a future release.
+Cloud Tiering automatically uses the _Hot_ access tier for your inactive data.
 
 === Which storage classes are supported for Google Cloud Storage?
 
@@ -99,11 +99,11 @@ The following questions relate to networking.
 
 === What are the networking requirements?
 
-* The ONTAP cluster initiates an HTTPS connection over port 443 to a public cloud object storage provider.
-
-* For StorageGRID, the ONTAP cluster initiates a connection over port 80 (but the port is configurable during setup).
+* The ONTAP cluster initiates an HTTPS connection over port 443 to your object storage provider.
 +
 ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.
+
+* For StorageGRID, the ONTAP cluster initiates an HTTPS connection over a user-specified port to StorageGRID (the port is configurable during tiering setup).
 
 * The NetApp Service Connector needs an outbound HTTPS connection over port 443 to your ONTAP clusters, to the object store, and to the Cloud Tiering service.
 
