@@ -15,6 +15,32 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 5 July 2020
+
+This Cloud Tiering update includes the following new features and enhancements.
+
+=== Tiering settings for aggregates
+
+Each aggregate has two tiering settings that you can now adjust from Cloud Tiering: the tiering fullness threshold and whether inactive data reporting is enabled. link:task_managing_tiering.html#managing-tiering-settings-on-aggregates[Learn more].
+
+image:screenshot_edit_aggregate.gif[A screenshot that shows a slider to modify the tiering fullness threshold and a button to enable or disable inactive data reporting.]
+
+=== Inactive data reporting for discovered clusters
+
+Inactive data reporting is now automatically enabled on ONTAP clusters that you discover through Cloud Manager. This enhancement makes it easier for Cloud Tiering to show you the potential savings for tiering cold data.
+
+=== Remove clusters
+
+You can now remove failed clusters from the dashboard.
+
+image:screenshot_remove_cluster.gif[] (screenshot coming soon)
+
+=== Discovery of unsupported clusters
+
+Cloud Tiering now provides details about discovered clusters that aren't eligible for tiering.
+
+image:screenshot_unsupported_cluster.gif[A screenshot of a cluster on the Cluster Dashboard that shows the cluster is not eligible for tiering because the ONTAP version should be upgraded to version 9.4 or later.]
+
 == 8 June 2020
 
 This Cloud Tiering update includes the following new features and enhancements.
