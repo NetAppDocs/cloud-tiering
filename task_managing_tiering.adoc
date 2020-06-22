@@ -83,6 +83,8 @@ Setting the threshold to a higher number increases the amount of data required t
 
 Inactive data reporting::
 Inactive data reporting (IDR) uses a 31-day cooling period to determine which data is considered inactive. The amount of cold data that is tiered is dependent on the tiering policies set on volumes. This amount might be different than the amount of cold data detected by IDR using a 31-day cooling period.
++
+TIP: It's best to keep IDR enabled because it helps to identify your inactive data and savings opportunities. IDR must remain enabled if data tiering was enabled on an aggregate.
 
 .Steps
 
@@ -93,8 +95,6 @@ image:screenshot_manage_aggregates.gif[A screenshot of the Cluster Dashboard tha
 . On the *Manage Aggregates* page, click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for managing aggregates] icon for an aggregate in the table.
 
 . Modify the fullness threshold and choose whether to enable or disable inactive data reporting.
-+
-TIP: It's best to keep IDR enabled because it helps to identify your inactive data and savings opportunities.
 +
 image:screenshot_edit_aggregate.gif[A screenshot that shows a slider to modify the tiering fullness threshold and a button to enable or disable inactive data reporting.]
 
