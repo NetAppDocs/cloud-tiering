@@ -15,7 +15,7 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
-== 5 July 2020
+== 6 July 2020
 
 This Cloud Tiering update includes the following new features and enhancements.
 
@@ -33,7 +33,7 @@ Inactive data reporting is now automatically enabled on ONTAP clusters that you 
 
 You can now remove failed clusters from the dashboard.
 
-image:screenshot_remove_cluster.gif[] (screenshot coming soon)
+image:screenshot_remove_cluster.gif[A screenshot from the Cluster Dashboard that shows an unknown cluster and the option on the right to remove the cluster.]
 
 === Discovery of unsupported clusters
 
