@@ -27,11 +27,11 @@ image:screenshot_edit_aggregate.gif[A screenshot that shows a slider to modify t
 
 === Inactive data reporting for discovered clusters
 
-Inactive data reporting is now automatically enabled on ONTAP clusters that you discover through Cloud Manager. This enhancement makes it easier for Cloud Tiering to show you the potential savings by tiering cold data.
+Inactive data reporting is now automatically enabled on ONTAP clusters that you discover through Cloud Manager. This enhancement makes it easier for Cloud Tiering to show you the potential savings from tiering cold data.
 
 === Remove clusters
 
-You can now remove failed clusters from the dashboard.
+If the health of a cluster is failed, you can now remove it from the dashboard.
 
 image:screenshot_remove_cluster.gif[A screenshot from the Cluster Dashboard that shows an unknown cluster and the option on the right to remove the cluster.]
 

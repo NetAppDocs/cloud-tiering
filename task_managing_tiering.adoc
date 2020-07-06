@@ -138,14 +138,12 @@ TIP: The name of the Service Connector instance/virtual machine is prefixed with
 
 == Removing a failed cluster
 
-If the health for a cluster is failed, you can remove it from the dashboard to focus on the operational clusters.
+If the health of a cluster is failed, you can remove it from the dashboard to focus on the operational clusters.
 
 .Steps
 
-. Identify any clusters that have an operational health of "Failed."
-+
-image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering health status for a cluster.]
+. From the *Cluster Dashboard*, identify any clusters that have an operational health of "Failed."
 
-. . From the *Cluster Dashboard*, click menu icon for a cluster and select *Remove Cluster*.
+. Click menu icon for a cluster and select *Remove Cluster*.
 +
 image:screenshot_remove_cluster.gif[A screenshot of the Cluster Dashboard that shows a cluster and the action menu expanded.]
