@@ -72,6 +72,34 @@ Changing the tiering policy for a volume changes how ONTAP tiers cold data to ob
 +
 link:concept_architecture.html#volume-tiering-policies[Learn about volume tiering policies and cooling days].
 
+== Managing tiering settings on aggregates
+
+Each aggregate has two settings that you can adjust: the tiering fullness threshold and whether inactive data reporting is enabled.
+
+Tiering fullness threshold::
+Setting the threshold to a lower number reduces the amount of data required to be stored on the performance tier before tiering takes place. This might be useful for large aggregates that contain little active data.
++
+Setting the threshold to a higher number increases the amount of data required to be stored on the performance tier before tiering takes place. This might be useful for solutions designed to tier only when aggregates are near maximum capacity.
+
+Inactive data reporting::
+Inactive data reporting (IDR) uses a 31-day cooling period to determine which data is considered inactive. The amount of cold data that is tiered is dependent on the tiering policies set on volumes. This amount might be different than the amount of cold data detected by IDR using a 31-day cooling period.
++
+TIP: It's best to keep IDR enabled because it helps to identify your inactive data and savings opportunities. IDR must remain enabled if data tiering was enabled on an aggregate.
+
+.Steps
+
+. From the *Cluster Dashboard*, click menu icon for a cluster and select *Manage Aggregates*.
++
+image:screenshot_manage_aggregates.gif[A screenshot of the Cluster Dashboard that shows a cluster and the action menu expanded.]
+
+. On the *Manage Aggregates* page, click the image:screenshot_edit_icon.gif[A screenshot of the edit icon that appears at the end of each row in the table for managing aggregates] icon for an aggregate in the table.
+
+. Modify the fullness threshold and choose whether to enable or disable inactive data reporting.
++
+image:screenshot_edit_aggregate.gif[A screenshot that shows a slider to modify the tiering fullness threshold and a button to enable or disable inactive data reporting.]
+
+. Click *Apply*.
+
 == Reviewing tiering info for a cluster
 
 You might want to see how much data is in the cloud tier and how much data is on disks. Or, you might want to see the amount of hot and cold data on the cluster's disks. Cloud Tiering provides this information for each cluster.
@@ -107,3 +135,15 @@ image:screenshot_tiering_health.gif[A screenshot that shows a Failed tiering hea
 .. Verify that the Service Connector is running and that it has outbound connections to the Cloud Tiering service, to the object store, and to the ONTAP clusters that it discovers.
 +
 TIP: The name of the Service Connector instance/virtual machine is prefixed with "Service-connector."
+
+== Removing a failed cluster
+
+If the health of a cluster is failed, you can remove it from the dashboard to focus on the operational clusters.
+
+.Steps
+
+. From the *Cluster Dashboard*, identify any clusters that have an operational health of "Failed."
+
+. Click menu icon for a cluster and select *Remove Cluster*.
++
+image:screenshot_remove_cluster.gif[A screenshot of the Cluster Dashboard that shows a cluster and the action menu expanded.]
