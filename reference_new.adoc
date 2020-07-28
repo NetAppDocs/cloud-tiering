@@ -15,6 +15,16 @@ summary: NetApp periodically updates Cloud Tiering to bring you new features, en
 [.lead]
 NetApp periodically updates Cloud Tiering to bring you new features, enhancements, and bug fixes.
 
+== 2 Aug 2020
+
+If you have Cloud Volumes ONTAP systems, you'll now see them in the Cluster Dashboard so you see a full view of data tiering in your hybrid cloud infrastructure.
+
+From the Cluster Dashboard, you can view tiering information similar to an on-prem ONTAP cluster: operational health, current savings, savings opportunities, details about volumes and aggregates, and more.
+
+image:screenshot_cloud_volumes_ontap.gif[An screenshot of a Cloud Volumes ONTAP system in the Cluster Dashboard.]
+
+Cloud Volumes ONTAP system are read-only from Cloud Tiering. You can't set up data tiering on Cloud Volumes ONTAP from Cloud Tiering. You'll still set up tiering the same way: from the working environment in Cloud Manager.
+
 == 8 July 2020
 
 This Cloud Tiering update includes the following new features and enhancements.
