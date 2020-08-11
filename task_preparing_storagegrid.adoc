@@ -88,38 +88,7 @@ To install the Service Connector, you need to download and install https://docs.
 
 The Service Connector is supported on a Linux host that meets the following requirements.
 
-Supported operating systems::
-* CentOS 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
-* Red Hat Enterprise Linux 7.2, 7.3, 7.4, 7.5, 7.6, and 7.7
-+
-The Red Hat Enterprise Linux system must be registered with Red Hat Subscription Management. If it is not registered, the system cannot access repositories to update required 3rd party software during installation.
-+
-The Service Connector software is supported on English-language versions of these operating systems.
-
-Hypervisor:: A bare metal or hosted hypervisor that is certified to run CentOS or Red Hat Enterprise Linux
-https://access.redhat.com/certified-hypervisors[Red Hat Solution: Which hypervisors are certified to run Red Hat Enterprise Linux?^]
-
-CPU:: 2.27 GHz or higher with two cores
-
-RAM:: 4 GB
-
-Free disk space in /opt:: 100 GB
-
-Ports::
-The following ports must be available:
-* 80 for HTTP access
-* 443 for HTTPS access
-* 3306 for the database
-* 8080 for the API proxy
-+
-If other services are using these ports, the installation fails.
-+
-NOTE: There is a potential conflict with port 3306. If another instance of MySQL is running on the host, it uses port 3306 by default. You must change the port that the existing MySQL instance uses.
-+
-You can change the default HTTP and HTTPS ports when you install the Service Connector. You cannot change the default port for the MySQL database. If you change the HTTP and HTTPS ports, you must ensure that users can access the web console from a remote host:
-+
-** Modify the security group to allow inbound connections through the ports.
-** Specify the port when you enter the URL to the web console.
+https://docs.netapp.com/us-en/occm/reference_cloud_mgr_reqs.html[Refer to Connector host requirements in the Cloud Manager documentation^].
 
 === Preparing your networking
 
