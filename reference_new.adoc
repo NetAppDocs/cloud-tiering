@@ -17,17 +17,17 @@ NetApp periodically updates Cloud Tiering to bring you new features, enhancement
 
 == 6 Sept 2020
 
-This Cloud Tiering update includes the following new features and enhancements.
+This Cloud Tiering update includes the following enhancements.
 
 === Activate licenses (BYOL)
 
-You can now activate FabricPool license on an ONTAP cluster directly from Cloud Tiering. link:task_licensing.html[Learn more].
+You can now activate a FabricPool license on an ONTAP cluster directly from Cloud Tiering. link:task_licensing.html#adding-a-tiering-license-to-ontap[Learn more].
 
 image:screenshot_activate_license.gif[A screenshot of the Licensing page where you can activate a license for an on-prem cluster.]
 
 === Azure resource group selection
 
-A new step is available when you set up data tiering to Azure Blob storage. You now select a resource group first and then choose an existing container or new container in that resource group.
+A new step is available when you set up data tiering to Azure Blob storage. You now select a resource group first and then choose a Blob container.
 
 image:screenshot_resource_group.gif[A screenshot of the option to choose a resource group when setting up data tiering to Azure Blob storage.]
 

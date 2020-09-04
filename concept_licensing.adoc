@@ -45,9 +45,9 @@ link:task_licensing.html[Learn how to set up a pay-as-you-go subscription].
 
 Bring your own license by purchasing an ONTAP FabricPool license from NetApp. You can purchase term-based or perpetual licenses.
 
-After you purchase a FabricPool license, you'll need to add it to the cluster, link:task_licensing.html[which you can do directly from Cloud Tiering].
+After you purchase a FabricPool license, you'll need to add it to the cluster, link:task_licensing.html#adding-a-tiering-license-to-ontap[which you can do directly from Cloud Tiering].
 
-If you activate your license through Cloud Tiering and then you purchase additional add-on capacity at a later time, the license is automatically updated on the cluster with the new capacity. There's no need to apply a new NetApp License File (NLF) to the cluster.
+After you activate the license through Cloud Tiering, if you purchase additional add-on capacity at a later time, the license on the cluster is automatically updated with the new capacity. There's no need to apply a new NetApp License File (NLF) to the cluster.
 
 As noted above, we recommend that you set up a pay-as-you-go subscription, even if your cluster has a BYOL license.
 

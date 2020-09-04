@@ -73,8 +73,6 @@ video::video_subscribing_gcp.mp4[width=848, height=480]
 
 Bring your own license by purchasing an ONTAP FabricPool license from NetApp.
 
-NOTE: If you activate your license through Cloud Tiering and then you purchase additional add-on capacity at a later time, the license is automatically updated on the cluster with the new capacity. There's no need to apply a new NetApp License File (NLF) to the cluster.
-
 .Steps
 
 . If you don't have a FabricPool license, mailto:ng-cloud-tiering@netapp.com?subject=Licensing[contact us to purchase one].
@@ -92,3 +90,7 @@ image:screenshot_activate_license.gif[A screenshot of the Licensing page where y
 .Result
 
 Cloud Tiering registers the license and installs it on the cluster.
+
+.After you finish
+
+If you purchase additional add-on capacity at a later time, the license on the cluster is automatically updated with the new capacity. There's no need to apply a new NetApp License File (NLF) to the cluster.
