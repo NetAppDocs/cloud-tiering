@@ -78,7 +78,11 @@ Leave the page open until the deployment is complete.
 
 . Complete the steps on the *Tiering Setup* page:
 
-.. *Azure Container*: Add a new Blob container or select an existing container and click *Continue*.
+.. *Resource Group*: Select a resource group where an existing container is managed, or where you would like to create a new container for tiered data.
+
+.. *Azure Container*: Add a new Blob container to a storage account or select an existing container and click *Continue*. 
++
+The storage account and containers that appear in this step belong to the resource group that you selected in the previous step.
 
 .. *Access Tier*: Select the access tier that you want to use for the tiered data and click *Continue*.
 
