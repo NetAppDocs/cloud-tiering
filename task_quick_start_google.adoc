@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_gcp.html
 sidebar: sidebar
 permalink: task_quick_start_google.html
 keywords: quick start, register, prepare, tier, gcp, google

@@ -1,4 +1,5 @@
 ---
+redirect: occm/reference_google_support.html
 sidebar: sidebar
 permalink: reference_google_support.html
 keywords: google, gcp, regions, google regions, gcp regions, storage class, standard storage class

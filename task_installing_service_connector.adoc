@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_aws.html
 sidebar: sidebar
 permalink: task_installing_service_connector.html
 keywords: install, installation, installing, linux, installer, software, on prem, on-prem, silent, installing service connector, installing service connector on prem, on-prem service connector, on prem service connector

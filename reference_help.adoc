@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: reference_help.html
 keywords: community, forums, help, support, chat

@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_aws.html
 sidebar: sidebar
 permalink: task_tiering.html
 keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, aws, network, security group, tier, volume, s3 bucket

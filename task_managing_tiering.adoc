@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_managing_tiering.html
 sidebar: sidebar
 permalink: task_managing_tiering.html
 keywords: discover, volumes, report, hot, cold, inactive, active, capacity, used capacity, savings, health, failed, cooling period, cooling days

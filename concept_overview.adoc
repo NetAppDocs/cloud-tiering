@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: concept_overview.html
 keywords: cloud tiering, overview, conceptual, value, features, backup, report, monitoring, health

@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: reference_apis.html
 keywords: api, apis, cloud tiering, authorization, getting started, body, header, token, reference, authentication, authenticate

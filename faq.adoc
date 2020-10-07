@@ -1,4 +1,5 @@
 ---
+redirect: occm/faq_cloud_tiering.html
 sidebar: sidebar
 permalink: faq.html
 keywords: faq, questions, requirements, service connector, object store, object storage, aws, azure, bucket, cluster, aggregate, s3, storage class, standard, inactive data reporting, auto, volume tiering policy, policy, tiering policy, snapshot, cold, inactive, infrequent

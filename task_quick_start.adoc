@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_aws.html
 sidebar: sidebar
 permalink: task_quick_start.html
 keywords: quick start, register, prepare, tier, aws

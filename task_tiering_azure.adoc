@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_azure.html
 sidebar: sidebar
 permalink: task_tiering_azure.html
 keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, aws, network, security group, tier, volume, azure, blob, container
@@ -80,7 +81,7 @@ Leave the page open until the deployment is complete.
 
 .. *Resource Group*: Select a resource group where an existing container is managed, or where you would like to create a new container for tiered data.
 
-.. *Azure Container*: Add a new Blob container to a storage account or select an existing container and click *Continue*. 
+.. *Azure Container*: Add a new Blob container to a storage account or select an existing container and click *Continue*.
 +
 The storage account and containers that appear in this step belong to the resource group that you selected in the previous step.
 

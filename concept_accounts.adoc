@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: concept_accounts.html
 keywords: account, cloud central account, multi-tenancy, tenancy

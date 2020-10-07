@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_aws.html
 sidebar: sidebar
 permalink: task_preparing.html
 keywords: requirements, networking, vpc, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, cloud provider, bucket, s3, account, permissions, regions, access key, secret key, service connector

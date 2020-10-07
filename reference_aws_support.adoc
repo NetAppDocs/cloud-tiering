@@ -1,4 +1,5 @@
 ---
+redirect: occm/reference_aws_support.html
 sidebar: sidebar
 permalink: reference_aws_support.html
 keywords: aws, amazon, s3, support, regions, storage classes

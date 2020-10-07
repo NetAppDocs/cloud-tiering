@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_azure.html
 sidebar: sidebar
 permalink: task_preparing_azure.html
 keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.2, 9.3, 9.4, 9.5, object, cloud provider, azure, blob, container, account, permissions, regions, service connector

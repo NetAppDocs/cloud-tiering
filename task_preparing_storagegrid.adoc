@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_storagegrid.html
 sidebar: sidebar
 permalink: task_preparing_storagegrid.html
 keywords: network, requirements, networking, vnet, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, storagegrid

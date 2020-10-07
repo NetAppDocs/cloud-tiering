@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: concept_licensing.html
 keywords: license, subscription, registering, paygo, byol, pay as you go, bring your own license, free trial, trial, controlled availability, aws marketplace, gcp marketplace, azure marketplace, aws paygo, azure paygo, gcp paygo

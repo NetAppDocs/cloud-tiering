@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_azure.html
 sidebar: sidebar
 permalink: task_quick_start_azure.html
 keywords: quick start, register, prepare, tier, azure
