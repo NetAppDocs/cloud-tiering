@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_gcp.html
 sidebar: sidebar
 permalink: task_tiering_google.html
 keywords: discover, cluster, ontap, account, admin, region, vpc, subnet, service connector, gcp, network, security group, tier, volume

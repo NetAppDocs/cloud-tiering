@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_storagegrid.html
 sidebar: sidebar
 permalink: task_quick_start_storagegrid.html
 keywords: quick start, register, prepare, tier, storagegrid

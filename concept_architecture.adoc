@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: concept_architecture.html
 keywords: cloud tiering, architecture, diagram, components, bucket, object storage, object store, service connector, policy, volume policy, volume tiering policy, tiering policy, auto

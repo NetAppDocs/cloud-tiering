@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: reference_storage_providers.html
 keywords: object storage provider, provider, cloud provider, aws, amazon, s3, microsoft azure, azure, gcp, google, google cloud storage, storagegrid

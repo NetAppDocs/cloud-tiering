@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_licensing_cloud_tiering.html
 sidebar: sidebar
 permalink: task_licensing.html
 keywords: subscribe, trial, marketplace, subscription, paygo, pay, pay as you go, aws

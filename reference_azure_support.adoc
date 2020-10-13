@@ -1,4 +1,5 @@
 ---
+redirect: occm/reference_azure_support.html
 sidebar: sidebar
 permalink: reference_azure_support.html
 keywords: microsoft azure, azure, hot, access tier, cold, regions

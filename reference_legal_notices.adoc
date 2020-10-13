@@ -1,4 +1,5 @@
 ---
+redirect: occm/reference_legal_notices.html
 sidebar: sidebar
 permalink: reference_legal_notices.html
 keywords: copyrights, notice, trademarks, patents, privacy, open source

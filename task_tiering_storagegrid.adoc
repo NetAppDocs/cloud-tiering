@@ -1,4 +1,5 @@
 ---
+redirect: occm/task_tiering_onprem_storagegrid.html
 sidebar: sidebar
 permalink: task_tiering_storagegrid.html
 keywords: discover, cluster, ontap, account, service connector, s3, permissions, aws s3, access keys, secret key

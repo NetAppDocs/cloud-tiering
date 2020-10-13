@@ -1,4 +1,5 @@
 ---
+redirect: occm/concept_cloud_tiering.html
 sidebar: sidebar
 permalink: index.html
 keywords: cloud tiering, netapp, documentation, cold data, inactive data, performance tier, capacity tier, cloud, object store, object storage, getting started
