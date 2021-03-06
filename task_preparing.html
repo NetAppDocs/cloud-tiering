@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head class="at-element-marker">
+  <title>Preparing to tier inactive data to AWS S3 | NetApp Cloud Docs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Preparing to tier inactive data to AWS S3 | NetApp Cloud Docs" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/us-en/cloud-tiering/task_preparing.html" />
+	<meta property="og:description" content="Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector." />
+  <meta property="og:image" content="https://docs.netapp.com/us-en/cloud-tiering/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/>
+  
+  <meta name="description" content="Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.">
+  <meta name="keywords" content=" requirements, networking, vpc, subnet, proxy, public ip, outbound, inbound, security group, rules, aff, lif, ontap, version, 9.4, 9.5, object, cloud provider, bucket, s3, account, permissions, regions, access key, secret key, service connector">
+  
+  
+
+  <!-- Icons -->
+  <link rel="icon" href="/us-en/cloud-tiering/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed -->
+  
+  <link rel="alternate" type="application/rss+xml" title="NetApp Cloud Docs" href="/us-en/cloud-tiering/feed.xml">
+  
+
+  <!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Controls AsciiDoctor Admonition Blocks -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-tiering/css/font-awesome.min.css">
+
+  <!-- Controls the shadow effect for search dropdown menu -->
+  <link rel="stylesheet" href="/us-en/cloud-tiering/css/boxshadowproperties.css">
+
+  <!-- NetApp CSS controls the technical content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-tiering/css/netapp.css">
+
+  <!-- WWW CSS Content -->
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-tiering/css/www-luci-dotcom.min.css">
+  <link rel="stylesheet" type="text/css" href="/us-en/cloud-tiering/css/www-netapp-dotcom.css">
+  <link rel="stylesheet" href="/us-en/cloud-tiering/css/www-netapp-library-critical.min.css" media="all" >
+  <link rel="stylesheet" href="/us-en/cloud-tiering/css/www-netapp-library-non-critical.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/us-en/cloud-tiering/css/www-netapp-library-global-header-footer.min.css">
+
+  <!-- NetApp IE Customizations -->
+  <link rel="stylesheet" href='/us-en/cloud-tiering/css/na-utility.css' type='text/css'>
+  <link rel="stylesheet" href='/us-en/cloud-tiering/css/na-sidebar.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-tiering/css/clouddocs.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-tiering/css/na-pagenav.css' type='text/css'>
+
+  
+
+  
+  <link rel='stylesheet' href='/us-en/cloud-tiering/css/na-feature.css' type='text/css'>
+  
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  <!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+  
+    <script src='/us-en/cloud-tiering/js/na-search.js'></script>
+  
+
+  
+  <script src='/us-en/cloud-tiering/js/na-pagenav.js'></script>
+  
+
+  <link rel='stylesheet' href='/us-en/cloud-tiering/css/prism.css' type='text/css'>
+  <link rel='stylesheet' href='/us-en/cloud-tiering/css/prism-netapp.css' type='text/css'>
+
+
+  <script src='/us-en/cloud-tiering/js/na-utility.js'></script>
+  <script src='/us-en/cloud-tiering/js/clouddocs.js'></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    var head = document.getElementsByTagName('head')[0];
+    var adobe = document.createElement("script");
+    adobe.type = "text/javascript";
+    adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js";
+    head.appendChild(adobe);
+  }
+  </script>
+  <script src='/us-en/cloud-tiering/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/us-en/cloud-tiering/js/toc.js'></script>
+  <script src='/us-en/cloud-tiering/js/customscripts.js'></script>
+
+  <script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script><script>
+    pageRedirect("https://docs.netapp.com/us-en/occm/task_tiering_onprem_aws.html");
+  </script><script async src="https://www.googletagmanager.com/gtag/js?id=UA-81697994-3"></script>
+  <script>
+  if (document.location.hostname === "docs.netapp.com") {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-81697994-3');
+  }
+  </script>
+</head>
+
+
+  <body class role="document">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Product and Solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support and Training</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Community</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Customer Stories</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" data-type="widget" data-placeholder="Search Documentation" data-no-results-found="No results were found for {query}" data-did-you-mean="Search for {suggestion}." data-no-results-found-did-you-mean="No results found for {query}. Did you mean {suggestion}?" data-results-found="{hitCount} results found"  ></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar"><!-- Start Language Selector -->
+    <div id="ie-i18n" class="n-property-bar__lang-selector">
+      <div id="ie-i18n-menu">
+      <span class="ie-i18n-lang">English</span>
+        <button class="ie-i18n-icon-container" type="button">
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div id="n-property-navigation-bar__menu--language-selector" class="ie-i18n-results-container n-menu n-menu--v3 n-menu--is-active" style="display: none;">
+        <div class="n-language-selector-menu">
+          <div class="n-language-selector-menu__header">
+            <span class="n-language-selector-menu__title">Select Your Language</span>
+          </div>
+          <ul class="n-menu__list">
+            <li class="n-menu__list-column">
+              <ul class="n-menu__list"><li class="n-menu__list-item n-menu__list-item--level-1">
+                  <a href="https://docs.netapp.com/us-en/cloud-tiering" class="n-menu__header-text"><span translate="no" class="notranslate">English</span></a>
+                </li></ul>
+            </li>
+          </ul>
+          <div class="menu__footer">
+            <p>Current Language: English
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+        <div class="ie-utility">
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://www.netapp.com">Home</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">Documentation</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Cloud Docs</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/us-en/cloud-tiering/">Cloud&nbsp;Tiering</a>
+        </li>
+        <li class="n-breadcrumb__list-item">
+          Preparing to tier inactive data to AWS S3
+        </li>
+      </ul>
+    </div>
+
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" >
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">PDFs<span>
+    </span>
+  </a>
+</div>
+<ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><div class="n-pdf-section">
+      <span class="n-pdf-section-title">Site</span>
+    </div>
+    <li>
+      <a target="_blank" href="/us-en/cloud-tiering/pdfs/fullsite-sidebar/Cloud_Tiering_documentation.pdf" >
+        <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+        Cloud Tiering documentation
+      </a>
+    </li>
+  
+
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Concepts.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Concepts
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+          <div class="n-pdf-section">
+            <span class="n-pdf-section-title">
+              Sections
+            </span>
+          </div>
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Get_started.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Get started
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Tier_data_to_AWS_S_.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Tier data to AWS S3
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+    <div class="n-pdf-section">
+  <span class="n-pdf-section-title">This page</span>
+</div>
+
+<li class="active">
+  <a target="_blank" href="/us-en/cloud-tiering/pdfs/pages/task_preparing.pdf" >
+    <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+    Preparing to tier inactive data to AWS S3
+  </a>
+</li>
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Tier_data_to_Azure_Blob_storage.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Tier data to Azure Blob storage
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Tier_data_to_Google_Cloud_Storage.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Tier data to Google Cloud Storage
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+    
+      <span class="subfolders" style="display:none;">
+        
+        <li>
+          <a target="_blank" href="/us-en/cloud-tiering/pdfs/sidebar/Tier_data_to_StorageGRID.pdf" >
+            <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>
+            Tier data to StorageGRID
+          </a>
+        </li>
+        <span>
+          
+  
+
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+
+
+
+          
+        </span>
+      </span>
+    
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+</ul>
+
+<script>
+  $("#toggleContainerPdf li.active").parents('li').toggle('display');
+  $("#toggleContainerPdf li.active").parents('span.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+  });
+</script><ul id="mysidebar" class="nav"><li class=" "><a class="na-navbar-padding" href="index.html">
+        Cloud Tiering docs
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_new.html">
+        What's new
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Concepts</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="concept_overview.html">
+        Cloud Tiering overview
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_architecture.html">
+        How Cloud Tiering works
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_licensing.html">
+        Licensing
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_savings.html">
+        Savings opportunities
+      </a></li><li class=" "><a class="na-navbar-padding" href="concept_accounts.html">
+        Accounts
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Get started</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="reference_storage_providers.html">
+        Supported object storage providers
+      </a></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Tier data to AWS S3</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_quick_start.html">
+        Quick start
+      </a></li><li class="  active "><a class="na-navbar-padding" href="task_preparing.html">
+        Prepare to tier data
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_installing_service_connector.html">
+        Install the Service Connector on prem
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_tiering.html">
+        Set up tiering to AWS S3
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_aws_support.html">
+        Supported storage classes and regions
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Tier data to Azure Blob storage</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_quick_start_azure.html">
+        Quick start
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_preparing_azure.html">
+        Prepare to tier data
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_tiering_azure.html">
+        Set up tiering to Blob storage
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_azure_support.html">
+        Supported access tiers and regions
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Tier data to Google Cloud Storage</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_quick_start_google.html">
+        Quick start
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_preparing_google.html">
+        Prepare to tier data
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_tiering_google.html">
+        Set up tiering to Google Cloud
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_google_support.html">
+        Supported storage classes and regions
+      </a></li></ul></li><li class="subfolders "><a href="#">
+        <div class="na-navbar-padding"> Tier data to StorageGRID</div>
+      </a>
+      <ul><li class=" "><a class="na-navbar-padding" href="task_quick_start_storagegrid.html">
+        Quick start
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_preparing_storagegrid.html">
+        Prepare to tier data
+      </a></li><li class=" "><a class="na-navbar-padding" href="task_tiering_storagegrid.html">
+        Set up tiering to StorageGRID
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_licensing.html">
+        Set up licensing
+      </a></li></ul></li><li class=" "><a class="na-navbar-padding" href="task_managing_tiering.html">
+        Manage data tiering
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_help.html">
+        Get help
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_apis.html">
+        APIs
+      </a></li><li class=" "><a class="na-navbar-padding" href="faq.html">
+        FAQ
+      </a></li><li class=" "><a class="na-navbar-padding" href="reference_legal_notices.html">
+        Legal notices
+      </a></li></ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container -->
+    <article class="page-content">
+      
+
+
+
+<div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Preparing to tier inactive data to AWS S3</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2020-10-07 19:30:00 +0000">10/07/2020</time>
+    
+  
+
+<span>Contributors
+  <a target="_blank" href="https://github.com/netapp-bcammett">
+    <img  class="avatar avatar-small"
+          alt="netapp-bcammett"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/18287750?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+  <a target="_blank" href="https://github.com/akseldavis">
+    <img  class="avatar avatar-small"
+          alt="akseldavis"
+          width="20" height="20"
+          src="https://avatars.githubusercontent.com/u/33839009?v=4"
+          style="border-radius: 50%;"/>
+  </a>
+  
+</span>
+
+
+  <span>
+    <a target="_blank" href="/us-en/cloud-tiering/pdfs/pages/task_preparing.pdf" role="button">
+      <img src="/us-en/cloud-tiering/images/pdf.png" width="20" height="20"/>Download PDF of this page</a>
+  </span>
+
+
+</p>
+
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Before you use Cloud Tiering, verify support for your ONTAP cluster, prepare your object storage, and set up a location for the Service Connector.</p>
+</div>
+<div class="paragraph">
+<p>The following image shows each component and the connections that you need to prepare between them:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./media/diagram_cloud_tiering_aws.png" alt="An architecture image that shows the Cloud Tiering service with a connection to the Service Connector in your cloud provider, the Service Connector with a connection to your ONTAP cluster, and a connection between the ONTAP cluster and object storage in your cloud provider. Active data resides on the ONTAP cluster, while inactive data resides in object storage."></span></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Communication between the Service Connector and S3 is for object storage setup only. The Service Connector can reside on your premises, instead of in the cloud.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparing-your-ontap-clusters">Preparing your ONTAP clusters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Your ONTAP clusters must meet the following requirements when tiering data to AWS S3.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Supported ONTAP platforms</dt>
+<dd>
+<p>Cloud Tiering supports AFF systems and all-SSD aggregates on FAS systems.</p>
+</dd>
+<dt class="hdlist1">Supported ONTAP version</dt>
+<dd>
+<p>ONTAP 9.2 or later</p>
+</dd>
+<dt class="hdlist1">Cluster networking requirements</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>The ONTAP cluster initiates an HTTPS connection over port 443 to AWS S3.</p>
+<div class="paragraph">
+<p>ONTAP reads and writes data to and from object storage. The object storage never initiates, it just responds.</p>
+</div>
+<div class="paragraph">
+<p>Although AWS Direct Connect provides better performance and lower data transfer charges, it is not required between the ONTAP cluster and AWS S3. Because performance is significantly better when using AWS Direct Connect, doing so is the recommended best practice.</p>
+</div>
+</li>
+<li>
+<p>An inbound connection is required from the NetApp Service Connector, which can reside in an AWS VPC or on your premises.</p>
+<div class="paragraph">
+<p>A connection between the cluster and the Cloud Tiering service is not required.</p>
+</div>
+</li>
+<li>
+<p>An intercluster LIF is required on each ONTAP node that hosts tiered volumes. The LIF must be associated with the <em>IPspace</em> that ONTAP should use to connect to object storage.</p>
+<div class="paragraph">
+<p>IPspaces enable network traffic segregation, allowing for separation of client traffic for privacy and security. <a href="http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-nmg/GUID-69120CF0-F188-434F-913E-33ACB8751A5D.html" target="_blank" rel="noopener">Learn more about IPspaces</a>.</p>
+</div>
+<div class="paragraph">
+<p>When you set up data tiering, Cloud Tiering prompts you for the IPspace to use. You should choose the IPspace that each LIF is associated with. That might be the "Default" IPspace or a custom IPspace that you created.</p>
+</div>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Supported volumes and aggregates</dt>
+<dd>
+<p>The total number of volumes that Cloud Tiering can tier might be less than the number of volumes on your ONTAP system. That&#8217;s because volumes can&#8217;t be tiered from some aggregates. For example, you can&#8217;t tier data from SnapLock volumes or from MetroCluster configurations. Refer to ONTAP documentation for <a href="http://docs.netapp.com/ontap-9/topic/com.netapp.doc.dot-cm-psmg/GUID-8E421CC9-1DE1-492F-A84C-9EB1B0177807.html" target="_blank" rel="noopener">functionality or features not supported by FabricPool</a>.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Cloud Tiering supports FlexGroup volumes, starting with ONTAP 9.5. Setup works the same as any other volume.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="choosing-a-location-for-the-service-connector">Choosing a location for the Service Connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Service Connector is NetApp software that communicates with your ONTAP clusters. You can deploy the Service Connector on your premises or in an AWS VPC.</p>
+</div>
+<div class="paragraph">
+<p>Be sure to set up the Service Connector in the same AWS account to which you want to tier data.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="task_installing_service_connector.html">Installing the Service Connector on prem</a></p>
+</li>
+<li>
+<p><a href="#preparing-to-deploy-the-service-connector-in-an-aws-vpc">Preparing to deploy the Service Connector in an AWS VPC</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparing-to-deploy-the-service-connector-in-an-aws-vpc">Preparing to deploy the Service Connector in an AWS VPC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cloud Tiering guides you through the process of deploying the Service Connector on an EC2 instance. Make sure that your AWS account and networking are set up.</p>
+</div>
+<div class="sect2">
+<h3 id="setting-up-an-aws-account-for-the-service-connector">Setting up an AWS account for the Service Connector</h3>
+<div class="paragraph">
+<p>The AWS account where you deploy the EC2 instance must have permissions and an access key. Cloud Tiering tiers data to an S3 bucket that resides in the same AWS account as the Service Connector.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Provide <a href="https://s3.amazonaws.com/occm-sample-policies/Policy_for_Setup_As_Service.json" target="_blank" rel="noopener">the permissions in this policy</a> to the IAM user.</p>
+<div class="paragraph">
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html" target="_blank" rel="noopener">AWS Documentation: Creating a Role to Delegate Permissions to an IAM User</a></p>
+</div>
+</li>
+<li>
+<p>Create or locate an access key that you can provide to Cloud Tiering.</p>
+<div class="paragraph">
+<p>These credentials are used by the Cloud Tiering service to launch the EC2 instance in AWS. Providing your keys is secure and private. NetApp does not save them.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html" target="_blank" rel="noopener">AWS Documentation: Managing Access Keys for IAM Users</a></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-up-aws-networking-for-the-service-connector">Setting up AWS networking for the Service Connector</h3>
+<div class="paragraph">
+<p>The Service Connector needs a connection to your ONTAP clusters, to AWS S3, and to the Cloud Tiering service.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Identify a VPC for the Service Connector that enables the following connections:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>An outbound internet connection to the Cloud Tiering service over port 443 (HTTPS)</p>
+</li>
+<li>
+<p>An HTTPS connection over port 443 to S3</p>
+</li>
+<li>
+<p>An HTTPS connection over port 443 to your ONTAP clusters</p>
+<div class="paragraph">
+<p>Cloud Tiering enables you to deploy the EC2 instance with a public IP address and you can configure it to use your own proxy server.</p>
+</div>
+<div class="paragraph">
+<p>You don&#8217;t need to create your own security group because Cloud Tiering can do that for you. The security group that Cloud Tiering creates has no inbound connectivity and open outbound connectivity.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If needed, enable a VPC Endpoint to S3.</p>
+<div class="paragraph">
+<p>A VPC Endpoint to S3 is recommended if you have a Direct Connect or VPN connection from your ONTAP cluster to the VPC and you want communication between the Service Connector and S3 to stay in your AWS internal network.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparing-aws-s3-for-data-tiering">Preparing AWS S3 for data tiering</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you set up data tiering to a new cluster, Cloud Tiering prompts you to create an S3 bucket or select an existing S3 bucket in the AWS account where you set up the Service Connector.</p>
+</div>
+<div class="paragraph">
+<p>The AWS account must have permissions and an access key that you can enter in Cloud Tiering. The ONTAP cluster uses the access key to tier data in and out of S3.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Steps</div>
+<ol class="arabic">
+<li>
+<p>Provide the following permissions to the IAM user:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-json" data-lang="json">"s3:ListAllMyBuckets",
+"s3:ListBucket",
+"s3:GetBucketLocation",
+"s3:GetObject",
+"s3:PutObject",
+"s3:DeleteObject"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html" target="_blank" rel="noopener">AWS Documentation: Creating a Role to Delegate Permissions to an IAM User</a></p>
+</div>
+</li>
+<li>
+<p>Create or locate an access key.</p>
+<div class="paragraph">
+<p>Cloud Tiering passes the access key on to the ONTAP cluster. The credentials are not stored in the Cloud Tiering service.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html" target="_blank" rel="noopener">AWS Documentation: Managing Access Keys for IAM Users</a></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+  <div class="page-nav-toolbar">
+    <div class="page-nav-contribute"  >
+      <div class="page-nav-contribute-title">CONTRIBUTE</div>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-tiering/blob/main/task_preparing.adoc" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloud-tiering/images/github.png" class="github-icon" />Edit on GitHub</a>
+      <a target="_blank" href="https://github.com/NetAppDocs/cloud-tiering/issues/new?body=Page%3A%20[Preparing to tier inactive data to AWS S3](https://docs.netapp.com/us-en/cloud-tiering/task_preparing.html)" class="btn btn-default githubEditButton" role="button"><img src="/us-en/cloud-tiering/images/github.png" class="github-icon" />Request doc changes</a>
+      <a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Contributor's Guide</a>
+    </div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">ON THIS PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  <div style="clear: both"></div><!-- Main needs to have height -->
+</div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+            <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2021 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__language">
+              <!-- <a class="n-footer__corp-link modaal" href="#n-language-selector-menu" data-modaal-scope="modaal_154143812867626e487b1a03c9"> -->
+              <a class="n-footer__corp-link modaal" href="#n-language-selector-menu">
+                <svg class="n-icon-baseline-language" aria-labelledby="title">
+                  <title>netapp-globe</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#globe"></use>
+                </svg>
+                English
+              </a>
+            </li>
+
+</ul>
+</div>
+<div class="n-footer__social-links">
+<ul class="n-footer__social-link-list">
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com" target="_blank" title="blog" alt="blog">
+<span class="n-footer__social-link-text">blog</span>
+<svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+  <title>blog@</title>
+  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#blog"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/" target="_blank" title="community" alt="community">
+<span class="n-footer__social-link-text">community</span>
+<svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+<title>community@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#comments"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp" target="_blank" title="twitter" alt="twitter">
+<span class="n-footer__social-link-text">twitter</span>
+<svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+<title>twitter@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#twitter"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp" target="_blank" title="facebook" alt="facebook">
+<span class="n-footer__social-link-text">facebook</span>
+<svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+<title>facebook@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#facebook"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-linkedin" href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+<span class="n-footer__social-link-text">linkedin</span>
+<svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+<title>linkedin@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#linkedin"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-youtube" href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+<span class="n-footer__social-link-text">youtube</span>
+<svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+<title>youtube@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#youtube"></use>
+</svg>
+
+</a>
+</li>
+<li class="n-footer__social-link-list-item">
+<a class="n-footer__social-link" data-ntap-social="follow-slideshare" href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+<span class="n-footer__social-link-text">slideshare</span>
+<svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+<title>slideshare@</title>
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/us-en/cloud-tiering/common/svg/sprite.svg#slideshare"></use>
+</svg>
+
+</a>
+</li>
+</ul>
+</div>
+
+</div>
+<div class="n-footer__bottom-right">
+  <p class="n-footer__fine-print">Have feedback for our website?<a target="_self" href="javascript:netapp_mailto()" class="n-footer__copyright">Let us know</a>
+  <a href="https://docs.netapp.com/us-en/announcements/" class="n-footer__copyright">Announcements</a>
+  </p>
+</div>
+</div>
+</div>
+</footer>
+
+      </div>
+
+      <!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/us-en/cloud-tiering/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/us-en/cloud-tiering/js/prism.js'></script>
+      <script type="text/javascript" src='/us-en/cloud-tiering/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/us-en/cloud-tiering/js/www-ntap.js'></script>
+  </body>
+
+  
+</html>
