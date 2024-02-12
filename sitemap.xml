@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  
+    
+    
+  
+
+  
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/concept_accounts.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/concept_architecture.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/concept_licensing.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/concept_overview.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/concept_savings.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/faq.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_apis.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_aws_support.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_azure_support.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_google_support.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_help.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_legal_notices.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_new.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/reference_storage_providers.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering//search.html</loc>
+        
+      
+      <lastmod>2024-02-12T00:43:51+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_installing_service_connector.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_licensing.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_managing_tiering.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_preparing.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_preparing_azure.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_preparing_google.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_preparing_storagegrid.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_quick_start.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_quick_start_azure.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_quick_start_google.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_quick_start_storagegrid.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_tiering.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_tiering_azure.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_tiering_google.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+    <url>
+      
+        <loc>https://docs.netapp.com/us-en/cloud-tiering/task_tiering_storagegrid.html</loc>
+        
+      
+      <lastmod>2020-10-07T19:30:00+00:00</lastmod>
+      
+    </url>
+  
+
+  
+  
+</urlset>

@@ -1,0 +1,16 @@
+title: NetApp Service Connector
+description: Permissions for the service account associated with the Service Connector instance. Enables management of tiering for Cloud Tiering.
+stage: GA
+includedPermissions:
+- compute.globalOperations.get
+- compute.projects.get
+- compute.regions.get
+- compute.regions.list
+- compute.zoneOperations.get
+- compute.zones.get
+- compute.zones.list
+- resourcemanager.projects.get
+- storage.buckets.create
+- storage.buckets.delete
+- storage.buckets.get
+- storage.buckets.list
